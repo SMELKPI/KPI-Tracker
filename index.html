@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="app-version" content="1777406836">
+<title>My KPI Tracker</title>
+<meta name="color-scheme" content="light">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiTXkgS1BJIFRyYWNrZXIiLCJzaG9ydF9uYW1lIjoiS1BJIFRyYWNrZXIiLCJkZXNjcmlwdGlvbiI6IkJSQUMgQmFuayBTTUVMIEtQSSBUcmFja2VyIiwic3RhcnRfdXJsIjoiLi8iLCJkaXNwbGF5Ijoic3RhbmRhbG9uZSIsImJhY2tncm91bmRfY29sb3IiOiIjMDA2Q0I2IiwidGhlbWVfY29sb3IiOiIjMDA2Q0I2Iiwib3JpZW50YXRpb24iOiJwb3J0cmFpdCIsImljb25zIjpbeyJzcmMiOiJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSFpwWlhkQ2IzZzlJakFnTUNBMU1USWdOVEV5SWlCM2FXUjBhRDBpTlRFeUlpQm9aV2xuYUhROUlqVXhNaUkrQ2lBZ1BISmxZM1FnZDJsa2RHZzlJalV4TWlJZ2FHVnBaMmgwUFNJMU1USWlJSEo0UFNJeE1EQWlJR1pwYkd3OUlpTXdNRFpEUWpZaUx6NEtJQ0E4Y21WamRDQjRQU0l3SWlCNVBTSXdJaUIzYVdSMGFEMGlOVEV5SWlCb1pXbG5hSFE5SWpNeUlpQnllRDBpTVRBd0lpQm1hV3hzUFNJalJUUkJOekkwSWk4K0NpQWdQSEpsWTNRZ2VEMGlNQ0lnZVQwaU1UWWlJSGRwWkhSb1BTSTFNVElpSUdobGFXZG9kRDBpTVRZaUlHWnBiR3c5SWlORk5FRTNNalFpTHo0S0lDQThjbVZqZENCNFBTSTNNaUlnZVQwaU16UXdJaUIzYVdSMGFEMGlOellpSUdobGFXZG9kRDBpTVRJNElpQnllRDBpTVRJaUlHWnBiR3c5SW5KblltRW9NalUxTERJMU5Td3lOVFVzTUM0ek5Ta2lMejRLSUNBOGNtVmpkQ0I0UFNJeE56Z2lJSGs5SWpJMU5TSWdkMmxrZEdnOUlqYzJJaUJvWldsbmFIUTlJakl4TXlJZ2NuZzlJakV5SWlCbWFXeHNQU0p5WjJKaEtESTFOU3d5TlRVc01qVTFMREF1TlRVcElpOCtDaUFnUEhKbFkzUWdlRDBpTWpnMElpQjVQU0l4TnpBaUlIZHBaSFJvUFNJM05pSWdhR1ZwWjJoMFBTSXlPVGdpSUhKNFBTSXhNaUlnWm1sc2JEMGlJMlptWm1abVppSXZQZ29nSUR4eVpXTjBJSGc5SWpNM01DSWdlVDBpTWpFd0lpQjNhV1IwYUQwaU56WWlJR2hsYVdkb2REMGlNalU0SWlCeWVEMGlNVElpSUdacGJHdzlJbkpuWW1Fb01qVTFMREkxTlN3eU5UVXNNQzR5TlNraUx6NEtJQ0E4Y0c5c2VXeHBibVVnY0c5cGJuUnpQU0l4TVRBc016UXdJREl4Tml3eU5UVWdNekl5TERFM01DQTBNRGdzTVRNd0lpQm1hV3hzUFNKdWIyNWxJaUJ6ZEhKdmEyVTlJaU5GTkVFM01qUWlJSE4wY205clpTMTNhV1IwYUQwaU1UZ2lJSE4wY205clpTMXNhVzVsWTJGd1BTSnliM1Z1WkNJZ2MzUnliMnRsTFd4cGJtVnFiMmx1UFNKeWIzVnVaQ0l2UGdvZ0lEeGphWEpqYkdVZ1kzZzlJalF3T0NJZ1kzazlJakV6TUNJZ2NqMGlNaklpSUdacGJHdzlJaU5GTkVFM01qUWlMejRLSUNBOFkybHlZMnhsSUdONFBTSTBNRGdpSUdONVBTSXhNekFpSUhJOUlqRXdJaUJtYVd4c1BTSWpabVptWm1abUlpOCtDand2YzNablBnPT0iLCJzaXplcyI6IjUxMng1MTIiLCJ0eXBlIjoiaW1hZ2Uvc3ZnK3htbCIsInB1cnBvc2UiOiJhbnkgbWFza2FibGUifV19">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMwMDZDQjYiLz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjMyIiByeD0iMTAwIiBmaWxsPSIjRTRBNzI0Ii8+CiAgPHJlY3QgeD0iMCIgeT0iMTYiIHdpZHRoPSI1MTIiIGhlaWdodD0iMTYiIGZpbGw9IiNFNEE3MjQiLz4KICA8cmVjdCB4PSI3MiIgeT0iMzQwIiB3aWR0aD0iNzYiIGhlaWdodD0iMTI4IiByeD0iMTIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4zNSkiLz4KICA8cmVjdCB4PSIxNzgiIHk9IjI1NSIgd2lkdGg9Ijc2IiBoZWlnaHQ9IjIxMyIgcng9IjEyIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNTUpIi8+CiAgPHJlY3QgeD0iMjg0IiB5PSIxNzAiIHdpZHRoPSI3NiIgaGVpZ2h0PSIyOTgiIHJ4PSIxMiIgZmlsbD0iI2ZmZmZmZiIvPgogIDxyZWN0IHg9IjM3MCIgeT0iMjEwIiB3aWR0aD0iNzYiIGhlaWdodD0iMjU4IiByeD0iMTIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yNSkiLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxMTAsMzQwIDIxNiwyNTUgMzIyLDE3MCA0MDgsMTMwIiBmaWxsPSJub25lIiBzdHJva2U9IiNFNEE3MjQiIHN0cm9rZS13aWR0aD0iMTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjQwOCIgY3k9IjEzMCIgcj0iMjIiIGZpbGw9IiNFNEE3MjQiLz4KICA8Y2lyY2xlIGN4PSI0MDgiIGN5PSIxMzAiIHI9IjEwIiBmaWxsPSIjZmZmZmZmIi8+Cjwvc3ZnPg==">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiI+CiAgPHJlY3Qgd2lkdGg9IjUxMiIgaGVpZ2h0PSI1MTIiIHJ4PSIxMDAiIGZpbGw9IiMwMDZDQjYiLz4KICA8cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjMyIiByeD0iMTAwIiBmaWxsPSIjRTRBNzI0Ii8+CiAgPHJlY3QgeD0iMCIgeT0iMTYiIHdpZHRoPSI1MTIiIGhlaWdodD0iMTYiIGZpbGw9IiNFNEE3MjQiLz4KICA8cmVjdCB4PSI3MiIgeT0iMzQwIiB3aWR0aD0iNzYiIGhlaWdodD0iMTI4IiByeD0iMTIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4zNSkiLz4KICA8cmVjdCB4PSIxNzgiIHk9IjI1NSIgd2lkdGg9Ijc2IiBoZWlnaHQ9IjIxMyIgcng9IjEyIiBmaWxsPSJyZ2JhKDI1NSwyNTUsMjU1LDAuNTUpIi8+CiAgPHJlY3QgeD0iMjg0IiB5PSIxNzAiIHdpZHRoPSI3NiIgaGVpZ2h0PSIyOTgiIHJ4PSIxMiIgZmlsbD0iI2ZmZmZmZiIvPgogIDxyZWN0IHg9IjM3MCIgeT0iMjEwIiB3aWR0aD0iNzYiIGhlaWdodD0iMjU4IiByeD0iMTIiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4yNSkiLz4KICA8cG9seWxpbmUgcG9pbnRzPSIxMTAsMzQwIDIxNiwyNTUgMzIyLDE3MCA0MDgsMTMwIiBmaWxsPSJub25lIiBzdHJva2U9IiNFNEE3MjQiIHN0cm9rZS13aWR0aD0iMTgiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjQwOCIgY3k9IjEzMCIgcj0iMjIiIGZpbGw9IiNFNEE3MjQiLz4KICA8Y2lyY2xlIGN4PSI0MDgiIGN5PSIxMzAiIHI9IjEwIiBmaWxsPSIjZmZmZmZmIi8+Cjwvc3ZnPg==">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KPI Tracker">
+<meta name="mobile-web-app-capable" content="yes">
+
+
+
+
+
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+html, body { color-scheme: light only; }
+:root {
+  --bb-blue:#006CB6; --bb-blue-dk:#00538c; --bb-blue-lt:#e6f2fb; --bb-blue-mid:#97B5DA;
+  --bb-gold:#E4A724; --bb-gold-lt:#fdf4de; --bb-gold-dk:#b8821a;
+  --bg:#f5f7fa; --white:#ffffff; --surface:#f0f4f8; --border:#dde6ef; --border2:#c8d8e8;
+  --t1:#21211F; --t2:#3d5166; --t3:#7a94aa;
+  --green:#00875a; --green-lt:#e3f5ef; --green-mid:#9fd9c4;
+  --red:#d63a2f; --red-lt:#fdecea;
+  --r:12px; --r-lg:16px;
+  --sh:0 1px 4px rgba(0,44,88,.07),0 3px 12px rgba(0,44,88,.05);
+  --sh2:0 2px 8px rgba(0,44,88,.10),0 6px 24px rgba(0,44,88,.07);
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{font-family:"Inter",sans-serif;background:var(--bg);color:var(--t1);min-height:100vh}
+
+/* HEADER */
+header{position:sticky;top:0;z-index:100;background:var(--bb-blue);border-top:3px solid var(--bb-gold);padding:0 18px;display:flex;align-items:stretch;justify-content:space-between;box-shadow:0 2px 8px rgba(0,44,88,.18)}
+.hdr-left{display:flex;align-items:center;gap:10px;padding:11px 0}
+.app-logo{width:34px;height:34px;flex-shrink:0}
+.hdr-text{display:flex;flex-direction:column;line-height:1}
+.hdr-brand{font-size:.92rem;font-weight:700;color:#fff;letter-spacing:.2px}
+.hdr-sub{font-size:.56rem;color:rgba(255,255,255,.6);letter-spacing:.8px;text-transform:uppercase;margin-top:2px}
+.hdr-right{display:flex;align-items:center;padding:11px 0}
+.user-pill{display:flex;align-items:center;gap:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:4px 11px 4px 6px;cursor:pointer}
+.head-icon{width:22px;height:22px}
+.user-name{font-size:.72rem;font-weight:500;color:rgba(255,255,255,.9);max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* VIEWS */
+main,.alt{max-width:480px;margin:0 auto;padding:18px 15px 96px}
+.alt{display:none}.alt.on{display:block}
+.pg-title{font-size:1.05rem;font-weight:700;color:var(--t1);margin-bottom:16px;padding-top:4px;border-left:3px solid var(--bb-gold);padding-left:10px}
+
+/* HERO */
+.hero{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:18px;box-shadow:var(--sh);animation:up .4s ease both}
+.hero-stripe{height:4px;background:linear-gradient(90deg,var(--bb-blue),var(--bb-gold))}
+.hero-body{padding:18px 18px 16px}
+.profile-block{display:flex;align-items:flex-start;gap:10px;padding:12px 13px;background:var(--bb-blue-lt);border-radius:10px;margin-bottom:16px;border:1px solid rgba(0,108,182,.1)}
+.profile-avatar{width:38px;height:38px;border-radius:50%;background:var(--bb-blue);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.profile-info{flex:1;min-width:0}
+.pi-name{font-size:.95rem;font-weight:700;color:var(--t1);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pi-desig{font-size:.72rem;color:var(--bb-blue);font-weight:600;margin-top:1px}
+.pi-meta{display:flex;gap:10px;margin-top:5px;flex-wrap:wrap}
+.pi-tag{font-size:.65rem;color:var(--t3);display:flex;align-items:center;gap:3px}
+.pi-tag strong{color:var(--t2);font-weight:600}
+.pi-target-row{display:flex;gap:0;margin-top:8px;background:rgba(255,255,255,.55);border-radius:8px;overflow:hidden;border:1px solid rgba(0,80,160,.18);margin-left:-2px}
+.pi-target-item{flex:1;padding:5px 4px;text-align:center;border-right:1px solid rgba(0,80,160,.12)}
+.pi-target-item:last-child{border-right:none}
+.pi-target-label{display:block;font-size:.54rem;font-weight:600;color:#3d5166;margin-bottom:3px}
+.pi-target-val{display:block;font-size:.76rem;font-weight:800;color:var(--t1)}
+.pi-target-val.e-col{color:#065f46;font-weight:800}
+.pi-target-val.s-col{color:#1d4ed8;font-weight:800}
+.pi-target-val.a-col{color:#92400e;font-weight:800}
+.pi-target-val.u-col{color:#b91c1c;font-weight:800}
+.profile-empty{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--surface);border-radius:10px;margin-bottom:16px;border:1px dashed var(--border2)}
+.pe-text{font-size:.75rem;color:var(--t3)}
+.pe-link{font-size:.75rem;color:var(--bb-blue);font-weight:600;cursor:pointer;text-decoration:underline}
+.hero-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+.h-lbl{font-size:.64rem;font-weight:600;text-transform:uppercase;letter-spacing:1.6px;color:var(--t3);margin-bottom:3px}
+.h-score{font-size:2.5rem;font-weight:700;line-height:1;color:var(--bb-blue-dk);letter-spacing:-1px}
+.h-score sup{font-size:.75rem;font-weight:500;color:var(--t3);vertical-align:super}
+.h-sub{font-size:.7rem;color:var(--t3);margin-top:3px}
+.hero-rating-stack{display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;margin-top:2px}
+.grade-pill{background:var(--bb-blue);color:#fff;border-radius:6px;padding:4px 9px;font-size:.68rem;font-weight:600;letter-spacing:.3px;white-space:nowrap;text-align:center}
+.esau-pill{padding:5px 12px;border-radius:6px;font-size:.78rem;font-weight:800;letter-spacing:.5px;text-align:center;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center}
+.esau-pill.e{background:#e3f5ef;color:#166534;border:1.5px solid #9fd9c4}
+.esau-pill.s{background:#dbeafe;color:#1e40af;border:1.5px solid #93c5fd}
+.esau-pill.a{background:#fef3c7;color:#92400e;border:1.5px solid #fcd34d}
+.esau-pill.u{background:#fdecea;color:#b91c1c;border:1.5px solid #f0b8b4}
+.bar-meta{display:flex;justify-content:space-between;font-size:.68rem;color:var(--t3);margin-bottom:5px;margin-top:12px}
+.bar-t{height:6px;background:var(--surface);border-radius:99px;overflow:hidden;margin-bottom:13px}
+.bar-f{height:100%;border-radius:99px;background:var(--bb-blue);transition:width 1.2s cubic-bezier(.34,1.56,.64,1),background .4s}
+.chips{display:flex;gap:5px;flex-wrap:wrap}
+.chip{font-size:.65rem;font-weight:500;padding:3px 8px;border-radius:4px;border:1px solid}
+.chip.g{background:var(--green-lt);color:var(--green);border-color:var(--green-mid)}
+.chip.a{background:var(--bb-gold-lt);color:var(--bb-gold-dk);border-color:#e8cc88}
+.chip.r{background:var(--red-lt);color:var(--red);border-color:#f0b8b4}
+
+/* CATEGORY LABELS */
+.cat-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--t3);margin:14px 0 8px;padding-left:2px;display:flex;align-items:center;gap:6px}
+.cat-label::after{content:"";flex:1;height:1px;background:var(--border)}
+
+/* KPI GRID */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:4px}
+.kc{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:0;cursor:pointer;position:relative;box-shadow:var(--sh);overflow:hidden;transition:box-shadow .18s,border-color .18s,transform .18s;animation:up .4s ease both}
+.kc:hover{box-shadow:var(--sh2);border-color:var(--border2);transform:translateY(-1px)}
+.kc:active{transform:scale(.97)}
+.kc-inner{padding:14px 13px 13px;border-left:3px solid var(--kc-color,var(--bb-blue))}
+.kc.c1{--kc-color:var(--bb-blue)}.kc.c2{--kc-color:var(--green)}.kc.c3{--kc-color:var(--bb-gold)}
+.kc.c4{--kc-color:#7254e0}.kc.c5{--kc-color:var(--red)}.kc.c6{--kc-color:#0aada9}.kc.c7{--kc-color:#f59e0b}
+.kc-tag{display:inline-block;font-size:.58rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;color:var(--kc-color);margin-bottom:6px}
+.kc-pts{font-size:1.5rem;font-weight:700;line-height:1;color:var(--t1);letter-spacing:-.3px}
+.kc-bar{height:3px;background:var(--surface);border-radius:99px;margin-top:10px;overflow:hidden}
+.kc-fill{height:100%;border-radius:99px;background:var(--kc-color)}
+.kc-arr{position:absolute;top:13px;right:11px;color:var(--border2);font-size:.8rem}
+
+/* LIMIT BAR CARD */
+.limit-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:13px 15px;margin-bottom:4px;box-shadow:var(--sh);cursor:pointer;transition:box-shadow .18s,transform .18s}
+.limit-card:hover{box-shadow:var(--sh2);transform:translateY(-1px)}
+.limit-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.limit-card-title{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--bb-blue)}
+.limit-card-sub{font-size:.68rem;color:var(--t3)}
+.limit-bar-track{height:8px;background:var(--surface);border-radius:99px;overflow:hidden;margin-bottom:6px}
+.limit-bar-fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--bb-blue),#06b6d4,var(--green));transition:width .5s ease,background .4s ease}
+.limit-bar-labels{display:flex;justify-content:space-between;font-size:.6rem;color:var(--t3)}
+
+/* SUMMARY */
+.sum{background:var(--white);border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:18px;padding:0;animation:up .45s ease both;overflow:hidden}
+.sum-head{background:var(--bb-blue-lt);border-bottom:1px solid var(--border);padding:10px 16px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.4px;color:var(--bb-blue-dk)}
+.sr{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;border-bottom:1px solid var(--border)}
+.sr:last-child{border-bottom:none}
+.sr-l{font-size:.76rem;color:var(--t2)}
+.sr-v{font-size:.78rem;font-weight:600;color:var(--t1)}
+.sr-v.b{color:var(--bb-blue)}.sr-v.g{color:var(--green)}.sr-v.gold{color:var(--bb-gold-dk)}
+
+/* BOTTOM NAV */
+nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2px solid var(--bb-blue);display:flex;padding:8px 0 env(safe-area-inset-bottom,8px);z-index:9999;box-shadow:0 -2px 10px rgba(0,44,88,.08)}
+.ni{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 0;cursor:pointer;font-size:.57rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--t3);transition:color .15s}
+.ni.on{color:var(--bb-blue)}
+.ni-ico{font-size:1.1rem;line-height:1}
+.ni.on::after{content:"";display:block;width:16px;height:2px;background:var(--bb-gold);border-radius:99px;margin-top:3px}
+
+/* BOTTOM SHEET */
+.ov{position:fixed;inset:0;z-index:200;background:rgba(0,22,44,.22);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .22s ease;display:flex;align-items:flex-end;overflow:hidden}
+.ov.on{opacity:1;pointer-events:all;overflow:hidden}
+.sheet{width:100%;max-width:480px;margin:0 auto;background:var(--white);border-radius:20px 20px 0 0;border-top:4px solid var(--bb-blue);max-height:90vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .34s cubic-bezier(.32,.72,0,1)}
+.sheet-sticky{flex-shrink:0;padding:16px 18px 0;background:var(--white);position:relative}
+.sheet-sticky::after{content:"";display:block;height:1px;background:var(--border);margin-top:14px}
+.sheet-body{flex:1;overflow-y:auto;padding:16px 18px 20px;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;min-height:0}
+
+.ov.on .sheet{transform:translateY(0)}
+.sh-handle{width:34px;height:4px;border-radius:99px;background:var(--border2);margin:0 auto 16px}
+.sh-hdr{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.sh-ico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;flex-shrink:0}
+.sh-title{font-size:1.1rem;font-weight:700;color:var(--t1)}
+.sh-sub{font-size:.7rem;color:var(--t3);margin-top:2px}
+.sh-lbl{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);margin:16px 0 7px}
+.stat{display:flex;justify-content:space-between;align-items:center;padding:10px 12px;background:var(--surface);border-radius:8px;margin-bottom:5px}
+.stat-l{font-size:.74rem;color:var(--t2)}
+.stat-v{font-size:.78rem;font-weight:600;color:var(--t1)}
+.formula{background:var(--bb-blue-lt);border-left:3px solid var(--bb-blue);border-radius:0 8px 8px 0;padding:12px 14px;font-family:monospace;font-size:.73rem;color:var(--bb-blue-dk);line-height:1.9;white-space:pre-wrap}
+.comm-table{width:100%;border-collapse:collapse;margin-top:4px}
+.comm-table th{text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1px;color:var(--t3);padding:5px 9px;border-bottom:1px solid var(--border)}
+.comm-table td{padding:9px 9px;font-size:.74rem;border-bottom:1px solid var(--border)}
+.comm-table tr:last-child td{border-bottom:none}
+.comm-table tr.hl td{background:var(--bb-blue-lt)}
+.note-box{background:var(--bb-gold-lt);border-left:3px solid var(--bb-gold);border-radius:0 8px 8px 0;padding:11px 13px;font-size:.72rem;color:#6b4c08;line-height:1.65;margin-top:4px}
+.close-btn{display:block;width:100%;margin-top:18px;background:var(--bb-blue);border:none;border-radius:8px;padding:13px;font-family:"Inter",sans-serif;font-size:.85rem;font-weight:600;color:#fff;cursor:pointer;transition:background .14s}
+.close-btn:hover{background:var(--bb-blue-dk)}
+.sheet::-webkit-scrollbar{width:3px}
+.sheet::-webkit-scrollbar-thumb{background:var(--bb-blue-mid);border-radius:99px}
+.rating-badge{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:6px;font-size:.78rem;font-weight:800}
+.rating-badge.e{background:#d1fae5;color:#065f46}
+.rating-badge.s{background:#dbeafe;color:#1e40af}
+.rating-badge.a{background:#fef3c7;color:#92400e}
+.rating-badge.u{background:#fdecea;color:#b91c1c}
+
+/* POLICY TABS */
+.pol-tabs{display:flex;gap:8px;margin-bottom:16px;background:var(--surface);border-radius:10px;padding:4px;border:1px solid var(--border)}
+.pol-tab{flex:1;padding:9px;border:none;border-radius:7px;font-family:"Inter",sans-serif;font-size:.78rem;font-weight:600;cursor:pointer;transition:all .18s;background:transparent;color:var(--t3)}
+.pol-tab.on{background:var(--bb-blue);color:#fff;box-shadow:0 2px 8px rgba(0,108,182,.25)}
+.pc{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:10px;box-shadow:var(--sh);animation:up .4s ease both}
+.pc h3{font-size:.85rem;font-weight:700;color:var(--t1);margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.pc p{font-size:.77rem;color:var(--t2);line-height:1.7}
+.t-tbl{width:100%;border-collapse:collapse}
+.t-tbl th{text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1px;color:var(--t3);padding:5px 9px;border-bottom:1px solid var(--border)}
+.t-tbl td{padding:9px 9px;font-size:.75rem;border-bottom:1px solid var(--border)}
+.t-tbl tr:last-child td{border-bottom:none}
+.t-tbl tr.hl td{background:var(--bb-blue-lt);font-weight:500}
+.t-tbl td[rowspan]{vertical-align:middle}
+
+/* PROFILE CARD */
+.profile-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:0;margin-bottom:12px;box-shadow:var(--sh);animation:up .3s ease both;overflow:hidden}
+.profile-card-head{background:var(--bb-blue);padding:13px 16px;display:flex;align-items:center;gap:9px}
+.pch-title{font-size:.85rem;font-weight:700;color:#fff}
+.pch-sub{font-size:.65rem;color:rgba(255,255,255,.65);margin-top:1px}
+.profile-card-body{padding:16px}
+.field-group{margin-bottom:10px}
+.field-group label{display:block;font-size:.68rem;font-weight:600;color:var(--t3);margin-bottom:4px;text-transform:uppercase;letter-spacing:.8px}
+.field-group input,.field-group select{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--t1);font-family:"Inter",sans-serif;font-size:.84rem;outline:none;transition:border-color .15s,background .15s}
+.field-group input:focus,.field-group select:focus{border-color:var(--bb-blue);background:var(--white)}
+.field-group input::placeholder{color:var(--t3)}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.save-btn{width:100%;background:var(--bb-blue);border:none;border-radius:8px;padding:12px;color:#fff;font-family:"Inter",sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:background .15s;margin-top:4px;display:flex;align-items:center;justify-content:center;gap:6px}
+.save-btn:hover{background:var(--bb-blue-dk)}
+.save-toast{display:none;align-items:center;gap:7px;background:var(--green-lt);border:1px solid var(--green-mid);border-radius:8px;padding:9px 13px;font-size:.75rem;color:var(--green);font-weight:500;margin-top:9px}
+.save-toast.show{display:flex}
+
+/* KPI CALC CARDS */
+.kpi-calc-card{background:var(--white);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--sh);animation:up .4s ease both}
+.kcc-header{display:flex;align-items:center;gap:11px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.kcc-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.kcc-title{font-size:.88rem;font-weight:700;color:var(--t1)}
+.kcc-sub{font-size:.68rem;color:var(--t3);margin-top:2px}
+.kcc-section-label{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;font-weight:700;color:var(--bb-blue-dk);background:var(--bb-blue-lt);border-radius:8px;padding:8px 11px;margin-bottom:10px}
+.kcc-section-hint{font-size:.65rem;font-weight:400;color:var(--t3)}
+.kcc-reset-btn{display:flex;align-items:center;gap:4px;background:rgba(255,255,255,.7);border:1px solid var(--border2);border-radius:6px;padding:3px 8px;font-size:.65rem;font-weight:600;color:var(--bb-blue);cursor:pointer;font-family:"Inter",sans-serif}
+.kcc-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.kcc-row-left{display:flex;align-items:center;gap:6px;flex:1;min-width:0}
+.kcc-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.kcc-row-name{font-size:.73rem;font-weight:500;color:var(--t2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kcc-badge{font-size:.6rem;font-weight:700;padding:2px 6px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.kcc-input{width:120px;flex-shrink:0;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:8px 10px;color:var(--t1);font-family:"Inter",sans-serif;font-size:.83rem;outline:none;text-align:right;transition:border-color .14s}
+.kcc-input:focus{border-color:var(--bb-blue);background:var(--white)}
+.kcc-save-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:var(--bb-blue);border:none;border-radius:8px;padding:10px;color:#fff;font-family:"Inter",sans-serif;font-weight:600;font-size:.8rem;cursor:pointer;transition:background .14s;margin-top:4px}
+.kcc-save-btn:hover{background:var(--bb-blue-dk)}
+.kcc-toast{display:none;align-items:center;gap:6px;background:var(--green-lt);border:1px solid var(--green-mid);border-radius:7px;padding:7px 11px;font-size:.72rem;color:var(--green);font-weight:500;margin-top:8px}
+.kcc-toast.show{display:flex}
+.kcc-divider{height:1px;background:var(--border);margin:14px 0;position:relative}
+.kcc-divider::after{content:"";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:36px;height:3px;background:var(--bb-gold);border-radius:99px}
+.kcc-result{display:flex;align-items:flex-start;gap:12px;background:var(--bb-blue-lt);border:1px solid var(--bb-blue-mid);border-radius:10px;padding:13px 14px;margin-top:12px}
+.kcc-result-left{flex-shrink:0}
+.kcc-result-label{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--bb-blue-dk);margin-bottom:3px}
+.kcc-result-score{font-size:2rem;font-weight:700;color:var(--bb-blue);letter-spacing:-.5px;line-height:1}
+.kcc-result-score.zero{color:var(--red)}
+.kcc-result-right{flex:1;font-size:.68rem;color:var(--t3);line-height:1.9;border-left:1px solid var(--bb-blue-mid);padding-left:12px}
+.kcc-bd-row{display:flex;justify-content:space-between}
+.kcc-bd-row.total{font-weight:600;color:var(--t2);border-top:1px solid var(--bb-blue-mid);margin-top:3px;padding-top:4px}
+.bd-pos{color:var(--green);font-weight:600}
+.bd-neg{color:var(--red);font-weight:600}
+.bd-zero{color:var(--t3)}
+.kcc-direct-row{display:flex;align-items:baseline;gap:8px;margin-bottom:8px}
+.kcc-direct-input{flex:1;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:10px 12px;color:var(--t1);font-family:"Inter",sans-serif;font-size:1.3rem;font-weight:700;outline:none;text-align:center;transition:border-color .14s}
+.kcc-direct-input:focus{border-color:var(--bb-blue);background:var(--white)}
+.kcc-direct-max{font-size:.75rem;color:var(--t3);white-space:nowrap}
+.kcc-direct-bar{height:4px;background:var(--surface);border-radius:99px;overflow:hidden}
+.kcc-direct-fill{height:100%;border-radius:99px;transition:width .4s ease}
+
+/* CHECKBOX ROW */
+.check-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface);border-radius:8px;margin-bottom:8px;cursor:pointer;border:1px solid var(--border)}
+.check-row input[type=checkbox]{width:18px;height:18px;accent-color:var(--bb-blue);cursor:pointer;flex-shrink:0}
+.check-row-text{font-size:.78rem;font-weight:500;color:var(--t2);flex:1}
+.check-row-pts{font-size:.78rem;font-weight:700;color:var(--bb-blue)}
+
+@keyframes up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ── SHEET CLOSE BTN ── */
+  .sh-close {
+    position:absolute; top:14px; right:14px;
+    width:32px; height:32px; border-radius:50%;
+    background:var(--surface); border:1px solid var(--border);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:background .15s, transform .15s;
+    color:var(--t3); font-size:.85rem; z-index:10;
+  }
+  .sh-close:hover { background:var(--border2); transform:scale(1.08); color:var(--t1); }
+  .sh-close:active { transform:scale(.94); }
+  .sheet { position:relative; }
+.sheet { position:relative; }
+
+
+  /* ── SHEET CLOSE BUTTON ── */
+  .sh-close {
+    position:absolute; top:12px; right:14px;
+    width:30px; height:30px; border-radius:50%;
+    background:var(--surface); border:1px solid var(--border2);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:var(--t3); font-size:.9rem;
+    transition:all .18s;
+  }
+  .sh-close:hover { background:var(--red-lt); color:var(--red); border-color:#f0b8b4; }
+  .sh-close svg { pointer-events:none; }
+
+
+  /* Other T&C tappable card */
+  .tnc-card {
+    background:var(--white); border:1px solid var(--border);
+    border-radius:var(--r); padding:14px 16px;
+    margin-bottom:10px; box-shadow:var(--sh);
+    display:flex; align-items:center; justify-content:space-between;
+    cursor:pointer; transition:box-shadow .18s, border-color .18s, transform .18s;
+    border-left:4px solid var(--bb-blue);
+  }
+  .tnc-card:hover { box-shadow:var(--sh2); border-color:var(--border2); transform:translateY(-1px); }
+  .tnc-card:active { transform:scale(.98); }
+  .tnc-card-left { display:flex; align-items:center; gap:12px; }
+  .tnc-icon {
+    width:38px; height:38px; border-radius:10px;
+    background:var(--bb-blue-lt); display:flex; align-items:center;
+    justify-content:center; font-size:1.1rem; flex-shrink:0;
+  }
+  .tnc-title { font-size:.85rem; font-weight:700; color:var(--t1); }
+  .tnc-sub   { font-size:.68rem; color:var(--t3); margin-top:2px; }
+  .tnc-arrow { flex-shrink:0; }
+
+
+  
+
+
+  /* Save & Calculate KPI — end of calculator */
+  .save-kpi-wrap {
+    padding:8px 0 20px;
+  }
+  .save-kpi-btn {
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    width:100%; padding:15px;
+    background:var(--bb-gold);
+    border:none; border-radius:12px;
+    color:var(--t1); font-family:'Inter',sans-serif; font-weight:700; font-size:.92rem;
+    cursor:pointer; transition:background .15s;
+    box-shadow:none;
+  }
+  .save-kpi-btn:hover { background:var(--bb-gold-dk); color:#fff; }
+  .save-kpi-btn:active { opacity:.85; transform:scale(.98); }
+  .save-kpi-toast {
+    display:none; align-items:center; justify-content:center; gap:8px;
+    margin-top:9px; background:var(--green-lt); border:1px solid var(--green-mid);
+    border-radius:10px; padding:11px 14px;
+    font-size:.8rem; color:var(--green); font-weight:600;
+    box-shadow:var(--sh);
+  }
+  .save-kpi-toast.show { display:flex; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="hdr-left">
+    <svg class="app-logo" viewBox="0 0 34 34" fill="none">
+      <circle cx="17" cy="17" r="16" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+      <rect x="6" y="20" width="4" height="8" rx="1.5" fill="rgba(255,255,255,0.4)"/>
+      <rect x="12" y="15" width="4" height="13" rx="1.5" fill="rgba(255,255,255,0.6)"/>
+      <rect x="18" y="10" width="4" height="18" rx="1.5" fill="white"/>
+      <rect x="24" y="13" width="4" height="15" rx="1.5" fill="rgba(255,255,255,0.3)"/>
+      <path d="M8 20 L14 15 L20 10 L26 7" stroke="#E4A724" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="26" cy="7" r="2.5" fill="#E4A724"/>
+    </svg>
+    <div class="hdr-text">
+      <span class="hdr-brand">My KPI Tracker</span>
+      <span class="hdr-sub" id="hdr-sub">Performance Dashboard</span>
+    </div>
+  </div>
+  <div class="hdr-right">
+    <div class="user-pill" onclick="tab('calc')" title="Edit profile">
+      <svg class="head-icon" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="8.5" r="4" fill="rgba(255,255,255,0.9)"/>
+        <path d="M3.5 19.5C3.5 15.5 6.9 12.5 11 12.5C15.1 12.5 18.5 15.5 18.5 19.5" stroke="rgba(255,255,255,0.9)" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span class="user-name" id="hdr-name">Set Profile</span>
+    </div>
+  </div>
+</header>
+
+<!-- DASHBOARD -->
+<main id="v-home">
+  <div class="hero">
+    <div class="hero-stripe"></div>
+    <div class="hero-body">
+      <div class="profile-block" id="profile-filled" style="display:none">
+        <div class="profile-avatar">
+          <svg viewBox="0 0 26 26" fill="none" width="26" height="26">
+            <circle cx="13" cy="10" r="5" fill="rgba(255,255,255,0.9)"/>
+            <path d="M3 24C3 19 7.5 15.5 13 15.5C18.5 15.5 23 19 23 24" stroke="rgba(255,255,255,0.9)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="profile-info">
+          <div class="pi-name" id="pi-name">—</div>
+          <div class="pi-desig" id="pi-desig">—</div>
+          <div class="pi-meta">
+            <span class="pi-tag">SOL <strong id="pi-sol">—</strong></span>
+            <span class="pi-tag">&#128205; <strong id="pi-branch">—</strong></span>
+            <span class="pi-tag" id="pi-outlet-wrap" style="display:none">&#127961; <strong id="pi-outlet">—</strong></span>
+          </div>
+          <div class="pi-target-row" id="pi-target-row" style="display:none">
+            <div class="pi-target-item"><span class="pi-target-label">E &ge;130%</span><span class="pi-target-val e-col" id="pi-e">—</span></div>
+            <div class="pi-target-item"><span class="pi-target-label">S 100%</span><span class="pi-target-val s-col" id="pi-s">—</span></div>
+            <div class="pi-target-item"><span class="pi-target-label">A 60%</span><span class="pi-target-val a-col" id="pi-a">—</span></div>
+            <div class="pi-target-item"><span class="pi-target-label">U &lt;60%</span><span class="pi-target-val u-col" id="pi-u">—</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-empty" id="profile-empty">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7.5" r="3.5" stroke="var(--t3)" stroke-width="1.5"/><path d="M3 18C3 14.5 6.1 12 10 12C13.9 12 17 14.5 17 18" stroke="var(--t3)" stroke-width="1.5" stroke-linecap="round"/></svg>
+        <span class="pe-text">No profile set. <span class="pe-link" onclick="tab('calc')">Add your details &rarr;</span></span>
+      </div>
+      <div class="hero-top">
+        <div>
+          <div class="h-lbl">Monthly Performance Score</div>
+          <div class="h-score" id="hero-score">—<sup></sup></div>
+          <div class="h-sub" id="hero-sub2"></div>
+        </div>
+        <div class="hero-rating-stack">
+          <div class="esau-pill" id="hero-esau" style="display:none">—</div>
+          <div class="grade-pill" id="hero-grade">—</div>
+        </div>
+      </div>
+      <div class="bar-meta"><span>Progress to target</span><span id="hero-pct">—%</span></div>
+      <div class="bar-t"><div class="bar-f" id="hbar" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div class="cat-label">Funded Products</div>
+  <div class="grid">
+    <div class="kc c1" onclick="openSheet('casa')"><div class="kc-inner"><div class="kc-tag">CASA</div><div class="kc-pts" id="dash-casa-pts">—</div><div class="kc-bar"><div class="kc-fill" id="dash-casa-bar" style="width:0%"></div></div></div><div class="kc-arr">&#8250;</div></div>
+    <div class="kc c3" onclick="openSheet('fd')"><div class="kc-inner"><div class="kc-tag">Fixed Deposit</div><div class="kc-pts" id="dash-fd-pts">—</div><div class="kc-bar"><div class="kc-fill" id="dash-fd-bar" style="width:0%"></div></div></div><div class="kc-arr">&#8250;</div></div>
+    <div class="kc c2" onclick="openSheet('dps')"><div class="kc-inner"><div class="kc-tag">DPS</div><div class="kc-pts" id="dash-dps-pts">—</div><div class="kc-bar"><div class="kc-fill" id="dash-dps-bar" style="width:0%"></div></div></div><div class="kc-arr">&#8250;</div></div>
+  </div>
+
+  <div class="cat-label">Non-Funded Products</div>
+  <div class="grid">
+    <div class="kc c5" onclick="openSheet('bizpay')"><div class="kc-inner"><div class="kc-tag">Bizpay/Corpnet</div><div class="kc-pts" id="dash-bizpay-pts">—</div><div class="kc-bar"><div class="kc-fill" id="dash-bizpay-bar" style="width:0%"></div></div></div><div class="kc-arr">&#8250;</div></div>
+    <div class="kc c6" onclick="openSheet('borenno')"><div class="kc-inner"><div class="kc-tag">Borenno</div><div class="kc-pts" id="dash-borenno-pts">—</div><div class="kc-bar"><div class="kc-fill" id="dash-borenno-bar" style="width:0%"></div></div></div><div class="kc-arr">&#8250;</div></div>
+    <div class="kc c1" onclick="openSheet('astha')"><div class="kc-inner"><div class="kc-tag">Astha</div><div class="kc-pts" id="dash-astha-pts">—</div><div class="kc-bar"><div class="kc-fill" id="dash-astha-bar" style="width:0%"></div></div></div><div class="kc-arr">&#8250;</div></div>
+    <div class="kc c7" onclick="openSheet('sme_casa')"><div class="kc-inner"><div class="kc-tag">SME CASA Opening</div><div class="kc-pts" id="dash-smecasa-pts">—</div><div class="kc-bar"><div class="kc-fill" id="dash-smecasa-bar" style="width:0%"></div></div></div><div class="kc-arr">&#8250;</div></div>
+  </div>
+  <!-- Non-Funded Limit Bar -->
+  <div class="limit-card" onclick="openSheet('nf_limit')">
+    <div class="limit-card-top">
+      <span class="limit-card-title">&#9888; Non-Funded Cap</span>
+      <span class="limit-card-sub" id="nf-limit-label">—</span>
+    </div>
+    <div class="limit-bar-track"><div class="limit-bar-fill" id="nf-limit-bar" style="width:0%"></div></div>
+    <div class="limit-bar-labels"><span id="nf-used-pts">0 pts used</span><span id="nf-max-pts">limit: —</span></div>
+  </div>
+
+  <div class="cat-label">Other</div>
+  <div class="grid">
+    <div class="kc c4" onclick="openSheet('insurance')"><div class="kc-inner"><div class="kc-tag">Bancassurance</div><div class="kc-pts" id="dash-ins-pts">—</div><div class="kc-bar"><div class="kc-fill" id="dash-ins-bar" style="width:0%"></div></div></div><div class="kc-arr">&#8250;</div></div>
+    <div class="kc c7" onclick="openSheet('bonus')"><div class="kc-inner"><div class="kc-tag">Bonus Points</div><div class="kc-pts" id="dash-bonus-pts">—</div><div class="kc-bar"><div class="kc-fill" id="dash-bonus-bar" style="width:0%"></div></div></div><div class="kc-arr">&#8250;</div></div>
+  </div>
+
+  <div class="cat-label">Monthly Summary</div>
+  <div class="sum">
+    <div class="sum-head" id="sum-head">Performance Overview</div>
+    <div class="sr"><span class="sr-l">Employee</span><span class="sr-v b" id="sum-name">—</span></div>
+    <div class="sr"><span class="sr-l">Designation</span><span class="sr-v" id="sum-desig">—</span></div>
+    <div class="sr"><span class="sr-l">SOL</span><span class="sr-v" id="sum-sol">—</span></div>
+    <div class="sr"><span class="sr-l">Branch</span><span class="sr-v" id="sum-branch">—</span></div>
+    <div class="sr"><span class="sr-l">Outlet Category</span><span class="sr-v" id="sum-outlet">—</span></div>
+    <div class="sr"><span class="sr-l">Monthly Target (100%)</span><span class="sr-v b" id="sum-target">—</span></div>
+    <div class="sr"><span class="sr-l">Total Points</span><span class="sr-v" id="sum-total">—</span></div>
+    <div class="sr"><span class="sr-l">ESAU Rating</span><span class="sr-v" id="sum-rating"><span class="rating-badge u">—</span></span></div>
+  </div>
+</main>
+
+<!-- CALCULATOR -->
+<div class="alt" id="v-calc">
+  <div class="pg-title">Profile &amp; Calculator</div>
+
+  <div class="profile-card">
+    <div class="profile-card-head">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="7.5" r="3.5" stroke="white" stroke-width="1.6"/><path d="M3 18C3 14.5 6.1 12 10 12C13.9 12 17 14.5 17 18" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <div><div class="pch-title">Your Profile</div><div class="pch-sub">Saved info appears on dashboard</div></div>
+    </div>
+    <div class="profile-card-body">
+      <div class="field-group"><label>Full Name</label><input type="text" id="inp-name" placeholder="Enter your full name" maxlength="60"></div>
+      <div class="field-group"><label>Job Designation</label>
+        <select id="inp-desig" onchange="saveProfile()">
+          <option value="" disabled selected>Select designation...</option>
+          <option value="RO">Relationship Officer (RO)</option>
+          <option value="RE">Relationship Executive (RE)</option>
+        </select>
+      </div>
+      <div class="field-row">
+        <div class="field-group"><label>SOL</label><input type="text" id="inp-sol" placeholder="e.g. 1501" maxlength="10"></div>
+        <div class="field-group"><label>Branch Name</label><input type="text" id="inp-branch" placeholder="e.g. Gulshan Branch" maxlength="50"></div>
+      </div>
+      <div class="field-group"><label>Outlet Category</label>
+        <select id="inp-outlet" onchange="saveProfile()">
+          <option value="" disabled selected>Select outlet category...</option>
+          <option value="Urban">Urban</option>
+          <option value="Semi-Urban">Semi-Urban</option>
+          <option value="Rural">Rural</option>
+        </select>
+      </div>
+      <button class="save-btn" onclick="saveProfile()">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7l3.5 3.5L12 3" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Save Profile
+      </button>
+      <div class="save-toast" id="save-toast">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="7" fill="#00875a"/><path d="M4 7l2 2 4-4" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Profile saved!
+      </div>
+    </div>
+  </div>
+
+
+  <div class="cat-label">Funded Products</div>
+  <!-- CASA -->
+  <div class="kpi-calc-card">
+    <div class="kcc-header">
+      <div class="kcc-icon" style="background:var(--bb-blue-lt)">&#127970;</div>
+      <div><div class="kcc-title">CASA Points</div><div class="kcc-sub">Growth-based — auto calculated</div></div>
+    </div>
+    <div class="kcc-section-label"><span>&#128202; CASA Average Base</span><span class="kcc-section-hint">Save once per cycle</span></div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-blue)"></span><span class="kcc-row-name">SME (Non-individual)</span><span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">5 pts/lac</span></div>
+      <input type="number" class="kcc-input" id="base-sme" placeholder="Taka" min="0">
+    </div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--green)"></span><span class="kcc-row-name">Retail (Individual)</span><span class="kcc-badge" style="background:var(--green-lt);color:var(--green)">3 pts/lac</span></div>
+      <input type="number" class="kcc-input" id="base-retail" placeholder="Taka" min="0">
+    </div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:#7254e0"></span><span class="kcc-row-name">Corporate (Non-individual)</span><span class="kcc-badge" style="background:#f0ecfd;color:#7254e0">3 pts/lac</span></div>
+      <input type="number" class="kcc-input" id="base-corp" placeholder="Taka" min="0">
+    </div>
+    <button class="kcc-save-btn" onclick="saveCASABase()">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1.5 6l3 3 6-6" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Save Base Values
+    </button>
+    <div class="kcc-toast" id="base-toast">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="6" r="6" fill="#00875a"/><path d="M3 6l2 2 4-4" stroke="white" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Base values saved!
+    </div>
+    <div class="kcc-divider"></div>
+    <div class="kcc-section-label" style="align-items:center">
+      <span>&#128200; Current CASA Average</span>
+      <button class="kcc-reset-btn" onclick="resetCurrentCASA()">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M11 2A5.5 5.5 0 1 0 11.5 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="7.5,0 11,2 9,5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Reset
+      </button>
+    </div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-blue)"></span><span class="kcc-row-name">SME (Non-individual)</span></div>
+      <input type="number" class="kcc-input" id="cur-sme" placeholder="Taka" min="0" oninput="calcCASA()">
+    </div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--green)"></span><span class="kcc-row-name">Retail (Individual)</span></div>
+      <input type="number" class="kcc-input" id="cur-retail" placeholder="Taka" min="0" oninput="calcCASA()">
+    </div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:#7254e0"></span><span class="kcc-row-name">Corporate (Non-individual)</span></div>
+      <input type="number" class="kcc-input" id="cur-corp" placeholder="Taka" min="0" oninput="calcCASA()">
+    </div>
+    <div class="kcc-result" id="casa-result">
+      <div class="kcc-result-left"><div class="kcc-result-label">CASA Points</div><div class="kcc-result-score" id="casa-result-score">—</div></div>
+      <div class="kcc-result-right" id="casa-result-breakdown"></div>
+    </div>
+  </div>
+
+  <!-- FD -->
+  <div class="kpi-calc-card">
+    <div class="kcc-header">
+      <div class="kcc-icon" style="background:var(--bb-gold-lt)">&#128197;</div>
+      <div><div class="kcc-title">Fixed Deposit Points</div><div class="kcc-sub">New FDR 3 months+ · 0.25 pts/lac</div></div>
+    </div>
+    <div class="kcc-section-label"><span>&#128197; New FDR (Fresh Funds)</span><span class="kcc-section-hint">No fund cannibalization</span></div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-gold)"></span><span class="kcc-row-name">New FD Amount (BDT)</span><span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">0.25 pts/lac</span></div>
+      <input type="number" class="kcc-input" id="inp-fd-amount" placeholder="Taka" min="0" oninput="calcFDR()">
+    </div>
+    <div class="kcc-result" id="fd-result">
+      <div class="kcc-result-left"><div class="kcc-result-label">FD Points</div><div class="kcc-result-score" id="fd-result-score">—</div></div>
+      <div class="kcc-result-right" id="fd-result-breakdown"></div>
+    </div>
+  </div>
+
+  <!-- DPS -->
+  <div class="kpi-calc-card">
+    <div class="kcc-header">
+      <div class="kcc-icon" style="background:var(--green-lt)">&#128176;</div>
+      <div><div class="kcc-title">DPS Points</div><div class="kcc-sub">Threshold-based — per CIF 1 DPS counted</div></div>
+    </div>
+    <div class="kcc-section-label"><span>&#128179; DPS Accounts</span><span class="kcc-section-hint">Highest value per CIF only</span></div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:#0aada9"></span><span class="kcc-row-name">DPS 3K to &lt;5K</span><span class="kcc-badge" style="background:#e3f7f7;color:#0aada9">0.5 pts each</span></div>
+      <input type="number" class="kcc-input" id="inp-dps-3k" placeholder="count" min="0" oninput="calcDPS()">
+    </div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--green)"></span><span class="kcc-row-name">DPS 5K and above</span><span class="kcc-badge" style="background:var(--green-lt);color:var(--green)">1 pt each</span></div>
+      <input type="number" class="kcc-input" id="inp-dps-5k" placeholder="count" min="0" oninput="calcDPS()">
+    </div>
+    <div class="kcc-result" id="dps-result">
+      <div class="kcc-result-left"><div class="kcc-result-label">DPS Points</div><div class="kcc-result-score" id="dps-result-score">—</div></div>
+      <div class="kcc-result-right" id="dps-result-breakdown"></div>
+    </div>
+  </div>
+
+
+  <div class="cat-label">Non-Funded Products</div>
+  <!-- BIZPAY -->
+  <div class="kpi-calc-card">
+    <div class="kcc-header">
+      <div class="kcc-icon" style="background:var(--red-lt)">&#128179;</div>
+      <div><div class="kcc-title">Bizpay / Corpnet Points</div><div class="kcc-sub">3 pts per onboarded account</div></div>
+    </div>
+    <div class="kcc-direct-row">
+      <input type="number" class="kcc-direct-input" id="inp-bizpay" placeholder="0" min="0" oninput="calcSimple('bizpay',this.value,3,100)">
+      
+    </div>
+    <div class="kcc-direct-bar"><div class="kcc-direct-fill" id="fill-bizpay" style="width:0%;background:var(--red)"></div></div>
+    <div class="kcc-result" id="bizpay-result">
+      <div class="kcc-result-left"><div class="kcc-result-label">Bizpay Points</div><div class="kcc-result-score" id="bizpay-result-score">—</div></div>
+      <div class="kcc-result-right" id="bizpay-result-bd"></div>
+    </div>
+    </div>
+
+  <!-- BORENNO -->
+  <div class="kpi-calc-card">
+    <div class="kcc-header">
+      <div class="kcc-icon" style="background:#f0ecfd">&#127970;</div>
+      <div><div class="kcc-title">Borenno Points</div><div class="kcc-sub">5 pts per newly onboarded account</div></div>
+    </div>
+    <div class="kcc-direct-row">
+      <input type="number" class="kcc-direct-input" id="inp-borenno" placeholder="0" min="0" oninput="calcSimple('borenno',this.value,5,100)">
+      
+    </div>
+    <div class="kcc-direct-bar"><div class="kcc-direct-fill" id="fill-borenno" style="width:0%;background:#7254e0"></div></div>
+    <div class="kcc-result" id="borenno-result">
+      <div class="kcc-result-left"><div class="kcc-result-label">Borenno Points</div><div class="kcc-result-score" id="borenno-result-score">—</div></div>
+      <div class="kcc-result-right" id="borenno-result-bd"></div>
+    </div>
+    </div>
+
+  <!-- ASTHA -->
+  <div class="kpi-calc-card">
+    <div class="kcc-header">
+      <div class="kcc-icon" style="background:var(--green-lt)">&#128241;</div>
+      <div><div class="kcc-title">Astha Points</div><div class="kcc-sub">2 pts per onboarded account</div></div>
+    </div>
+    <div class="kcc-direct-row">
+      <input type="number" class="kcc-direct-input" id="inp-astha" placeholder="0" min="0" oninput="calcSimple('astha',this.value,2,100)">
+      
+    </div>
+    <div class="kcc-direct-bar"><div class="kcc-direct-fill" id="fill-astha" style="width:0%;background:var(--green)"></div></div>
+    <div class="kcc-result" id="astha-result">
+      <div class="kcc-result-left"><div class="kcc-result-label">Astha Points</div><div class="kcc-result-score" id="astha-result-score">—</div></div>
+      <div class="kcc-result-right" id="astha-result-bd"></div>
+    </div>
+  </div>
+
+  <!-- SME CASA OPENING -->
+  <div class="kpi-calc-card">
+    <div class="kcc-header">
+      <div class="kcc-icon" style="background:var(--bb-gold-lt)">&#127970;</div>
+      <div><div class="kcc-title">SME CASA Opening</div><div class="kcc-sub">Points by month-end EOP balance</div></div>
+    </div>
+    <label class="check-row" style="margin-bottom:12px">
+      <input type="checkbox" id="chk-sme-casa" onchange="calcSMECASA()">
+      <span class="check-row-text">SME CASA Opening</span>
+    </label>
+    <div id="sme-casa-inputs" style="display:none">
+      <div class="kcc-section-label"><span>&#127970; SME CASA</span><span class="kcc-section-hint">Month-end EOP balance</span></div>
+      <div class="kcc-row">
+        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-blue)"></span><span class="kcc-row-name">EOP 20K+ accounts</span><span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">2 pts</span></div>
+        <input type="number" class="kcc-input" id="sme-20k" placeholder="count" min="0" oninput="calcSMECASA()">
+      </div>
+      <div class="kcc-row">
+        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-blue)"></span><span class="kcc-row-name">EOP 50K+ accounts</span><span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">3 pts</span></div>
+        <input type="number" class="kcc-input" id="sme-50k" placeholder="count" min="0" oninput="calcSMECASA()">
+      </div>
+      <div class="kcc-row">
+        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-blue)"></span><span class="kcc-row-name">EOP 500K+ accounts</span><span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">5 pts</span></div>
+        <input type="number" class="kcc-input" id="sme-500k" placeholder="count" min="0" oninput="calcSMECASA()">
+      </div>
+      <div class="kcc-divider"></div>
+      <div class="kcc-section-label"><span>&#127970; SME TARA CASA</span><span class="kcc-section-hint">Month-end EOP balance</span></div>
+    </div>
+    <label class="check-row" style="margin-bottom:12px">
+      <input type="checkbox" id="chk-sme-tara" onchange="calcSMECASA()">
+      <span class="check-row-text">SME TARA CASA Opening</span>
+    </label>
+    <div id="sme-tara-inputs" style="display:none">
+      <div class="kcc-row">
+        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-gold-dk)"></span><span class="kcc-row-name">EOP 20K+ accounts</span><span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">3 pts</span></div>
+        <input type="number" class="kcc-input" id="tara-20k" placeholder="count" min="0" oninput="calcSMECASA()">
+      </div>
+      <div class="kcc-row">
+        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-gold-dk)"></span><span class="kcc-row-name">EOP 50K+ accounts</span><span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">4 pts</span></div>
+        <input type="number" class="kcc-input" id="tara-50k" placeholder="count" min="0" oninput="calcSMECASA()">
+      </div>
+      <div class="kcc-row">
+        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-gold-dk)"></span><span class="kcc-row-name">EOP 500K+ accounts</span><span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">6 pts</span></div>
+        <input type="number" class="kcc-input" id="tara-500k" placeholder="count" min="0" oninput="calcSMECASA()">
+      </div>
+    </div>
+    <div class="kcc-result" id="smecasa-result">
+      <div class="kcc-result-left"><div class="kcc-result-label">SME CASA Points</div><div class="kcc-result-score" id="smecasa-result-score">—</div></div>
+      <div class="kcc-result-right" id="smecasa-result-bd"></div>
+    </div>
+  </div>
+
+  <div class="cat-label">Other</div>
+  <!-- BANCASSURANCE -->
+  <div class="kpi-calc-card">
+    <div class="kcc-header">
+      <div class="kcc-icon" style="background:#f0ecfd">&#128737;</div>
+      <div><div class="kcc-title">Bancassurance Points</div><div class="kcc-sub">3 pts per policy — max 15 pts</div></div>
+    </div>
+    <div class="kcc-section-label"><span>New Insurance Policies</span><span class="kcc-section-hint">3 pts each · max 5</span></div>
+    <div class="kcc-row">
+      <div class="kcc-row-left"><span class="kcc-dot" style="background:#7254e0"></span><span class="kcc-row-name">Number of New Policies</span><span class="kcc-badge" style="background:#f0ecfd;color:#7254e0">3 pts/policy</span></div>
+      <input type="number" class="kcc-input" id="inp-ins-count" placeholder="0-5" min="0" max="5" oninput="calcInsurance()">
+    </div>
+    <div class="kcc-result" id="ins-result">
+      <div class="kcc-result-left"><div class="kcc-result-label">Bancassurance Points</div><div class="kcc-result-score" id="ins-result-score">—</div></div>
+      <div class="kcc-result-right" id="ins-result-breakdown"></div>
+    </div>
+  </div>
+
+
+  <!-- CASA PORTFOLIO MAINTENANCE -->
+  <div class="kpi-calc-card">
+    <div class="kcc-header">
+      <div class="kcc-icon" style="background:var(--bb-gold-lt)">&#127919;</div>
+      <div>
+        <div class="kcc-title">CASA Portfolio Maintenance</div>
+        <div class="kcc-sub">+10 pts if criteria met</div>
+      </div>
+    </div>
+    <div class="kcc-section-label"><span>&#127919; Portfolio Check</span><span class="kcc-section-hint">+10 pts if eligible</span></div>
+    <label class="check-row">
+      <input type="checkbox" id="chk-portfolio" onchange="calcCASA()">
+      <span class="check-row-text">CASA:TD ratio 60%+ vs &le;40%, minimum portfolio BDT 10M+</span>
+      <span class="check-row-pts">+10 pts</span>
+    </label>
+    <div class="kcc-result" id="portfolio-result" style="display:none">
+      <div class="kcc-result-left">
+        <div class="kcc-result-label">Bonus Points</div>
+        <div class="kcc-result-score" style="color:var(--bb-gold)">+10</div>
+      </div>
+      <div class="kcc-result-right" style="border-left:1px solid var(--bb-blue-mid);padding-left:12px;font-size:.72rem;color:var(--t3)">
+        CASA:TD 60%+<br>Portfolio &ge; BDT 10M<br><span class="bd-pos">+10 pts added</span>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- SAVE ALL KPI BUTTON -->
+  <div class="save-kpi-wrap">
+    <button class="save-kpi-btn" onclick="saveAllKPI()">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M13.5 9.5v3a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1v-3" stroke="white" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M8 1.5v7m0 0L5.5 6m2.5 2.5L11 6" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Save &amp; Calculate KPI
+    </button>
+    <div class="save-kpi-toast" id="save-kpi-toast">
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="7.5" fill="#00875a"/><path d="M4 7.5l2.5 2.5 5-5" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      All KPI data saved successfully!
+    </div>
+  </div>
+
+</div>
+
+<!-- POLICY -->
+<div class="alt" id="v-info">
+  <div class="pg-title">Policy</div>
+  <div class="pol-tabs">
+    <button class="pol-tab on" id="ptab-emp" onclick="switchPolTab('emp')">Employee</button>
+    <button class="pol-tab" id="ptab-bdm" onclick="switchPolTab('bdm')">BDM</button>
+  </div>
+
+  <!-- EMPLOYEE POLICY -->
+  <div id="pol-emp">
+    <div class="pc">
+      <h3>How Points Are Calculated</h3>
+      <p>Your monthly performance score is the sum of all KPI category points. Each category has a defined monthly target and a maximum point value. Your incentive payout depends on the tier your final rating falls into at the month-end.</p>
+    </div>
+    <div class="pc">
+      <h3>Employee Rating (ESAU Model)</h3>
+      <p style="margin-bottom:10px">Monthly performance of every SMEL targeted employee is rated by the ESAU model:</p>
+      <table class="t-tbl">
+        <thead><tr><th>Rating</th><th>Target Achievement</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rating-badge e">E</span></td><td>&ge; 130%</td></tr>
+          <tr><td><span class="rating-badge s">S</span></td><td>&ge; 100% and &lt; 130%</td></tr>
+          <tr><td><span class="rating-badge a">A</span></td><td>&ge; 60% and &lt; 100%</td></tr>
+          <tr><td><span class="rating-badge u">U</span></td><td>&lt; 60%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pc">
+      <h3>Monthly Target (Points)</h3>
+      <table class="t-tbl">
+        <thead><tr><th>Grade</th><th>Branch</th><th>130% (E)</th><th>100% (S)</th><th>60% (A)</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="3" style="font-weight:700;color:var(--bb-blue)">RE</td><td>Urban</td><td>104</td><td>80</td><td>48</td></tr>
+          <tr><td>Semi-Urban</td><td>91</td><td>70</td><td>42</td></tr>
+          <tr><td>Rural</td><td>78</td><td>60</td><td>36</td></tr>
+          <tr><td rowspan="3" style="font-weight:700;color:var(--green)">RO</td><td>Urban</td><td>130</td><td>100</td><td>60</td></tr>
+          <tr><td>Semi-Urban</td><td>104</td><td>80</td><td>48</td></tr>
+          <tr><td>Rural</td><td>97</td><td>75</td><td>45</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pc">
+      <h3>Monthly Target — EOP Balance (BDT)</h3>
+      <p style="margin-bottom:10px;font-size:.76rem;color:var(--t2)">SMEL team will have cumulative monthly net growth target on the EOP position for the SME portfolio (SME CASA &amp; SME TD).</p>
+      <table class="t-tbl">
+        <thead><tr><th>Grade</th><th>Branch</th><th>Target (BDT)</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="3" style="font-weight:700;color:var(--bb-blue)">RE</td><td>Urban</td><td>2,000,000</td></tr>
+          <tr><td>Semi-Urban</td><td>1,800,000</td></tr>
+          <tr><td>Rural</td><td>1,500,000</td></tr>
+          <tr><td rowspan="3" style="font-weight:700;color:var(--green)">RO</td><td>Urban</td><td>3,000,000</td></tr>
+          <tr><td>Semi-Urban</td><td>2,200,000</td></tr>
+          <tr><td>Rural</td><td>2,000,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pc">
+      <h3>Net Growth Target — Deduction Policy</h3>
+      <table class="t-tbl">
+        <thead><tr><th>Condition</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>100% of monthly net growth target</td><td style="color:var(--green);font-weight:600">0% will be deducted</td></tr>
+          <tr><td>75% of monthly net growth target</td><td style="color:var(--bb-gold-dk);font-weight:600">25% will be deducted</td></tr>
+          <tr><td>50% of monthly net growth target</td><td style="color:var(--red);font-weight:600">50% will be deducted</td></tr>
+          <tr><td>Less than 50% of monthly net growth target</td><td style="color:var(--red);font-weight:600">75% will be deducted</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pc">
+      <h3>Rating Upgradation for SME CASA Maintenance</h3>
+      <p style="margin-bottom:10px;font-size:.75rem;color:var(--t2);line-height:1.6">In case of large SME CASA fund maintenance, employees will be automatically given an updated rating if their performance falls under the following bucket. However, they will get their incentive on their achieved performance rating and not based on the given upgraded rating.</p>
+      <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:.72rem">
+        <thead>
+          <tr style="background:var(--bb-blue-lt)">
+            <th style="padding:6px 7px;text-align:left;font-size:.62rem;color:var(--t3);white-space:nowrap;border-bottom:1px solid var(--border)">Product</th>
+            <th style="padding:6px 5px;text-align:left;font-size:.62rem;color:var(--t3);white-space:nowrap;border-bottom:1px solid var(--border)">Grade</th>
+            <th style="padding:6px 5px;text-align:left;font-size:.62rem;color:var(--t3);border-bottom:1px solid var(--border)">Avg SME (Non-Ind.) CASA Portfolio</th>
+            <th style="padding:6px 5px;text-align:center;font-size:.62rem;color:var(--t3);white-space:nowrap;border-bottom:1px solid var(--border)">Rate/lac</th>
+            <th style="padding:6px 5px;text-align:center;font-size:.62rem;color:var(--t3);white-space:nowrap;border-bottom:1px solid var(--border)">Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td rowspan="6" style="padding:6px 7px;font-weight:600;font-size:.72rem;vertical-align:middle;border-right:1px solid var(--border)">SME CASA<br><span style="font-weight:400;color:var(--t3);font-size:.66rem">(Non-Indiv.)</span></td>
+            <td rowspan="3" style="padding:6px 5px;font-weight:700;color:var(--green);font-size:.72rem;vertical-align:middle;border-right:1px solid var(--border)">RO</td>
+            <td style="padding:5px 5px;white-space:nowrap">5–7 Crore</td>
+            <td style="padding:5px 5px;text-align:center;color:var(--t3)">—</td>
+            <td style="padding:5px 5px;text-align:center"><span class="rating-badge a">A</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:5px 5px;white-space:nowrap">7–10 Crore</td>
+            <td style="padding:5px 5px;text-align:center;font-weight:600">BDT 10</td>
+            <td style="padding:5px 5px;text-align:center"><span class="rating-badge a">A</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:5px 5px;white-space:nowrap">10 Crore+</td>
+            <td style="padding:5px 5px;text-align:center;font-weight:600">BDT 15</td>
+            <td style="padding:5px 5px;text-align:center"><span class="rating-badge s">S</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td rowspan="3" style="padding:6px 5px;font-weight:700;color:var(--bb-blue);font-size:.72rem;vertical-align:middle;border-right:1px solid var(--border)">RE</td>
+            <td style="padding:5px 5px;white-space:nowrap">3–5 Crore</td>
+            <td style="padding:5px 5px;text-align:center;color:var(--t3)">—</td>
+            <td style="padding:5px 5px;text-align:center"><span class="rating-badge a">A</span></td>
+          </tr>
+          <tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:5px 5px;white-space:nowrap">5–7 Crore</td>
+            <td style="padding:5px 5px;text-align:center;font-weight:600">BDT 10</td>
+            <td style="padding:5px 5px;text-align:center"><span class="rating-badge a">A</span></td>
+          </tr>
+          <tr>
+            <td style="padding:5px 5px;white-space:nowrap">7 Crore+</td>
+            <td style="padding:5px 5px;text-align:center;font-weight:600">BDT 15</td>
+            <td style="padding:5px 5px;text-align:center"><span class="rating-badge s">S</span></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p style="margin-top:9px;font-size:.7rem;color:var(--t3);font-style:italic">*5% deviation will be considered for bonus incentive calculation.</p>
+    </div>
+
+    <!-- Other T&C tappable card -->
+    <div class="tnc-card" onclick="openTnC()">
+      <div class="tnc-card-left">
+        <div class="tnc-icon">&#128221;</div>
+        <div>
+          <div class="tnc-title">Other Terms &amp; Conditions</div>
+          <div class="tnc-sub">Tap to read</div>
+        </div>
+      </div>
+      <div class="tnc-arrow">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="8.5" stroke="var(--bb-blue)" stroke-opacity=".3"/>
+          <path d="M7 6l3 3-3 3" stroke="var(--bb-blue)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="pc">
+      <h3>Highest Incentive Structure Matrix</h3>
+      <table class="t-tbl">
+        <thead><tr><th>Product</th><th>Max Incentive (BDT)</th></tr></thead>
+        <tbody>
+          <tr><td>CASA (For RO/RE)</td><td style="font-weight:600">120,000</td></tr>
+          <tr><td>FDR (For RO/RE)</td><td style="font-weight:600">50,000</td></tr>
+          <tr><td colspan="2" style="text-align:right;font-weight:700;color:var(--bb-blue);border-top:2px solid var(--border2)">Total Incentive for RO/RE: BDT 200,000</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box" style="margin-top:10px">&#128204; All incentive eligible female staff will get additional bonus of 25% on earned incentive every month.</div>
+    </div>
+
+    <div class="pc">
+      <h3>Mobile and Conveyance Bill (RO/RE)</h3>
+      <table class="t-tbl">
+        <thead><tr><th>Rating</th><th>RO/RE (BDT)</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rating-badge e">E</span></td><td style="font-weight:600">2,500</td></tr>
+          <tr><td><span class="rating-badge s">S</span></td><td style="font-weight:600">1,500</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- BDM POLICY -->
+  <div id="pol-bdm" style="display:none">
+    <div class="pc">
+      <h3>Supervisor KPI and Target</h3>
+      <p>Supervisor will have a target consisting of all the targets of RE &amp; RO under their supervision. Minimum headcount requirement under each BDM/SBDM is 15 and Acting BDM is 12. However, if anyone achieves the full target without the minimum headcount, they will be eligible for commission. In that case, the missing headcount target will be considered of RE, Rural area.</p>
+    </div>
+    <div class="pc">
+      <h3>Supervisor KPI Criteria</h3>
+      <table class="t-tbl">
+        <thead><tr><th>Criteria</th><th>Parameters</th></tr></thead>
+        <tbody>
+          <tr><td style="font-weight:600">RO/RE combined target (% on ESAU basis)</td><td>Combined Point target for all RO/RE under supervision as per job grade and branch category.</td></tr>
+          <tr><td style="font-weight:600">RO/RE individual rating achieved</td><td>If 50% of the RO/RE gets under S grade, supervisor&apos;s KPI rating is lowered by one grade for incentive calculation only. ESAU rating remains the same.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pc">
+      <h3>Supervisor Incentive / Bonus</h3>
+      <p style="margin-bottom:10px">Supervisors (BDM) will be eligible for incentive based on their performance rating:</p>
+      <table class="t-tbl">
+        <thead><tr><th>Rating</th><th>Incentive</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rating-badge e">E</span></td><td>10% of total RO/REs incentive amount</td></tr>
+          <tr><td><span class="rating-badge s">S</span></td><td>5% of total RO/REs incentive amount</td></tr>
+          <tr><td><span class="rating-badge a">A</span></td><td>3% of total RO/REs incentive amount</td></tr>
+          <tr><td><span class="rating-badge u">U</span></td><td style="color:var(--red)">No incentive</td></tr>
+        </tbody>
+      </table>
+      <div class="note-box" style="margin-top:10px">&#128204; BDM incentive max: BDT 100,000.</div>
+    </div>
+    <div class="pc">
+      <h3>Mobile and Conveyance Bill (BDM)</h3>
+      <table class="t-tbl">
+        <thead><tr><th>Rating</th><th>BDM (BDT)</th></tr></thead>
+        <tbody>
+          <tr><td><span class="rating-badge e">E</span></td><td style="font-weight:600">5,000</td></tr>
+          <tr><td><span class="rating-badge s">S</span></td><td style="font-weight:600">3,000</td></tr>
+          <tr><td><span class="rating-badge a">A</span></td><td style="font-weight:600">2,000</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM NAV -->
+<nav>
+  <div class="ni on" id="n-home" onclick="tab('home')"><span class="ni-ico">&#9638;</span>Dashboard</div>
+  <div class="ni" id="n-calc" onclick="tab('calc')"><span class="ni-ico">&#9672;</span>Calculator</div>
+  <div class="ni" id="n-info" onclick="tab('info')"><span class="ni-ico">&#9673;</span>Policy</div>
+</nav>
+
+<!-- SHEET OVERLAY -->
+<div class="ov" id="ov" onclick="dismissSheet(event)">
+  <div class="sheet">
+  <div class="sheet-sticky">
+    <div class="sh-handle"></div>
+    <div id="sb-header"></div>
+  </div>
+  <div class="sheet-body" id="sb"></div>
+</div>
+</div>
+<script>
+const APP_VERSION = "1777427524";
+if ("caches" in window) { caches.keys().then(keys => { keys.forEach(k => { if (k !== "kpi-v"+APP_VERSION) caches.delete(k); }); }); }
+if ("serviceWorker" in navigator) { navigator.serviceWorker.getRegistrations().then(regs => { regs.forEach(r => r.unregister()); }); }
+
+// ── TARGET TABLE ──
+const TARGETS = {
+  RO: { Urban:{S:100,E:130,A:60}, "Semi-Urban":{S:80,E:104,A:48}, Rural:{S:75,E:97,A:45} },
+  RE: { Urban:{S:80,E:104,A:48},  "Semi-Urban":{S:70,E:91,A:42},  Rural:{S:60,E:78,A:36} }
+};
+
+// ── KPI SHEET DATA ──
+const D = {
+  casa:{ icon:"🏦", title:"CASA", sub:"Current & Savings Accounts", bg:"#e6f2fb", bar:"#006CB6",
+    formula:"SME Growth / 1 lac x 5 pts\nRetail Growth / 1 lac x 3 pts\nCorporate Growth / 1 lac x 3 pts\n\nTotal = sum of all growth pts\n(Only if overall net growth > 0)\n+10 pts if portfolio maintained (CASA:TD 60%+, min 10M)",
+    policy:"CASA Average base is fixed on last month final KPI and any transferred/resigned portfolio. CASA EOP target = December end EOP + Resigned/Transferred EOP + This months EOP Target.",
+    comm:[{r:"E",v:"BDT 200"},{r:"S",v:"BDT 180"},{r:"A",v:"BDT 150"}] },
+  dps:{ icon:"💰", title:"DPS", sub:"Deposit / Savings Products", bg:"#e3f5ef", bar:"#00875a",
+    formula:"DPS 3K to <5K: 0.5 pts each\nDPS 5K and above: 1 pt each\n\nPer CIF: only 1 DPS (highest value) counted",
+    policy:"Per CIF only 1 DPS with the highest value is counted. DPS 3K to <5K = 0.5 pts. DPS 5K+ = 1 pt.",
+    comm:[{r:"E",v:"BDT 180"},{r:"S",v:"BDT 150"},{r:"A",v:"BDT 120"}] },
+  fd:{ icon:"📅", title:"Fixed Deposit (FDR)", sub:"New FDR — 3 Months & above", bg:"#fdf4de", bar:"#E4A724",
+    formula:"New FDR (3 months & above)\nFresh Fund only — no cannibalization\n\nPoints = FD Amount (in lacs) x 0.25",
+    policy:"Only new FDR with fresh funds and minimum 3-month tenure qualify. No fund cannibalization.",
+    pref_rate:"Incentive of FDR with preferential rate will be given on following basis:",
+    fdr_comm:[{tenor:"3-5 Months",e:73,s:58,a:48},{tenor:"6-11 Months",e:163,s:130,a:105},{tenor:"12 Months+",e:215,s:170,a:140}] },
+  insurance:{ icon:"🛡️", title:"Bancassurance", sub:"Insurance Products", bg:"#f0ecfd", bar:"#7254e0",
+    formula:"Each new Insurance policy = 3 pts\nMaximum allowable points = 15 pts\n(5 policies = 15 pts max)",
+    policy:"3 points per new Insurance policy. Maximum allowable points is 15 (5 policies)." },
+  bizpay:{ icon:"💳", title:"Bizpay / Corpnet", sub:"Business Payment & Corporate Network", bg:"#fdecea", bar:"#d63a2f",
+    formula:"3 pts per onboarded account\nMinimum transaction: BDT 1,000\n(No TopUp/Mobile Recharge eligible)",
+    policy:"For ASTHA, CorpNet, BizPay activation, minimum transaction bar is BDT 1,000. No TopUp or Mobile Recharge eligible.",
+    comm:[{r:"E",v:"BDT 65"},{r:"S",v:"BDT 50"},{r:"A",v:"BDT 20"}] },
+  borenno:{ icon:"🏢", title:"Borenno", sub:"SME Financing", bg:"#f0ecfd", bar:"#7254e0",
+    formula:"5 pts per newly onboarded Borenno account\nPoint awarded 1 month after onboarding\nAccount must maintain 25 Lac average balance in following month",
+    policy:"Borenno account point awarded 1 month after onboarding/upgrade as BORENNO. Account must maintain BORENNO criteria (25 Lac Average Balance) in the following month of onboarding.",
+    comm:[{r:"E",v:"BDT 120"},{r:"S",v:"BDT 100"},{r:"A",v:"BDT 70"}] },
+  astha:{ icon:"📱", title:"Astha", sub:"BRAC Bank Digital App Onboarding", bg:"#e3f5ef", bar:"#00875a",
+    formula:"2 pts per onboarded account\nMinimum transaction: BDT 1,000\n(No TopUp/Mobile Recharge eligible)",
+    policy:"For ASTHA, CorpNet, BizPay activation, minimum transaction bar is BDT 1,000. No TopUp or Mobile Recharge eligible.",
+    comm:[{r:"E",v:"BDT 65"},{r:"S",v:"BDT 50"},{r:"A",v:"BDT 20"}] },
+  sme_casa:{ icon:"🏦", title:"SME CASA Opening", sub:"Non-Funded — Account Opening", bg:"var(--bb-gold-lt)", bar:"#E4A724",
+    formula:"SME CASA:\nEOP 20K+ = 2 pts each\nEOP 50K+ = 3 pts each\nEOP 500K+ = 5 pts each\n\nSME TARA CASA:\nEOP 20K+ = 3 pts each\nEOP 50K+ = 4 pts each\nEOP 500K+ = 6 pts each",
+    policy:"Points based on month-end EOP balance per account." },
+  bonus:{ icon:"⭐", title:"Bonus Points", sub:"CASA Portfolio Maintenance", bg:"#fdf4de", bar:"#E4A724",
+    formula:"CASA:TD ratio 60%+ vs <=40%\nMinimum portfolio: BDT 10,000,000 (10M)\n\n+10 pts if criteria met",
+    policy:"Each RO/RE gets 10 points if they maintain CASA:TD (60%+ vs <=40%), minimum portfolio 10 million & above." },
+  nf_limit:{ icon:"⚠️", title:"Non-Funded Points Cap", sub:"Limit Policy", bg:"#fdecea", bar:"#d63a2f",
+    formula:"RO: max Non-Funded pts = 25% of A-rating target\nRE: max Non-Funded pts = 50% of A-rating target\n\nNon-Funded categories:\n- Bizpay / Corpnet\n- Borenno\n- Astha\n- SME CASA Opening",
+    policy:"The weightage of Current Account Opening, Non-Individual ASTHA, CorpNet, BizPay activation can only account to 25% of U threshold for RO (FTE), 50% for RE. No limit for RE within the first 6 months of joining." }
+};
+
+// ── TAB SWITCH ──
+function tab(t) {
+  document.getElementById("v-home").style.display = t==="home" ? "block" : "none";
+  document.getElementById("v-calc").classList.toggle("on", t==="calc");
+  document.getElementById("v-info").classList.toggle("on", t==="info");
+  ["home","calc","info"].forEach(x => document.getElementById("n-"+x).classList.toggle("on", x===t));
+}
+
+// ── POLICY TAB SWITCH ──
+function switchPolTab(t) {
+  document.getElementById("pol-emp").style.display = t==="emp" ? "block" : "none";
+  document.getElementById("pol-bdm").style.display = t==="bdm" ? "block" : "none";
+  document.getElementById("ptab-emp").classList.toggle("on", t==="emp");
+  document.getElementById("ptab-bdm").classList.toggle("on", t==="bdm");
+}
+
+// ── OPEN SHEET ──
+function openSheet(k) {
+  const d = D[k];
+  if (!d) { console.warn("No data for", k); return; }
+  const cur = parseFloat((document.getElementById("dash-"+(k==="insurance"?"ins":k==="sme_casa"?"smecasa":k)+"-pts")||{}).textContent)||0;
+  let commHTML = "";
+  if (d.comm) {
+    commHTML = "<div class='sh-lbl'>Commission Structure</div><table class='comm-table'><thead><tr><th>Rating</th><th>Commission (BDT)</th></tr></thead><tbody>";
+    d.comm.forEach(r => { commHTML += "<tr><td><span class='rating-badge "+r.r.toLowerCase()+"'>"+r.r+"</span></td><td style='font-weight:600'>"+r.v+"</td></tr>"; });
+    commHTML += "</tbody></table>";
+  }
+  if (k==="fd" && d.fdr_comm) {
+    commHTML = "<div class='sh-lbl'>Preferential Rate Policy</div>" +
+      "<p style='font-size:.74rem;color:var(--t2);line-height:1.6;margin-bottom:8px'>Incentive of FDR with preferential rate will be given on following basis:</p>" +
+      "<table class='comm-table'><thead><tr><th>Rate Deviation %</th><th>Incentive Percentage</th></tr></thead><tbody>" +
+      "<tr><td>Up to 0.25%</td><td>75% (25% incentive will be deducted)</td></tr>" +
+      "<tr><td>0.26% to 0.50%</td><td>50% (50% incentive will be deducted)</td></tr>" +
+      "<tr><td>Above 0.50%</td><td>Lower of BDT 10K, or after deducting 50% incentive for the respective account</td></tr>" +
+      "</tbody></table>" +
+      "<div class='sh-lbl' style='margin-top:14px'>FDR Commission Structure (BDT per Point)</div><table class='comm-table'><thead><tr><th>Tenor</th><th>E</th><th>S</th><th>A</th></tr></thead><tbody>";
+    d.fdr_comm.forEach(r => { commHTML += "<tr><td>"+r.tenor+"</td><td style='color:#166534;font-weight:700'>"+r.e+"</td><td style='color:#1d4ed8;font-weight:700'>"+r.s+"</td><td style='color:#b45309;font-weight:700'>"+r.a+"</td></tr>"; });
+    commHTML += "</tbody></table>";
+  }
+  // Sticky header
+  document.getElementById("sb-header").innerHTML =
+    "<button class='sh-close' onclick='closeSheet()' aria-label='Close'><svg width='13' height='13' viewBox='0 0 13 13' fill='none'><path d='M1 1l11 11M12 1L1 12' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg></button>" +
+    "<div class='sh-hdr'><div class='sh-ico' style='background:"+d.bg+"'>"+d.icon+"</div><div><div class='sh-title'>"+d.title+"</div><div class='sh-sub'>"+d.sub+"</div></div></div>";
+  // Scrollable body
+  document.getElementById("sb").innerHTML =
+    "<div class='sh-lbl'>Points Achieved This Month</div>" +
+    "<div class='stat'><span class='stat-l'>Points</span><span class='stat-v' style='color:var(--bb-blue)'>"+(cur > 0 ? cur+" pts" : "Not yet entered in Calculator")+"</span></div>" +
+    "<div class='sh-lbl'>Calculation Formula</div>" +
+    "<div class='formula'>"+d.formula+"</div>" +
+    (d.policy ? "<div class='note-box' style='margin-top:12px'>&#128204; "+d.policy+"</div>" : "") +
+    commHTML +
+    "<div style='padding:28px 0 18px;display:flex;align-items:center;justify-content:center'><div style='width:44px;height:5px;border-radius:99px;background:#c8d8e8'></div></div>";
+  document.getElementById("ov").classList.add("on");
+  document.body.style.overflow = "hidden";
+}
+function dismissSheet(e) { if (e.target===document.getElementById("ov")) closeSheet(); }
+function closeSheet() {
+  document.getElementById("ov").classList.remove("on");
+  document.body.style.overflow = "";
+  const sb = document.getElementById("sb");
+  if (sb) sb.scrollTop = 0;
+  const sbh = document.getElementById("sb-header");
+  if (sbh) sbh.innerHTML = "";
+}
+
+// ── PROFILE ──
+function saveProfile() {
+  const p = {
+    name:   document.getElementById("inp-name").value.trim(),
+    desig:  document.getElementById("inp-desig").value,
+    sol:    document.getElementById("inp-sol").value.trim(),
+    branch: document.getElementById("inp-branch").value.trim(),
+    outlet: document.getElementById("inp-outlet").value
+  };
+  if (!p.name) { document.getElementById("inp-name").focus(); return; }
+  localStorage.setItem("kpi_profile", JSON.stringify(p));
+  applyProfile(p);
+  const t = document.getElementById("save-toast");
+  t.classList.add("show"); setTimeout(()=>t.classList.remove("show"), 2800);
+}
+
+function applyProfile(p) {
+  const desig = p.desig||"", outlet = p.outlet||"";
+  const tgt = (TARGETS[desig]&&TARGETS[desig][outlet]) ? TARGETS[desig][outlet] : null;
+  window._profileTarget = tgt;
+  window._profileDesig  = desig;
+
+  document.getElementById("hdr-name").textContent = p.name||"Set Profile";
+  document.getElementById("hdr-sub").textContent  = p.name ? p.name+"'s Dashboard" : "Performance Dashboard";
+
+  if (p.name) {
+    document.getElementById("profile-filled").style.display = "flex";
+    document.getElementById("profile-empty").style.display  = "none";
+    document.getElementById("pi-name").textContent  = p.name;
+    document.getElementById("pi-desig").textContent = desig==="RO"?"Relationship Officer":desig==="RE"?"Relationship Executive":"—";
+    document.getElementById("pi-sol").textContent   = p.sol||"—";
+    document.getElementById("pi-branch").textContent= p.branch||"—";
+    const ow = document.getElementById("pi-outlet-wrap");
+    if (outlet) { ow.style.display=""; document.getElementById("pi-outlet").textContent=outlet; }
+    if (tgt) {
+      document.getElementById("pi-target-row").style.display="flex";
+      document.getElementById("pi-e").textContent = tgt.E+" pts";
+      document.getElementById("pi-s").textContent = tgt.S+" pts";
+      document.getElementById("pi-a").textContent = tgt.A+" pts";
+      document.getElementById("pi-u").textContent = "<"+tgt.A+" pts";
+    }
+  } else {
+    document.getElementById("profile-filled").style.display = "none";
+    document.getElementById("profile-empty").style.display  = "flex";
+  }
+
+  const heroSub = document.getElementById("hero-sub2");
+  if (heroSub) heroSub.textContent = new Date().toLocaleString("en-GB",{month:"long",year:"numeric"}) + (p.branch?" · "+p.branch:"") + (p.sol?" · SOL "+p.sol:"") + (outlet?" · "+outlet:"");
+
+  document.getElementById("sum-name").textContent   = p.name||"—";
+  document.getElementById("sum-desig").textContent  = desig==="RO"?"Relationship Officer":desig==="RE"?"Relationship Executive":"—";
+  document.getElementById("sum-sol").textContent    = p.sol||"—";
+  document.getElementById("sum-branch").textContent = p.branch||"—";
+  document.getElementById("sum-outlet").textContent = outlet||"—";
+  document.getElementById("sum-target").textContent = tgt ? tgt.S+" pts" : "—";
+  if (p.name) document.getElementById("sum-head").textContent = p.name+" — "+new Date().toLocaleString("en-GB",{month:"long",year:"numeric"});
+
+  document.getElementById("inp-name").value   = p.name||"";
+  document.getElementById("inp-desig").value  = desig||"";
+  if (!desig) document.getElementById("inp-desig").selectedIndex=0;
+  document.getElementById("inp-sol").value    = p.sol||"";
+  document.getElementById("inp-branch").value = p.branch||"";
+  document.getElementById("inp-outlet").value = outlet||"";
+  if (!outlet) document.getElementById("inp-outlet").selectedIndex=0;
+
+  updateDashboardTotals();
+}
+
+// ── DASHBOARD TOTALS ──
+function syncDash(key, pts, maxForBar) {
+  const id = key==="insurance"?"ins":key==="sme_casa"?"smecasa":key;
+  const el = document.getElementById("dash-"+id+"-pts");
+  const bar= document.getElementById("dash-"+id+"-bar");
+  if (el)  el.textContent = pts > 0 ? pts : "—";
+  if (bar) bar.style.width = maxForBar ? Math.min(100,Math.round((pts/maxForBar)*100))+"%" : "0%";
+}
+
+function updateDashboardTotals() {
+  const g = id => parseFloat((document.getElementById(id)||{}).textContent)||0;
+  const casaPts    = g("dash-casa-pts");
+  const dpsPts     = g("dash-dps-pts");
+  const fdPts      = g("dash-fd-pts");
+  const insPts     = g("dash-ins-pts");
+  const bizpayPts  = g("dash-bizpay-pts");
+  const borennoPts = g("dash-borenno-pts");
+  const asthaPts   = g("dash-astha-pts");
+  const smecasaPts = g("dash-smecasa-pts");
+  const bonusPts   = g("dash-bonus-pts");
+
+  // Non-funded cap
+  const tgt  = window._profileTarget;
+  const desig= window._profileDesig||"";
+  const aRating = tgt ? tgt.A : 0;
+  const nfCapPct = desig==="RE" ? 0.5 : 0.25;
+  const nfCap    = Math.ceil(aRating * nfCapPct);
+  const rawNF    = bizpayPts + borennoPts + asthaPts + smecasaPts;
+  const cappedNF = nfCap > 0 ? Math.min(rawNF, nfCap) : rawNF;
+  const nfOver   = rawNF - cappedNF;
+
+  // Update limit bar
+  const limitLabel = document.getElementById("nf-limit-label");
+  const limitBar   = document.getElementById("nf-limit-bar");
+  const usedPts    = document.getElementById("nf-used-pts");
+  const maxPts     = document.getElementById("nf-max-pts");
+  if (limitLabel) limitLabel.textContent = nfCap>0 ? (rawNF<=nfCap ? "Within cap" : "Over cap") : "Set profile";
+  if (limitLabel) { limitLabel.style.color = (nfCap>0 && rawNF>nfCap) ? "var(--red)" : "var(--t3)"; }
+  if (limitBar) {
+    limitBar.style.width = nfCap>0 ? Math.min(100,Math.round((rawNF/nfCap)*100))+"%" : "0%";
+    limitBar.style.background = (nfCap>0 && rawNF>nfCap)
+      ? "linear-gradient(90deg,var(--bb-blue),#06b6d4,var(--red))"
+      : "linear-gradient(90deg,var(--bb-blue),#06b6d4,var(--green))";
+  }
+  if (usedPts)    usedPts.textContent    = rawNF+" pts used";
+  if (maxPts)     maxPts.textContent     = nfCap>0 ? "limit: "+nfCap+" pts" : "limit: —";
+
+  const total = Math.round((casaPts+dpsPts+fdPts+insPts+cappedNF+bonusPts)*10)/10;
+  const displayMax = tgt ? tgt.S : "—";
+  const pctOfTarget = tgt ? Math.round((total/tgt.S)*100) : 0;
+
+  const hs = document.getElementById("hero-score");
+  if (hs) hs.innerHTML = total+"<sup> / "+displayMax+" pts</sup>";
+  const hp = document.getElementById("hero-pct");
+  if (hp) hp.textContent = tgt ? pctOfTarget+"%" : "—%";
+  const hb = document.getElementById("hbar");
+
+  let esauKey="", esauLabel="";
+  if (tgt && total>0) {
+    if      (total>=tgt.E) { esauKey="e"; esauLabel="E"; }
+    else if (total>=tgt.S) { esauKey="s"; esauLabel="S"; }
+    else if (total>=tgt.A) { esauKey="a"; esauLabel="A"; }
+    else                   { esauKey="u"; esauLabel="U"; }
+  } else if (total>0) { esauKey="u"; esauLabel="U"; }
+
+  const barColors = {e:"#16a34a",s:"#2563eb",a:"#d97706",u:"#dc2626","":"#2563eb"};
+  if (hb) { hb.style.width=Math.min(100,pctOfTarget)+"%"; hb.style.background=barColors[esauKey]||"#2563eb"; }
+
+  const hg = document.getElementById("hero-grade");
+  if (hg) hg.textContent = tgt&&total>0 ? pctOfTarget+"% of Target" : (total>0?"Set profile":"—");
+
+  const he = document.getElementById("hero-esau");
+  if (he) {
+    if (esauKey) { he.style.display="inline-flex"; he.textContent="Rating: "+esauLabel; he.className="esau-pill "+esauKey; }
+    else he.style.display="none";
+  }
+
+  const sr = document.getElementById("sum-rating");
+  if (sr) sr.innerHTML = esauKey ? "<span class='rating-badge "+esauKey+"'>"+esauLabel+"</span>" : "<span class='rating-badge u'>—</span>";
+
+  const st = document.getElementById("sum-total");
+  if (st) st.textContent = total+" / "+displayMax+" pts";
+}
+
+// ── CASA ──
+function saveCASABase() {
+  const b = { sme:document.getElementById("base-sme").value, retail:document.getElementById("base-retail").value, corp:document.getElementById("base-corp").value };
+  localStorage.setItem("kpi_casa_base", JSON.stringify(b));
+  const t = document.getElementById("base-toast");
+  t.classList.add("show"); setTimeout(()=>t.classList.remove("show"),2600);
+  calcCASA();
+}
+function loadCASABase() {
+  try {
+    const b = JSON.parse(localStorage.getItem("kpi_casa_base")||"{}");
+    if (b.sme)    document.getElementById("base-sme").value    = b.sme;
+    if (b.retail) document.getElementById("base-retail").value = b.retail;
+    if (b.corp)   document.getElementById("base-corp").value   = b.corp;
+  } catch(e){}
+}
+function resetCurrentCASA() {
+  ["cur-sme","cur-retail","cur-corp"].forEach(id=>{ document.getElementById(id).value=""; });
+  document.getElementById("casa-result-score").textContent="—";
+  document.getElementById("casa-result-score").className="kcc-result-score";
+  document.getElementById("casa-result-breakdown").innerHTML="";
+}
+function calcCASA() {
+  const LAC=100000;
+  const bSME    = parseFloat(document.getElementById("base-sme").value)||0;
+  const bRetail = parseFloat(document.getElementById("base-retail").value)||0;
+  const bCorp   = parseFloat(document.getElementById("base-corp").value)||0;
+  const cSME    = parseFloat(document.getElementById("cur-sme").value)||0;
+  const cRetail = parseFloat(document.getElementById("cur-retail").value)||0;
+  const cCorp   = parseFloat(document.getElementById("cur-corp").value)||0;
+  const portfolio = document.getElementById("chk-portfolio").checked;
+  const prEl = document.getElementById("portfolio-result");
+  if (prEl) prEl.style.display = portfolio ? "flex" : "none";
+
+  const anyInput = cSME||cRetail||cCorp;
+  if (!anyInput) { document.getElementById("casa-result-score").textContent="—"; document.getElementById("casa-result-breakdown").innerHTML=""; syncDash("casa",0,999); updateDashboardTotals(); return; }
+
+  const gSME    = cSME-bSME, gRetail=cRetail-bRetail, gCorp=cCorp-bCorp;
+  const ptsSME    = (gSME/LAC)*5;
+  const ptsRetail = (gRetail/LAC)*3;
+  const ptsCorp   = (gCorp/LAC)*3;
+  const overall   = gSME+gRetail+gCorp;
+  let pts = overall>0 ? Math.round((ptsSME+ptsRetail+ptsCorp)*10)/10 : 0;
+  const portPts = (portfolio) ? 10 : 0;
+  // portPts goes ONLY to the bonus card — NOT added to CASA pts
+  pts = Math.max(0,pts);
+
+  const sc = document.getElementById("casa-result-score");
+  sc.textContent = pts+" pts";
+  sc.className   = "kcc-result-score"+(pts===0?" zero":"");
+
+  function fmtP(v) { const r=Math.round(v*10)/10; return r>0?"<span class='bd-pos'>+"+r+" pts</span>":r<0?"<span class='bd-neg'>"+r+" pts</span>":"<span class='bd-zero'>0 pts</span>"; }
+  document.getElementById("casa-result-breakdown").innerHTML =
+    "<div class='kcc-bd-row'><span>SME ("+Math.round(gSME/LAC*100)/100+" lac x5)</span>"+fmtP(ptsSME)+"</div>"+
+    "<div class='kcc-bd-row'><span>Retail ("+Math.round(gRetail/LAC*100)/100+" lac x3)</span>"+fmtP(ptsRetail)+"</div>"+
+    "<div class='kcc-bd-row'><span>Corp ("+Math.round(gCorp/LAC*100)/100+" lac x3)</span>"+fmtP(ptsCorp)+"</div>"+
+
+    "<div class='kcc-bd-row total'><span>CASA Points</span><span>"+pts+" pts</span></div>";
+
+  syncDash("casa", pts, 200);
+  // Update bonus card on dash
+  const bonusEl = document.getElementById("dash-bonus-pts");
+  const bonusBar= document.getElementById("dash-bonus-bar");
+  if (bonusEl) bonusEl.textContent = portPts>0 ? "10" : "—";
+  if (bonusBar) bonusBar.style.width = portPts>0 ? "100%" : "0%";
+  updateDashboardTotals();
+}
+
+// ── DPS ──
+function calcDPS() {
+  const c3k=parseInt(document.getElementById("inp-dps-3k").value)||0;
+  const c5k=parseInt(document.getElementById("inp-dps-5k").value)||0;
+  const any=document.getElementById("inp-dps-3k").value||document.getElementById("inp-dps-5k").value;
+  const pts3=c3k*0.5, pts5=c5k*1;
+  const total=Math.round((pts3+pts5)*10)/10;
+  const sc=document.getElementById("dps-result-score");
+  const bd=document.getElementById("dps-result-breakdown");
+  if (!any){sc.textContent="—";bd.innerHTML="";syncDash("dps",0,20);updateDashboardTotals();return;}
+  sc.textContent=total+" pts";sc.className="kcc-result-score"+(total===0?" zero":"");
+  bd.innerHTML="<div class='kcc-bd-row'><span>3K-5K ("+c3k+" x 0.5)</span><span class='"+(pts3>0?"bd-pos":"bd-zero")+"'>"+pts3+" pts</span></div>"+
+    "<div class='kcc-bd-row'><span>5K+ ("+c5k+" x 1)</span><span class='"+(pts5>0?"bd-pos":"bd-zero")+"'>"+pts5+" pts</span></div>"+
+    "<div class='kcc-bd-row total'><span>DPS Points</span><span>"+total+" pts</span></div>";
+  syncDash("dps",total,20);updateDashboardTotals();
+}
+
+// ── FDR ──
+function calcFDR() {
+  const amt=parseFloat(document.getElementById("inp-fd-amount").value)||0;
+  const any=document.getElementById("inp-fd-amount").value;
+  const LAC=100000, pts=Math.round((amt/LAC)*0.25*100)/100;
+  const sc=document.getElementById("fd-result-score");
+  const bd=document.getElementById("fd-result-breakdown");
+  if (!any){sc.textContent="—";bd.innerHTML="";syncDash("fd",0,50);updateDashboardTotals();return;}
+  sc.textContent=pts+" pts";sc.className="kcc-result-score"+(pts===0?" zero":"");
+  bd.innerHTML="<div class='kcc-bd-row'><span>BDT "+amt.toLocaleString()+"</span><span>"+Math.round(amt/LAC*100)/100+" lac</span></div>"+
+    "<div class='kcc-bd-row'><span>x 0.25 pts/lac</span><span class='"+(pts>0?"bd-pos":"bd-zero")+"'>"+pts+" pts</span></div>"+
+    "<div class='kcc-bd-row total'><span>FD Points</span><span>"+pts+" pts</span></div>";
+  syncDash("fd",pts,50);updateDashboardTotals();
+}
+
+// ── INSURANCE ──
+function calcInsurance() {
+  const count=Math.max(0,parseInt(document.getElementById("inp-ins-count").value)||0);
+  const pts=Math.min(15,count*3);
+  const any=document.getElementById("inp-ins-count").value;
+  const sc=document.getElementById("ins-result-score");
+  const bd=document.getElementById("ins-result-breakdown");
+  if (!any){sc.textContent="—";bd.innerHTML="";syncDash("insurance",0,15);updateDashboardTotals();return;}
+  sc.textContent=pts+" pts";sc.className="kcc-result-score"+(pts===0?" zero":"");
+  bd.innerHTML="<div class='kcc-bd-row'><span>"+Math.min(count,5)+" policies x 3</span><span class='"+(pts>0?"bd-pos":"bd-zero")+"'>"+pts+" pts</span></div>"+
+    (count>5?"<div class='kcc-bd-row' style='color:var(--red);font-size:.65rem'><span>Capped at 5 policies</span><span>max 15</span></div>":"")+
+    "<div class='kcc-bd-row total'><span>Bancassurance Points</span><span>"+pts+" pts</span></div>";
+  syncDash("insurance",pts,15);updateDashboardTotals();
+}
+
+// ── SIMPLE CALC (Bizpay, Borenno, Astha) ──
+function calcSimple(key, val, ptsEach, barMax) {
+  const count=Math.max(0,parseInt(val)||0);
+  const any=val!=="";
+  const pts=count*ptsEach;
+  const sc=document.getElementById(key+"-result-score");
+  const bd=document.getElementById(key+"-result-bd");
+  const fill=document.getElementById("fill-"+key);
+  if (!any||!sc){syncDash(key,0,barMax);updateDashboardTotals();return;}
+  sc.textContent=pts+" pts";sc.className="kcc-result-score"+(pts===0?" zero":"");
+  bd.innerHTML="<div class='kcc-bd-row'><span>"+count+" accounts x "+ptsEach+" pts</span><span class='"+(pts>0?"bd-pos":"bd-zero")+"'>"+pts+" pts</span></div>"+
+    "<div class='kcc-bd-row total'><span>Points</span><span>"+pts+" pts</span></div>";
+  if (fill) fill.style.width=Math.min(100,Math.round((pts/barMax)*100))+"%";
+  syncDash(key,pts,barMax);updateDashboardTotals();
+}
+
+// ── SME CASA OPENING ──
+function calcSMECASA() {
+  const chkSME =document.getElementById("chk-sme-casa").checked;
+  const chkTARA=document.getElementById("chk-sme-tara").checked;
+  document.getElementById("sme-casa-inputs").style.display=chkSME?"block":"none";
+  document.getElementById("sme-tara-inputs").style.display=chkTARA?"block":"none";
+  const g=id=>parseInt(document.getElementById(id).value)||0;
+  const smePts  = chkSME  ? g("sme-20k")*2  + g("sme-50k")*3  + g("sme-500k")*5  : 0;
+  const taraPts = chkTARA ? g("tara-20k")*3 + g("tara-50k")*4 + g("tara-500k")*6 : 0;
+  const total=smePts+taraPts;
+  const sc=document.getElementById("smecasa-result-score");
+  const bd=document.getElementById("smecasa-result-bd");
+  if (sc) { sc.textContent=total>0?total+" pts":"—"; sc.className="kcc-result-score"+(total===0?" zero":""); }
+  if (bd) {
+    let html="";
+    if (chkSME)  html+="<div class='kcc-bd-row'><span>SME CASA</span><span class='"+(smePts>0?"bd-pos":"bd-zero")+"'>"+smePts+" pts</span></div>";
+    if (chkTARA) html+="<div class='kcc-bd-row'><span>SME TARA CASA</span><span class='"+(taraPts>0?"bd-pos":"bd-zero")+"'>"+taraPts+" pts</span></div>";
+    if (html) html+="<div class='kcc-bd-row total'><span>SME CASA Points</span><span>"+total+" pts</span></div>";
+    bd.innerHTML=html;
+  }
+  syncDash("sme_casa",total,50);updateDashboardTotals();
+}
+
+// ── STORAGE LOAD ──
+function loadAllPts() {
+  try {
+    const s=JSON.parse(localStorage.getItem("kpi_pts")||"{}");
+    if (s.bizpay!==undefined){document.getElementById("inp-bizpay").value=Math.round(s.bizpay/3);calcSimple("bizpay",Math.round(s.bizpay/3),3,100);}
+    if (s.borenno!==undefined){document.getElementById("inp-borenno").value=Math.round(s.borenno/5);calcSimple("borenno",Math.round(s.borenno/5),5,100);}
+    if (s.astha!==undefined){document.getElementById("inp-astha").value=Math.round(s.astha/2);calcSimple("astha",Math.round(s.astha/2),2,100);}
+    if (s.insurance!==undefined){document.getElementById("inp-ins-count").value=Math.round(s.insurance/3);calcInsurance();}
+  } catch(e){}
+}
+
+function savePtsToStorage(key,pts) {
+  try { const s=JSON.parse(localStorage.getItem("kpi_pts")||"{}"); s[key]=pts; localStorage.setItem("kpi_pts",JSON.stringify(s)); } catch(e){}
+}
+
+// Override syncDash to also save
+const _syncDash = syncDash;
+// syncDash already defined above - extend it
+const origSyncDash = syncDash;
+window.syncDash = function(key, pts, maxForBar) {
+  origSyncDash(key, pts, maxForBar);
+  savePtsToStorage(key, pts);
+};
+
+// ── INIT ──
+window.addEventListener("load", () => {
+  // Always show current month in summary header
+  const sh = document.getElementById("sum-head");
+  if (sh && sh.textContent === "Performance Overview") {
+    sh.textContent = "Performance Overview — " + new Date().toLocaleString("en-GB",{month:"long",year:"numeric"});
+  }
+  loadCASABase();
+  setTimeout(()=>{ calcCASA(); loadAllPts(); }, 80);
+  restoreCalcInputs();
+  try { const p=JSON.parse(localStorage.getItem("kpi_profile")||"{}"); if(p.name) applyProfile(p); } catch(e){}
+});
+
+function openTnC() {
+  const items = ["RO/REs will receive incentive for the incremental amount of achievement (any achievement over 60%). For achievement up to 60%, no incentive will be given. However, RO/REs will get the performance rating and ESAU achievement for up to 60% achievement.", "RO/REs will not get any incentive or performance for accounts of the SMEL Team.", "During annual leave of an FTE, target will be 50% of given amount. During maternity leave, target will be fully waived.", "RO/REs will not get points for CASA accounts if the Account Opening Form (AOF) is held at branch. Points will be awarded if the AOF is received within the following month.", "After opening of any TD, the account will be monitored for the following 6 months. If within that time any TD gets encashed, related points and incentive for that specific TD will be reversed from the present month.", "Fund Transfer from another BRAC Bank Account, Loan Disbursement amount, FDR closure amount and existing amount already lying in CASA Account will not be considered for FDR amount to avoid cannibalization.", "If any loan is disbursed in any SME Liability Account within the first 2 months of the First Transaction Date, the entire account shall be transferred to the Loan RO/RE. If the loan is disbursed after 2 months of the First Transaction Date, the SMEL RO/RE will not get the growth of that month when the incentive is being calculated.", "If any RO/RE has transferred portfolio (Resign portfolio, old account added to the portfolio), the previous month average balance of those accounts will be added to the base for the month of calculation."];
+  let html = items.map((t,i) =>
+    "<div style='display:flex;gap:10px;padding:11px 0;border-bottom:1px solid var(--border)'>" +
+    "<div style='min-width:22px;height:22px;border-radius:50%;background:var(--bb-blue);color:white;font-size:.65rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px'>"+(i+1)+"</div>" +
+    "<div style='font-size:.76rem;color:var(--t2);line-height:1.65'>"+t+"</div></div>"
+  ).join("");
+  document.getElementById("sb-header").innerHTML =
+    "<button class='sh-close' onclick='closeSheet()' aria-label='Close'><svg width='13' height='13' viewBox='0 0 13 13' fill='none'><path d='M1 1l11 11M12 1L1 12' stroke='currentColor' stroke-width='2' stroke-linecap='round'/></svg></button>" +
+    "<div class='sh-hdr'><div class='sh-ico' style='background:var(--bb-blue-lt)'>&#128221;</div><div><div class='sh-title'>Other Terms &amp; Conditions</div><div class='sh-sub'>Policy details</div></div></div>";
+  document.getElementById("sb").innerHTML = html +
+    "<div style='padding:22px 0 14px;display:flex;align-items:center;justify-content:center'><div style='width:44px;height:5px;border-radius:99px;background:#c8d8e8'></div></div>";
+  document.getElementById("ov").classList.add("on");
+  document.body.style.overflow = "hidden";
+}
+
+
+// ── RESTORE ALL SAVED CALC INPUTS ──
+function restoreCalcInputs() {
+  try {
+    const all = JSON.parse(localStorage.getItem('kpi_calc_inputs') || '{}');
+    if (all.casa) {
+      const d = all.casa;
+      if (d.curSme)    document.getElementById('cur-sme').value    = d.curSme;
+      if (d.curRetail) document.getElementById('cur-retail').value = d.curRetail;
+      if (d.curCorp)   document.getElementById('cur-corp').value   = d.curCorp;
+      if (d.portfolio !== undefined) document.getElementById('chk-portfolio').checked = d.portfolio;
+      calcCASA();
+    }
+    if (all.dps) {
+      const d = all.dps;
+      if (d.dps3k) document.getElementById('inp-dps-3k').value = d.dps3k;
+      if (d.dps5k) document.getElementById('inp-dps-5k').value = d.dps5k;
+      calcDPS();
+    }
+    if (all.fd) {
+      const d = all.fd;
+      if (d.fdAmt) document.getElementById('inp-fd-amount').value = d.fdAmt;
+      calcFDR();
+    }
+    if (all.bizpay && all.bizpay.count) {
+      document.getElementById('inp-bizpay').value = all.bizpay.count;
+      calcSimple('bizpay', all.bizpay.count, 3, 100);
+    }
+    if (all.borenno && all.borenno.count) {
+      document.getElementById('inp-borenno').value = all.borenno.count;
+      calcSimple('borenno', all.borenno.count, 5, 100);
+    }
+    if (all.astha && all.astha.count) {
+      document.getElementById('inp-astha').value = all.astha.count;
+      calcSimple('astha', all.astha.count, 2, 100);
+    }
+    if (all.insurance && all.insurance.count) {
+      document.getElementById('inp-ins-count').value = all.insurance.count;
+      calcInsurance();
+    }
+    if (all.smecasa) {
+      const d = all.smecasa;
+      if (d.chkSme)  { document.getElementById('chk-sme-casa').checked = d.chkSme; }
+      if (d.chkTara) { document.getElementById('chk-sme-tara').checked = d.chkTara; }
+      if (d.sme20k)  document.getElementById('sme-20k').value   = d.sme20k;
+      if (d.sme50k)  document.getElementById('sme-50k').value   = d.sme50k;
+      if (d.sme500k) document.getElementById('sme-500k').value  = d.sme500k;
+      if (d.tara20k) document.getElementById('tara-20k').value  = d.tara20k;
+      if (d.tara50k) document.getElementById('tara-50k').value  = d.tara50k;
+      if (d.tara500k)document.getElementById('tara-500k').value = d.tara500k;
+      calcSMECASA();
+    }
+  } catch(e) {}
+}
+
+
+// ── SAVE ALL KPI ──
+function saveAllKPI() {
+  // Trigger all calculations
+  calcCASA();
+  calcDPS();
+  calcFDR();
+  calcSimple('bizpay',  document.getElementById('inp-bizpay').value,    3, 100);
+  calcSimple('borenno', document.getElementById('inp-borenno').value,   5, 100);
+  calcSimple('astha',   document.getElementById('inp-astha').value,     2, 100);
+  calcInsurance();
+  calcSMECASA();
+
+  // Save all inputs
+  const data = {
+    casa: {
+      curSme:    document.getElementById('cur-sme').value,
+      curRetail: document.getElementById('cur-retail').value,
+      curCorp:   document.getElementById('cur-corp').value,
+      portfolio: document.getElementById('chk-portfolio').checked
+    },
+    dps: {
+      dps3k: document.getElementById('inp-dps-3k').value,
+      dps5k: document.getElementById('inp-dps-5k').value
+    },
+    fd:      { fdAmt:  document.getElementById('inp-fd-amount').value },
+    bizpay:  { count:  document.getElementById('inp-bizpay').value },
+    borenno: { count:  document.getElementById('inp-borenno').value },
+    astha:   { count:  document.getElementById('inp-astha').value },
+    insurance:{ count: document.getElementById('inp-ins-count').value },
+    smecasa: {
+      chkSme:   document.getElementById('chk-sme-casa').checked,
+      chkTara:  document.getElementById('chk-sme-tara').checked,
+      sme20k:   document.getElementById('sme-20k').value,
+      sme50k:   document.getElementById('sme-50k').value,
+      sme500k:  document.getElementById('sme-500k').value,
+      tara20k:  document.getElementById('tara-20k').value,
+      tara50k:  document.getElementById('tara-50k').value,
+      tara500k: document.getElementById('tara-500k').value
+    }
+  };
+
+  try {
+    localStorage.setItem('kpi_calc_inputs', JSON.stringify(data));
+  } catch(e) {}
+
+  // Show toast
+  const toast = document.getElementById('save-kpi-toast');
+  if (toast) {
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+  // Scroll to show toast
+  toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+</script>
+</body>
+</html>
