@@ -325,7 +325,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
     width:100%; padding:15px;
     background:var(--bb-gold);
     border:none; border-radius:12px;
-    color:var(--t1); font-family:'Inter',sans-serif; font-weight:700; font-size:.92rem;
+    color:#ffffff; font-family:'Inter',sans-serif; font-weight:700; font-size:.92rem;
     cursor:pointer; transition:background .15s;
     box-shadow:none;
   }
@@ -339,6 +339,42 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
     box-shadow:var(--sh);
   }
   .save-kpi-toast.show { display:flex; }
+
+
+  /* ── STEPPER CONTROL ── */
+  .stepper-group { margin-bottom:12px; }
+  .stepper-label {
+    display:flex; align-items:center; gap:7px;
+    font-size:.73rem; font-weight:600; color:var(--t2);
+    margin-bottom:6px;
+  }
+  .stepper-label .kcc-dot { flex-shrink:0; }
+  .stepper-label .kcc-badge { margin-left:auto; }
+  .stepper {
+    display:flex; align-items:center;
+    background:var(--white); border:1px solid var(--border);
+    border-radius:99px; overflow:hidden;
+    box-shadow:var(--sh); height:44px;
+  }
+  .stepper-btn {
+    width:52px; height:44px; border:none; background:transparent;
+    font-size:1.3rem; font-weight:300; color:var(--t2);
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    transition:background .12s, color .12s; flex-shrink:0;
+    font-family:'Inter',sans-serif; line-height:1;
+  }
+  .stepper-btn:hover { background:var(--surface); color:var(--bb-blue); }
+  .stepper-btn:active { background:var(--bb-blue-lt); }
+  .stepper-val {
+    flex:1; text-align:center;
+    font-size:1.15rem; font-weight:700; color:var(--t1);
+    font-family:'Inter',sans-serif;
+    border-left:1px solid var(--border); border-right:1px solid var(--border);
+    height:44px; line-height:44px;
+    cursor:default; user-select:none;
+  }
+  .stepper-btn.del { color:var(--t3); font-size:1rem; }
+  .stepper-btn.del:hover { background:var(--red-lt); color:var(--red); }
 
 </style>
 </head>
@@ -582,14 +618,33 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
       <div class="kcc-icon" style="background:var(--green-lt)">&#128176;</div>
       <div><div class="kcc-title">DPS Points</div><div class="kcc-sub">Threshold-based — per CIF 1 DPS counted</div></div>
     </div>
-    <div class="kcc-section-label"><span>&#128179; DPS Accounts</span><span class="kcc-section-hint">Highest value per CIF only</span></div>
-    <div class="kcc-row">
-      <div class="kcc-row-left"><span class="kcc-dot" style="background:#0aada9"></span><span class="kcc-row-name">DPS 3K to &lt;5K</span><span class="kcc-badge" style="background:#e3f7f7;color:#0aada9">0.5 pts each</span></div>
-      <input type="number" class="kcc-input" id="inp-dps-3k" placeholder="count" min="0" oninput="calcDPS()">
+    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:#0aada9"></span>
+        <span>DPS 3K to &lt;5K</span>
+        <span class="kcc-badge" style="background:#e3f7f7;color:#0aada9">0.5 pts</span>
+      </div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="inp-dps-3k" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="inp-dps-3k-val" data-key="calcDPS" data-sid="inp-dps-3k" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="inp-dps-3k" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
     </div>
-    <div class="kcc-row">
-      <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--green)"></span><span class="kcc-row-name">DPS 5K and above</span><span class="kcc-badge" style="background:var(--green-lt);color:var(--green)">1 pt each</span></div>
-      <input type="number" class="kcc-input" id="inp-dps-5k" placeholder="count" min="0" oninput="calcDPS()">
+    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:var(--green)"></span>
+        <span>DPS 5K and above</span>
+        <span class="kcc-badge" style="background:var(--green-lt);color:var(--green)">1 pt</span>
+      </div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="inp-dps-5k" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="inp-dps-5k-val" data-key="calcDPS" data-sid="inp-dps-5k" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="inp-dps-5k" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
     </div>
     <div class="kcc-result" id="dps-result">
       <div class="kcc-result-left"><div class="kcc-result-label">DPS Points</div><div class="kcc-result-score" id="dps-result-score">—</div></div>
@@ -605,9 +660,17 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
       <div class="kcc-icon" style="background:var(--red-lt)">&#128179;</div>
       <div><div class="kcc-title">Bizpay / Corpnet Points</div><div class="kcc-sub">3 pts per onboarded account</div></div>
     </div>
-    <div class="kcc-direct-row">
-      <input type="number" class="kcc-direct-input" id="inp-bizpay" placeholder="0" min="0" oninput="calcSimple('bizpay',this.value,3,100)">
-      
+    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:var(--red)"></span>
+        <span>Onboarded Accounts</span>
+        <span class="kcc-badge" style="background:var(--red-lt);color:var(--red)">3 pts each</span>
+      </div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="inp-bizpay" data-d="-1" onclick="stepSet(this)" title="Decrease">&#8722;</button>
+        <div class="stepper-val" id="inp-bizpay-val" data-key="bizpay" data-sid="inp-bizpay" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="inp-bizpay" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
     </div>
     <div class="kcc-direct-bar"><div class="kcc-direct-fill" id="fill-bizpay" style="width:0%;background:var(--red)"></div></div>
     <div class="kcc-result" id="bizpay-result">
@@ -622,11 +685,20 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
       <div class="kcc-icon" style="background:#f0ecfd">&#127970;</div>
       <div><div class="kcc-title">Borenno Points</div><div class="kcc-sub">5 pts per newly onboarded account</div></div>
     </div>
-    <div class="kcc-direct-row">
-      <input type="number" class="kcc-direct-input" id="inp-borenno" placeholder="0" min="0" oninput="calcSimple('borenno',this.value,5,100)">
-      
+    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:#7254e0"></span>
+        <span>Onboarded Accounts</span>
+        <span class="kcc-badge" style="background:#f0ecfd;color:#7254e0">5 pts each</span>
+      </div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="inp-borenno" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="inp-borenno-val" data-key="borenno" data-sid="inp-borenno" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="inp-borenno" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
     </div>
-    <div class="kcc-direct-bar"><div class="kcc-direct-fill" id="fill-borenno" style="width:0%;background:#7254e0"></div></div>
     <div class="kcc-result" id="borenno-result">
       <div class="kcc-result-left"><div class="kcc-result-label">Borenno Points</div><div class="kcc-result-score" id="borenno-result-score">—</div></div>
       <div class="kcc-result-right" id="borenno-result-bd"></div>
@@ -639,11 +711,20 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
       <div class="kcc-icon" style="background:var(--green-lt)">&#128241;</div>
       <div><div class="kcc-title">Astha Points</div><div class="kcc-sub">2 pts per onboarded account</div></div>
     </div>
-    <div class="kcc-direct-row">
-      <input type="number" class="kcc-direct-input" id="inp-astha" placeholder="0" min="0" oninput="calcSimple('astha',this.value,2,100)">
-      
+    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:var(--green)"></span>
+        <span>Onboarded Accounts</span>
+        <span class="kcc-badge" style="background:var(--green-lt);color:var(--green)">2 pts each</span>
+      </div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="inp-astha" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="inp-astha-val" data-key="astha" data-sid="inp-astha" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="inp-astha" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
     </div>
-    <div class="kcc-direct-bar"><div class="kcc-direct-fill" id="fill-astha" style="width:0%;background:var(--green)"></div></div>
     <div class="kcc-result" id="astha-result">
       <div class="kcc-result-left"><div class="kcc-result-label">Astha Points</div><div class="kcc-result-score" id="astha-result-score">—</div></div>
       <div class="kcc-result-right" id="astha-result-bd"></div>
@@ -661,39 +742,96 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
       <span class="check-row-text">SME CASA Opening</span>
     </label>
     <div id="sme-casa-inputs" style="display:none">
-      <div class="kcc-section-label"><span>&#127970; SME CASA</span><span class="kcc-section-hint">Month-end EOP balance</span></div>
-      <div class="kcc-row">
-        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-blue)"></span><span class="kcc-row-name">EOP 20K+ accounts</span><span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">2 pts</span></div>
-        <input type="number" class="kcc-input" id="sme-20k" placeholder="count" min="0" oninput="calcSMECASA()">
+      <div class="kcc-section-label"><span>&#127970; SME CASA</span></div>
+    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:var(--bb-blue)"></span>
+        <span>EOP 20K+ accounts</span>
+        <span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">2 pts</span>
       </div>
-      <div class="kcc-row">
-        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-blue)"></span><span class="kcc-row-name">EOP 50K+ accounts</span><span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">3 pts</span></div>
-        <input type="number" class="kcc-input" id="sme-50k" placeholder="count" min="0" oninput="calcSMECASA()">
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="sme-20k" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="sme-20k-val" data-key="calcSMECASA" data-sid="sme-20k" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="sme-20k" data-d="1" onclick="stepSet(this)">+</button>
       </div>
-      <div class="kcc-row">
-        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-blue)"></span><span class="kcc-row-name">EOP 500K+ accounts</span><span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">5 pts</span></div>
-        <input type="number" class="kcc-input" id="sme-500k" placeholder="count" min="0" oninput="calcSMECASA()">
+    </div>    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:var(--bb-blue)"></span>
+        <span>EOP 50K+ accounts</span>
+        <span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">3 pts</span>
       </div>
-      <div class="kcc-divider"></div>
-      <div class="kcc-section-label"><span>&#127970; SME TARA CASA</span><span class="kcc-section-hint">Month-end EOP balance</span></div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="sme-50k" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="sme-50k-val" data-key="calcSMECASA" data-sid="sme-50k" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="sme-50k" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
+    </div>    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:var(--bb-blue)"></span>
+        <span>EOP 500K+ accounts</span>
+        <span class="kcc-badge" style="background:var(--bb-blue-lt);color:var(--bb-blue)">5 pts</span>
+      </div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="sme-500k" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="sme-500k-val" data-key="calcSMECASA" data-sid="sme-500k" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="sme-500k" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
     </div>
-    <label class="check-row" style="margin-bottom:12px">
+      <div class="kcc-divider"></div>
+    </div>
+    <div class="kcc-divider"></div>
+    <label class="check-row" style="margin-bottom:0">
       <input type="checkbox" id="chk-sme-tara" onchange="calcSMECASA()">
       <span class="check-row-text">SME TARA CASA Opening</span>
     </label>
-    <div id="sme-tara-inputs" style="display:none">
-      <div class="kcc-row">
-        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-gold-dk)"></span><span class="kcc-row-name">EOP 20K+ accounts</span><span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">3 pts</span></div>
-        <input type="number" class="kcc-input" id="tara-20k" placeholder="count" min="0" oninput="calcSMECASA()">
+    <div id="sme-tara-inputs" style="display:none;margin-top:10px">
+      <div class="kcc-section-label"><span>&#127970; SME TARA CASA</span></div>
+    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:var(--bb-gold-dk)"></span>
+        <span>EOP 20K+ accounts</span>
+        <span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">3 pts</span>
       </div>
-      <div class="kcc-row">
-        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-gold-dk)"></span><span class="kcc-row-name">EOP 50K+ accounts</span><span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">4 pts</span></div>
-        <input type="number" class="kcc-input" id="tara-50k" placeholder="count" min="0" oninput="calcSMECASA()">
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="tara-20k" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="tara-20k-val" data-key="calcSMECASA" data-sid="tara-20k" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="tara-20k" data-d="1" onclick="stepSet(this)">+</button>
       </div>
-      <div class="kcc-row">
-        <div class="kcc-row-left"><span class="kcc-dot" style="background:var(--bb-gold-dk)"></span><span class="kcc-row-name">EOP 500K+ accounts</span><span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">6 pts</span></div>
-        <input type="number" class="kcc-input" id="tara-500k" placeholder="count" min="0" oninput="calcSMECASA()">
+    </div>    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:var(--bb-gold-dk)"></span>
+        <span>EOP 50K+ accounts</span>
+        <span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">4 pts</span>
       </div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="tara-50k" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="tara-50k-val" data-key="calcSMECASA" data-sid="tara-50k" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="tara-50k" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
+    </div>    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:var(--bb-gold-dk)"></span>
+        <span>EOP 500K+ accounts</span>
+        <span class="kcc-badge" style="background:var(--bb-gold-lt);color:var(--bb-gold-dk)">6 pts</span>
+      </div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="tara-500k" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="tara-500k-val" data-key="calcSMECASA" data-sid="tara-500k" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="tara-500k" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
+    </div>
     </div>
     <div class="kcc-result" id="smecasa-result">
       <div class="kcc-result-left"><div class="kcc-result-label">SME CASA Points</div><div class="kcc-result-score" id="smecasa-result-score">—</div></div>
@@ -709,9 +847,19 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
       <div><div class="kcc-title">Bancassurance Points</div><div class="kcc-sub">3 pts per policy — max 15 pts</div></div>
     </div>
     <div class="kcc-section-label"><span>New Insurance Policies</span><span class="kcc-section-hint">3 pts each · max 5</span></div>
-    <div class="kcc-row">
-      <div class="kcc-row-left"><span class="kcc-dot" style="background:#7254e0"></span><span class="kcc-row-name">Number of New Policies</span><span class="kcc-badge" style="background:#f0ecfd;color:#7254e0">3 pts/policy</span></div>
-      <input type="number" class="kcc-input" id="inp-ins-count" placeholder="0-5" min="0" max="5" oninput="calcInsurance()">
+    <div class="stepper-group">
+      <div class="stepper-label">
+        <span class="kcc-dot" style="background:#7254e0"></span>
+        <span>New Policies (max 5)</span>
+        <span class="kcc-badge" style="background:#f0ecfd;color:#7254e0">3 pts each</span>
+      </div>
+      <div class="stepper">
+        <button class="stepper-btn del" data-sid="inp-ins-count" data-d="-1" onclick="stepSet(this)" title="Clear">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="2" y="6" width="10" height="2" rx="1" fill="currentColor"/></svg>
+        </button>
+        <div class="stepper-val" id="inp-ins-count-val" data-key="calcInsurance" data-sid="inp-ins-count" contenteditable="true" oninput="stepEdit(this)" inputmode="numeric" style="outline:none;cursor:text;min-width:30px">0</div>
+        <button class="stepper-btn" data-sid="inp-ins-count" data-d="1" onclick="stepSet(this)">+</button>
+      </div>
     </div>
     <div class="kcc-result" id="ins-result">
       <div class="kcc-result-left"><div class="kcc-result-label">Bancassurance Points</div><div class="kcc-result-score" id="ins-result-score">—</div></div>
@@ -1219,7 +1367,7 @@ function updateDashboardTotals() {
       ? "linear-gradient(90deg,var(--bb-blue),#06b6d4,var(--red))"
       : "linear-gradient(90deg,var(--bb-blue),#06b6d4,var(--green))";
   }
-  if (usedPts)    usedPts.textContent    = rawNF+" pts used";
+  if (usedPts)    usedPts.textContent    = rawNF+" pts achieved";
   if (maxPts)     maxPts.textContent     = nfCap>0 ? "limit: "+nfCap+" pts" : "limit: —";
 
   const total = Math.round((casaPts+dpsPts+fdPts+insPts+cappedNF+bonusPts)*10)/10;
@@ -1329,14 +1477,14 @@ function calcCASA() {
 
 // ── DPS ──
 function calcDPS() {
-  const c3k=parseInt(document.getElementById("inp-dps-3k").value)||0;
-  const c5k=parseInt(document.getElementById("inp-dps-5k").value)||0;
-  const any=document.getElementById("inp-dps-3k").value||document.getElementById("inp-dps-5k").value;
+  const c3k = parseInt(stepVal('inp-dps-3k'))||0;
+  const c5k = parseInt(stepVal('inp-dps-5k'))||0;
+  const any = (c3k > 0 || c5k > 0);
   const pts3=c3k*0.5, pts5=c5k*1;
   const total=Math.round((pts3+pts5)*10)/10;
   const sc=document.getElementById("dps-result-score");
   const bd=document.getElementById("dps-result-breakdown");
-  if (!any){sc.textContent="—";bd.innerHTML="";syncDash("dps",0,20);updateDashboardTotals();return;}
+  if (!any){sc.textContent="—";sc.className="kcc-result-score";bd.innerHTML="";syncDash("dps",0,20);updateDashboardTotals();return;}
   sc.textContent=total+" pts";sc.className="kcc-result-score"+(total===0?" zero":"");
   bd.innerHTML="<div class='kcc-bd-row'><span>3K-5K ("+c3k+" x 0.5)</span><span class='"+(pts3>0?"bd-pos":"bd-zero")+"'>"+pts3+" pts</span></div>"+
     "<div class='kcc-bd-row'><span>5K+ ("+c5k+" x 1)</span><span class='"+(pts5>0?"bd-pos":"bd-zero")+"'>"+pts5+" pts</span></div>"+
@@ -1361,9 +1509,9 @@ function calcFDR() {
 
 // ── INSURANCE ──
 function calcInsurance() {
-  const count=Math.max(0,parseInt(document.getElementById("inp-ins-count").value)||0);
+  const count=Math.max(0,parseInt(((document.getElementById("inp-ins-count-val")||{}).textContent||document.getElementById("inp-ins-count").value))||0);
   const pts=Math.min(15,count*3);
-  const any=document.getElementById("inp-ins-count").value;
+  const any=((document.getElementById("inp-ins-count-val")||{}).textContent||document.getElementById("inp-ins-count").value);
   const sc=document.getElementById("ins-result-score");
   const bd=document.getElementById("ins-result-breakdown");
   if (!any){sc.textContent="—";bd.innerHTML="";syncDash("insurance",0,15);updateDashboardTotals();return;}
@@ -1396,7 +1544,10 @@ function calcSMECASA() {
   const chkTARA=document.getElementById("chk-sme-tara").checked;
   document.getElementById("sme-casa-inputs").style.display=chkSME?"block":"none";
   document.getElementById("sme-tara-inputs").style.display=chkTARA?"block":"none";
-  const g=id=>parseInt(document.getElementById(id).value)||0;
+  // Reset values when unchecked
+  if (!chkSME) { ["sme-20k","sme-50k","sme-500k"].forEach(id=>{ const e=document.getElementById(id+"-val"); if(e) e.textContent="0"; }); }
+  if (!chkTARA) { ["tara-20k","tara-50k","tara-500k"].forEach(id=>{ const e=document.getElementById(id+"-val"); if(e) e.textContent="0"; }); }
+  const g=id=>stepVal(id);
   const smePts  = chkSME  ? g("sme-20k")*2  + g("sme-50k")*3  + g("sme-500k")*5  : 0;
   const taraPts = chkTARA ? g("tara-20k")*3 + g("tara-50k")*4 + g("tara-500k")*6 : 0;
   const total=smePts+taraPts;
@@ -1420,7 +1571,7 @@ function loadAllPts() {
     if (s.bizpay!==undefined){document.getElementById("inp-bizpay").value=Math.round(s.bizpay/3);calcSimple("bizpay",Math.round(s.bizpay/3),3,100);}
     if (s.borenno!==undefined){document.getElementById("inp-borenno").value=Math.round(s.borenno/5);calcSimple("borenno",Math.round(s.borenno/5),5,100);}
     if (s.astha!==undefined){document.getElementById("inp-astha").value=Math.round(s.astha/2);calcSimple("astha",Math.round(s.astha/2),2,100);}
-    if (s.insurance!==undefined){document.getElementById("inp-ins-count").value=Math.round(s.insurance/3);calcInsurance();}
+    if (s.insurance!==undefined){const el_ins=document.getElementById('inp-ins-count-val');if(el_ins)el_ins.textContent=Math.round(s.insurance/3);calcInsurance();}
   } catch(e){}
 }
 
@@ -1481,8 +1632,8 @@ function restoreCalcInputs() {
     }
     if (all.dps) {
       const d = all.dps;
-      if (d.dps3k) document.getElementById('inp-dps-3k').value = d.dps3k;
-      if (d.dps5k) document.getElementById('inp-dps-5k').value = d.dps5k;
+      if (d.dps3k) { const e=document.getElementById('inp-dps-3k-val'); if(e) e.textContent=d.dps3k; }
+      if (d.dps5k) { const e=document.getElementById('inp-dps-5k-val'); if(e) e.textContent=d.dps5k; }
       calcDPS();
     }
     if (all.fd) {
@@ -1528,9 +1679,9 @@ function saveAllKPI() {
   calcCASA();
   calcDPS();
   calcFDR();
-  calcSimple('bizpay',  document.getElementById('inp-bizpay').value,    3, 100);
-  calcSimple('borenno', document.getElementById('inp-borenno').value,   5, 100);
-  calcSimple('astha',   document.getElementById('inp-astha').value,     2, 100);
+  calcSimple('bizpay',  stepVal('inp-bizpay'),  3, 100);
+  calcSimple('borenno', stepVal('inp-borenno'), 5, 100);
+  calcSimple('astha',   stepVal('inp-astha'),   2, 100);
   calcInsurance();
   calcSMECASA();
 
@@ -1543,8 +1694,8 @@ function saveAllKPI() {
       portfolio: document.getElementById('chk-portfolio').checked
     },
     dps: {
-      dps3k: document.getElementById('inp-dps-3k').value,
-      dps5k: document.getElementById('inp-dps-5k').value
+      dps3k: stepVal('inp-dps-3k'),
+      dps5k: stepVal('inp-dps-5k')
     },
     fd:      { fdAmt:  document.getElementById('inp-fd-amount').value },
     bizpay:  { count:  document.getElementById('inp-bizpay').value },
@@ -1575,6 +1726,61 @@ function saveAllKPI() {
   }
   // Scroll to show toast
   toast.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+
+// ── STEPPER ──
+function stepVal(id) {
+  const el = document.getElementById(id+'-val');
+  if (!el) return 0;
+  return parseInt(el.textContent.replace(/[^0-9]/g,''))||0;
+}
+function stepSet(btn) {
+  var delta = parseInt(btn.getAttribute('data-d'));
+  var sid   = btn.getAttribute('data-sid');
+  var valEl = document.getElementById(sid+'-val');
+  if (!valEl) return;
+  var val = parseInt(valEl.textContent)||0;
+  val = Math.max(0, val + delta);
+  if (sid === 'inp-ins-count') val = Math.min(5, val);
+  valEl.textContent = val;
+  var inp = document.getElementById(sid);
+  if (inp) inp.value = val;
+  var key = valEl.getAttribute('data-key') || '';
+  if (key === 'calcDPS') calcDPS();
+  else if (key === 'calcSMECASA') calcSMECASA();
+  else if (key === 'calcInsurance') calcInsurance();
+  else if (key === 'bizpay') calcSimple('bizpay', val, 3, 100);
+  else if (key === 'borenno') calcSimple('borenno', val, 5, 100);
+  else if (key === 'astha') calcSimple('astha', val, 2, 100);
+}
+
+
+function stepEdit(el) {
+  // Clean non-numeric input
+  const raw = el.textContent.replace(/[^0-9]/g,'');
+  const sid = el.getAttribute('data-sid');
+  let val = parseInt(raw)||0;
+  if (sid === 'inp-ins-count') val = Math.min(5, val);
+  if (el.textContent !== String(val)) {
+    el.textContent = val;
+    // Move cursor to end
+    const range = document.createRange();
+    const sel = window.getSelection();
+    range.selectNodeContents(el);
+    range.collapse(false);
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+  var inp = document.getElementById(sid);
+  if (inp) inp.value = val;
+  var key = el.getAttribute('data-key') || '';
+  if (key === 'calcDPS') calcDPS();
+  else if (key === 'calcSMECASA') calcSMECASA();
+  else if (key === 'calcInsurance') calcInsurance();
+  else if (key === 'bizpay') calcSimple('bizpay', val, 3, 100);
+  else if (key === 'borenno') calcSimple('borenno', val, 5, 100);
+  else if (key === 'astha') calcSimple('astha', val, 2, 100);
 }
 
 </script>
