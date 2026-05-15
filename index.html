@@ -886,7 +886,7 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
     <div class="stepper-group">
       <div class="stepper-label">
         <span class="kcc-dot" style="background:#7254e0"></span>
-        <span>New Policies (max 5)</span>
+        <span>New Policies</span>
         <span class="kcc-badge" style="background:#f0ecfd;color:#7254e0">3 pts each</span>
       </div>
       <div class="stepper">
@@ -1617,7 +1617,7 @@ function calcFDR() {
 // ── INSURANCE ──
 function calcInsurance() {
   const count=Math.max(0,parseInt(((document.getElementById("inp-ins-count-val")||{}).textContent||document.getElementById("inp-ins-count").value))||0);
-  const pts=Math.min(15,count*3);
+  const pts=Math.min(15,count*3); // points capped at 15 regardless of count
   const any=((document.getElementById("inp-ins-count-val")||{}).textContent||document.getElementById("inp-ins-count").value);
   const sc=document.getElementById("ins-result-score");
   const bd=document.getElementById("ins-result-breakdown");
@@ -1850,7 +1850,6 @@ function stepSet(btn) {
   if (!valEl) return;
   var val = parseInt(valEl.textContent)||0;
   val = Math.max(0, val + delta);
-  if (sid === 'inp-ins-count') val = Math.min(5, val);
   valEl.textContent = val;
   var inp = document.getElementById(sid);
   if (inp) inp.value = val;
@@ -1870,7 +1869,6 @@ function stepEdit(el) {
   const raw = el.textContent.replace(/[^0-9]/g,'');
   const sid = el.getAttribute('data-sid');
   let val = parseInt(raw)||0;
-  if (sid === 'inp-ins-count') val = Math.min(5, val);
   if (el.textContent !== String(val)) {
     el.textContent = val;
     // Move cursor to end
