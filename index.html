@@ -448,6 +448,144 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
 
   
 
+
+  /* ── ASK ME POLICY CHATBOT ── */
+  .chat-fab {
+    position:fixed; bottom:88px; right:14px; z-index:500;
+    width:58px; height:58px; border-radius:50%;
+    background:linear-gradient(145deg, var(--bb-blue), var(--bb-blue-dk));
+    border:2.5px solid var(--bb-gold);
+    cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,108,182,.4), 0 1px 0 rgba(255,255,255,.2) inset;
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .18s, box-shadow .18s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .chat-fab:active { transform:scale(.9); box-shadow:0 2px 8px rgba(0,108,182,.3); }
+  .chat-modal {
+    position:fixed; top:0; left:0; right:0; bottom:0;
+    z-index:10000; display:flex; flex-direction:column;
+    background:#f0f4f8;
+    transform:translateY(100%);
+    transition:transform .35s cubic-bezier(.32,.72,0,1);
+    overflow:hidden;
+    /* Prevent any shrinking */
+    min-height: -webkit-fill-available;
+  }
+  .chat-modal.open { transform:translateY(0); }
+  .chat-header {
+    position:absolute; top:0; left:0; right:0;
+    background:var(--bb-blue); border-bottom:3px solid var(--bb-gold);
+    padding:14px 16px; display:flex; align-items:center; gap:12px;
+    z-index:20; min-height:68px; box-sizing:border-box;
+  }
+  .chat-body-wrap {
+    position:absolute; top:68px; left:0; right:0; bottom:0;
+    display:flex; flex-direction:column; overflow:hidden;
+  }
+  .chat-header-icon {
+    width:38px; height:38px; border-radius:50%;
+    background:rgba(255,255,255,.15); display:flex;
+    align-items:center; justify-content:center; font-size:1.2rem;
+    flex-shrink:0;
+  }
+  .chat-header-text { flex:1; }
+  .chat-header-title { font-size:.9rem; font-weight:700; color:#fff; }
+  .chat-header-sub { font-size:.65rem; color:rgba(255,255,255,.7); margin-top:1px; }
+  .chat-close {
+    width:32px; height:32px; border-radius:50%; border:none;
+    background:rgba(255,255,255,.15); color:#fff; font-size:1rem;
+    cursor:pointer; display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .chat-messages {
+    flex:1; overflow-y:auto; padding:12px 14px 8px;
+    display:flex; flex-direction:column; gap:6px;
+    overscroll-behavior:contain; -webkit-overflow-scrolling:touch;
+    background:#f0f4f8;
+  }
+  .chat-bubble {
+    max-width:80%; padding:10px 13px; border-radius:18px;
+    font-size:.82rem; line-height:1.65; animation:up .18s ease both;
+    word-break:break-word; white-space:pre-line;
+  }
+  .chat-bubble.bot {
+    background:#ffffff; color:var(--t1);
+    border-bottom-left-radius:5px; align-self:flex-start;
+    box-shadow:0 1px 3px rgba(0,0,0,.1);
+  }
+  .chat-bubble.user {
+    background:var(--bb-blue); color:#fff;
+    border-bottom-right-radius:5px; align-self:flex-end;
+    box-shadow:0 1px 4px rgba(0,108,182,.3);
+  }
+  .chat-bubble.thinking {
+    background:#fff; align-self:flex-start;
+    box-shadow:0 1px 3px rgba(0,0,0,.1);
+    padding:12px 16px;
+  }
+  /* Timestamp-style name above bot bubble */
+  .chat-bot-label {
+    font-size:.6rem; color:var(--t3); font-weight:600;
+    margin-bottom:2px; padding-left:4px; align-self:flex-start;
+  }
+  .chat-typing { display:flex; gap:4px; align-items:center; }
+  .chat-typing span {
+    width:7px; height:7px; border-radius:50%; background:var(--t3);
+    animation:chatbounce .9s ease-in-out infinite;
+  }
+  .chat-typing span:nth-child(2) { animation-delay:.15s; }
+  .chat-typing span:nth-child(3) { animation-delay:.3s; }
+  @keyframes chatbounce { 0%,80%,100%{transform:scale(.6);opacity:.5} 40%{transform:scale(1);opacity:1} }
+  .chat-footer {
+    flex-shrink:0;
+    display:flex; align-items:center; gap:8px;
+    padding:10px 12px;
+    padding-bottom:max(14px, env(safe-area-inset-bottom));
+    background:#e8edf2;
+    border-top:1px solid rgba(0,0,0,.1);
+    min-height:64px;
+  }
+  .chat-input {
+    flex:1;
+    min-height:44px; height:44px; max-height:120px;
+    background:#fff; border:none; outline:none;
+    border-radius:22px;
+    padding:11px 16px;
+    color:var(--t1); font-family:'Inter',sans-serif;
+    font-size:.88rem; line-height:1.4; resize:none;
+    overflow-y:hidden;
+    box-shadow:0 1px 4px rgba(0,0,0,.14);
+    box-sizing:border-box;
+    -webkit-appearance:none;
+    display:block; width:auto;
+  }
+  .chat-input::placeholder { color:#aab3bc; }
+  .chat-send {
+    width:44px; height:44px; min-width:44px; border-radius:50%; border:none;
+    background:var(--bb-blue); color:#fff; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; transition:all .18s;
+    box-shadow:0 2px 8px rgba(0,108,182,.35);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .chat-send:active { transform:scale(.88); opacity:.85; }
+  .chat-send:disabled { background:#c8d8e8; box-shadow:none; }
+  .chat-suggestions {
+    display:flex; gap:6px; flex-wrap:wrap;
+    padding:8px 12px 4px; flex-shrink:0;
+    background:#e8edf2;
+    border-top:1px solid rgba(0,0,0,.06);
+  }
+  .chat-chip {
+    font-size:.7rem; font-weight:500; padding:5px 11px;
+    border-radius:99px; border:1px solid var(--bb-blue-mid);
+    background:var(--bb-blue-lt); color:var(--bb-blue);
+    cursor:pointer; white-space:nowrap; transition:background .14s;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .chat-chip:active { background:var(--bb-blue); color:#fff; }
+
 </style>
 </head>
 <body>
@@ -1906,6 +2044,288 @@ function handleESAUTap() {
   switchESAU(currentESAU === 'sme' ? 'retail' : 'sme');
 }
 
+
+// ── ASK ME POLICY CHATBOT ──
+var chatHistory = [];
+var _UNUSED_SYSTEM = "You are Ask Me Policy, a friendly KPI assistant for BRAC Bank SMEL employees. Answer questions about their KPI system clearly and concisely.\n\nESAU RATINGS: E>=130%, S>=100%, A>=60%, U<60%\nTARGETS(pts): RO Urban=100(S), Semi-Urban=80(S), Rural=75(S). RE Urban=80(S), Semi-Urban=70(S), Rural=60(S). E=130% of S, A=60% of S.\nCASA: SME growth/lac x5pts, Retail/lac x3pts, Corporate/lac x3pts. Only if net growth>0. +10pts if CASA:TD>=60% and portfolio>=BDT10M.\nDPS: 3K-5K=0.5pts, 5K+=1pt (per CIF highest only)\nFDR: 0.25pts/lac, fresh funds, min 3 months, no cannibalization\nBIZPAY/CORPNET: 3pts/account. BORENNO: 5pts/account (1 month later, 25L avg balance). ASTHA: 2pts/account. Min BDT1000 per transaction, no TopUp.\nSME CASA: EOP 20K+=2pts, 50K+=3pts, 500K+=5pts. TARA CASA: 20K+=3pts, 50K+=4pts, 500K+=6pts.\nBANCASSURANCE: 3pts/policy, max 15pts.\nNON-FUNDED CAP: RO=25% of A-rating, RE=50% of A-rating.\nCOMMISSION(BDT): CASA E=200,S=180,A=150. DPS E=180,S=150,A=120. FDR 3-5m E=73,S=58,A=48; 6-11m E=163,S=130,A=105; 12m+ E=215,S=170,A=140. Bizpay E=65,S=50,A=20. Borenno E=120,S=100,A=70. Astha E=65,S=50,A=20.\nMAX INCENTIVE: CASA=120K, FDR=50K, Total=200K. Female staff +25%.\nMOBILE/CONVEYANCE: RO/RE E=2500,S=1500. BDM E=5000,S=3000,A=2000.\nNET GROWTH DEDUCTION: 100%=0% deducted, 75%=25%, 50%=50%, <50%=75%.\nKeep answers short and clear.";
+
+function openChat() {
+  haptic('light');
+  document.getElementById('chat-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  if (chatHistory.length === 0 && document.getElementById('chat-messages').children.length === 0) {
+    var savedName = '';
+    try { var sp = JSON.parse(localStorage.getItem('kpi_profile')||'{}'); savedName = sp.name ? sp.name.split(' ')[0] : ''; } catch(e) {}
+    var greeting = savedName ? "👋 Hi " + savedName + "! I'm KPI Master — your KPI policy assistant. Ask anything about points, commissions, ratings or policy rules!" : "👋 Hi! I'm KPI Master — your KPI policy assistant. Ask anything about points, commissions, ratings or policy rules!";
+    addBotMsg(greeting);
+  }
+  setTimeout(function(){
+    var el=document.getElementById('chat-input');
+    if(el) el.focus();
+    var msgs=document.getElementById('chat-messages');
+    if(msgs) msgs.scrollTop=msgs.scrollHeight;
+  }, 300);
+  // Scroll messages when keyboard appears
+  window.addEventListener('resize', scrollChatToBottom);
+}
+function scrollChatToBottom() {
+  var msgs=document.getElementById('chat-messages');
+  if(msgs) msgs.scrollTop=msgs.scrollHeight;
+}
+function closeChat() {
+  haptic('light');
+  document.getElementById('chat-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  window.removeEventListener('resize', scrollChatToBottom);
+}
+function addBotMsg(text) {
+  var msgs=document.getElementById('chat-messages');
+  var div=document.createElement('div');
+  div.className='chat-bubble bot';
+  div.textContent=text;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function addUserMsg(text) {
+  var msgs=document.getElementById('chat-messages');
+  var div=document.createElement('div');
+  div.className='chat-bubble user';
+  div.textContent=text;
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function addThinking() {
+  var msgs=document.getElementById('chat-messages');
+  var div=document.createElement('div');
+  div.className='chat-bubble thinking';
+  div.id='chat-thinking';
+  div.innerHTML='<div class="chat-typing"><span></span><span></span><span></span></div>';
+  msgs.appendChild(div);
+  msgs.scrollTop=msgs.scrollHeight;
+}
+function removeThinking() {
+  var t=document.getElementById('chat-thinking');
+  if(t) t.remove();
+}
+function sendSuggestion(chip) {
+  haptic('light');
+  var text=chip.textContent;
+  var sg=document.getElementById('chat-suggestions'); if(sg) sg.style.display='none';
+  sendMessage(text);
+}
+function sendChat() {
+  var input=document.getElementById('chat-input');
+  var text=input.value.trim();
+  if(!text) return;
+  haptic('light');
+  input.value='';
+  var sg=document.getElementById('chat-suggestions'); if(sg) sg.style.display='none';
+  sendMessage(text);
+}
+function sendMessage(text) {
+  addUserMsg(text);
+  var btn=document.getElementById('chat-send-btn');
+  if(btn) btn.disabled=true;
+  addThinking();
+  // Simulate thinking delay then answer locally
+  setTimeout(function() {
+    removeThinking();
+    var reply = getKPIAnswer(text.toLowerCase());
+    addBotMsg(reply);
+    if(btn) btn.disabled=false;
+    // Keep input visible
+    var inp=document.getElementById('chat-input'); if(inp) inp.focus();
+  }, 600);
+}
+
+function getKPIAnswer(q) {
+  // CASA
+  if (q.match(/casa.*(point|pts|calc|how|earn)/)||q.match(/point.*(casa)/)||q==='casa points?') {
+    return "📊 CASA Points:\n• SME (Non-individual): Growth ÷ 1 lac × 5 pts\n• Retail (Individual): Growth ÷ 1 lac × 3 pts\n• Corporate (Non-individual): Growth ÷ 1 lac × 3 pts\n\nOnly counted if overall net CASA growth > 0.\n\n+10 Bonus pts if CASA:TD ratio ≥ 60% and portfolio ≥ BDT 10M.";
+  }
+  // FDR Commission
+  if (q.match(/fdr.*(comm|rate|earn|bdt|money)/)||q.match(/commission.*(fdr|fd|fixed)/)||q==='fdr commission?') {
+    return "💰 FDR Commission (BDT per point):\n\n3-5 Months:\nE=73, S=58, A=48\n\n6-11 Months:\nE=163, S=130, A=105\n\n12 Months+:\nE=215, S=170, A=140\n\nMax FDR incentive: BDT 50,000";
+  }
+  // FDR Points
+  if (q.match(/fdr.*(point|pts|calc)/)||q.match(/fixed.*(deposit|point)/)) {
+    return "📅 Fixed Deposit Points:\n0.25 pts per lac\n\nFresh funds only — no cannibalization.\nMinimum 3 month tenure required.\n\nFormula: FD Amount (in lacs) × 0.25";
+  }
+  // Non-funded cap
+  if (q.match(/non.?fund|nf.?cap|cap.*(non|fund)/)||q==='non-funded cap?') {
+    return "⚠️ Non-Funded Cap:\n• RO: max = 25% of A-rating target (rounded up)\n• RE: max = 50% of A-rating target\n• No cap for RE in first 6 months of joining\n\nNon-funded categories:\nBizpay/Corpnet, Borenno, Astha, SME CASA Opening";
+  }
+  // Borenno
+  if (q.match(/borenno/)||q==="borenno policy?") {
+    return "🏢 Borenno Points:\n5 pts per newly onboarded account\n\n⚠️ Note: Points awarded 1 month AFTER onboarding. The account must maintain 25 Lac average balance in the following month.\n\nCommission: E=BDT 120, S=BDT 100, A=BDT 70";
+  }
+  // Astha
+  if (q.match(/astha/)) {
+    return "📱 Astha Points:\n2 pts per onboarded account\n\nMin transaction: BDT 1,000\nNo TopUp or Mobile Recharge counts.\n\nCommission: E=BDT 65, S=BDT 50, A=BDT 20";
+  }
+  // Bizpay / Corpnet
+  if (q.match(/bizpay|corpnet/)) {
+    return "💳 Bizpay / Corpnet Points:\n3 pts per onboarded account\n\nMin transaction: BDT 1,000\nNo TopUp or Mobile Recharge counts.\n\nCommission: E=BDT 65, S=BDT 50, A=BDT 20";
+  }
+  // DPS
+  if (q.match(/dps.*(point|pts|calc|how)/)||q.match(/point.*(dps)/)) {
+    return "💰 DPS Points:\n• DPS 3K to <5K: 0.5 pts each\n• DPS 5K and above: 1 pt each\n\nPer CIF: only the highest value DPS is counted.";
+  }
+  // ESAU / Rating
+  if (q.match(/esau|rating|e rating|s rating|a rating|u rating|excel|satis|accept|unac/)) {
+    return "⭐ ESAU Rating Model:\n• E (Excellent): ≥ 130% of target\n• S (Satisfactory): ≥ 100% of target\n• A (Acceptable): ≥ 60% of target\n• U (Unacceptable): < 60% of target";
+  }
+  // Target / Monthly target
+  if (q.match(/target|monthly target|point target/)) {
+    return "🎯 Monthly Targets (S = 100%):\n\nRO:\nUrban = 100 pts\nSemi-Urban = 80 pts\nRural = 75 pts\n\nRE:\nUrban = 80 pts\nSemi-Urban = 70 pts\nRural = 60 pts\n\nE = 130% of S target\nA = 60% of S target";
+  }
+  // Commission CASA
+  if (q.match(/casa.*(comm|bdt|money|earn|incentive)/)||q.match(/comm.*(casa)/)) {
+    return "💵 CASA Commission (BDT per point):\n• E Rating: BDT 200\n• S Rating: BDT 180\n• A Rating: BDT 150\n\nMax CASA incentive: BDT 1,20,000";
+  }
+  // Commission DPS
+  if (q.match(/dps.*(comm|bdt|money)/)||q.match(/comm.*(dps)/)) {
+    return "💵 DPS Commission (BDT per point):\n• E Rating: BDT 180\n• S Rating: BDT 150\n• A Rating: BDT 120";
+  }
+  // Bancassurance
+  if (q.match(/banca|insurance/)) {
+    return "🛡️ Bancassurance Points:\n3 pts per new policy\nMaximum: 15 pts (no limit on policies, but pts capped)\n\nEach new insurance policy = 3 pts";
+  }
+  // SME CASA Opening
+  if (q.match(/sme casa open|sme tara|casa open/)) {
+    return "🏦 SME CASA Opening:\n• EOP 20K+: 2 pts each\n• EOP 50K+: 3 pts each\n• EOP 500K+: 5 pts each\n\nSME TARA CASA:\n• EOP 20K+: 3 pts each\n• EOP 50K+: 4 pts each\n• EOP 500K+: 6 pts each\n\nBased on month-end EOP balance.";
+  }
+  // Mobile conveyance
+  if (q.match(/mobile|conveyance|bill/)) {
+    return "📱 Mobile & Conveyance Bill:\n\nRO / RE:\nE Rating: BDT 2,500\nS Rating: BDT 1,500\n\nBDM:\nE Rating: BDT 5,000\nS Rating: BDT 3,000\nA Rating: BDT 2,000";
+  }
+  // Net growth deduction
+  if (q.match(/deduct|net growth|growth target/)) {
+    return "📉 Net Growth Deduction Policy:\n• 100% of target: 0% will be deducted\n• 75% of target: 25% will be deducted\n• 50% of target: 50% will be deducted\n• Below 50%: 75% will be deducted";
+  }
+  // Incentive max
+  if (q.match(/max incentive|maximum|total incentive|200000|200,000/)) {
+    return "💰 Maximum Incentive:\n• CASA: BDT 1,20,000\n• FDR: BDT 50,000\n• Total RO/RE: BDT 2,00,000\n\n⭐ Female staff get +25% bonus on earned incentive every month!";
+  }
+  // Female
+  if (q.match(/female|women|lady/)) {
+    return "⭐ Female Staff Bonus:\nAll incentive-eligible female staff get an additional 25% bonus on their earned incentive every month!";
+  }
+  // Portfolio maintenance
+  if (q.match(/portfolio maint|casa.*td|td.*ratio/)) {
+    return "✅ Portfolio Maintenance Bonus:\n+10 pts if:\n• CASA:TD ratio ≥ 60% vs ≤40%\n• Minimum portfolio ≥ BDT 10,000,000 (1 Crore)\n\nThis bonus is separate from regular CASA points.";
+  }
+  // BDM
+  if (q.match(/bdm|supervisor|manager/)) {
+    return "👔 BDM (Supervisor) KPI:\n• Incentive: E=10%, S=5%, A=3% of team incentive\n• Max BDM incentive: BDT 1,00,000\n\nMobile/Conveyance:\nE=5,000 | S=3,000 | A=2,000\n\nHeadcount req: BDM/SBDM=15, Acting BDM=12";
+  }
+  // Hello / Hi
+  if (q.match(/^(hi|hello|hey|salaam|assalam|hii|helo)/)) {
+    return "👋 Hello! I'm KPI Master — your KPI policy assistant.\n\nAsk me about:\n• CASA, DPS, FDR points\n• Bizpay, Borenno, Astha\n• Commission rates\n• ESAU ratings & targets\n• Non-funded cap\n• Any KPI policy!";
+  }
+  // Thank you
+  if (q.match(/thank|thanks|dhon|shukriya/)) {
+    return "😊 You're welcome! Ask me anything else about KPI policy anytime!";
+  }
+  // Fallback
+  return "🤔 I can answer questions about:\n• CASA, DPS, FDR, Bancassurance points\n• Bizpay, Borenno, Astha points\n• ESAU ratings & monthly targets\n• Commission rates by product\n• Non-funded cap rules\n• Mobile & Conveyance bill\n• Portfolio maintenance bonus\n• BDM/Supervisor policy\n\nTry asking: 'CASA points?' or 'FDR commission?'";
+}
+
 </script>
+
+<!-- ASK ME POLICY CHATBOT -->
+<button class="chat-fab" onclick="openChat()" aria-label="KPI Master"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer blue circle bubble -->
+  <circle cx="22" cy="21" r="19" fill="#1A4FBB"/>
+  <!-- Speech bubble tail — bottom left pointing down -->
+  <path d="M10 37 C8 40 5 43 3 44 C7 43 12 41 14 38 Z" fill="#1A4FBB"/>
+  <!-- Gold robot head — wider oval shape with ear nubs -->
+  <!-- Left ear nub -->
+  <ellipse cx="11.5" cy="21" rx="2.5" ry="3.5" fill="#E4A724"/>
+  <!-- Right ear nub -->
+  <ellipse cx="32.5" cy="21" rx="2.5" ry="3.5" fill="#E4A724"/>
+  <!-- Main head body — rounded rect -->
+  <rect x="12" y="14" width="20" height="15" rx="7" fill="#E4A724"/>
+  <!-- Inner face recess (slightly darker oval) -->
+  <ellipse cx="22" cy="21.5" rx="8" ry="5.5" fill="#C8790F"/>
+  <!-- Eye left — amber dot -->
+  <circle cx="18.5" cy="21.5" r="2.2" fill="#A06010"/>
+  <!-- Eye right — amber dot -->
+  <circle cx="25.5" cy="21.5" r="2.2" fill="#A06010"/>
+  <!-- Eye shine left -->
+  <circle cx="19.3" cy="20.7" r=".8" fill="rgba(255,240,180,.7)"/>
+  <!-- Eye shine right -->
+  <circle cx="26.3" cy="20.7" r=".8" fill="rgba(255,240,180,.7)"/>
+  <!-- Antenna stick -->
+  <line x1="22" y1="9" x2="22" y2="14" stroke="#E4A724" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Antenna ball -->
+  <circle cx="22" cy="7.5" r="3" fill="#E4A724"/>
+  <!-- Antenna ball inner highlight -->
+  <circle cx="21" cy="6.5" r="1" fill="rgba(255,255,200,.5)"/>
+</svg></button>
+
+<div class="chat-modal" id="chat-modal">
+  <div class="chat-header">
+<div style="width:44px;height:44px;flex-shrink:0"><svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer blue circle bubble -->
+  <circle cx="22" cy="21" r="19" fill="#1A4FBB"/>
+  <!-- Speech bubble tail — bottom left pointing down -->
+  <path d="M10 37 C8 40 5 43 3 44 C7 43 12 41 14 38 Z" fill="#1A4FBB"/>
+  <!-- Gold robot head — wider oval shape with ear nubs -->
+  <!-- Left ear nub -->
+  <ellipse cx="11.5" cy="21" rx="2.5" ry="3.5" fill="#E4A724"/>
+  <!-- Right ear nub -->
+  <ellipse cx="32.5" cy="21" rx="2.5" ry="3.5" fill="#E4A724"/>
+  <!-- Main head body — rounded rect -->
+  <rect x="12" y="14" width="20" height="15" rx="7" fill="#E4A724"/>
+  <!-- Inner face recess (slightly darker oval) -->
+  <ellipse cx="22" cy="21.5" rx="8" ry="5.5" fill="#C8790F"/>
+  <!-- Eye left — amber dot -->
+  <circle cx="18.5" cy="21.5" r="2.2" fill="#A06010"/>
+  <!-- Eye right — amber dot -->
+  <circle cx="25.5" cy="21.5" r="2.2" fill="#A06010"/>
+  <!-- Eye shine left -->
+  <circle cx="19.3" cy="20.7" r=".8" fill="rgba(255,240,180,.7)"/>
+  <!-- Eye shine right -->
+  <circle cx="26.3" cy="20.7" r=".8" fill="rgba(255,240,180,.7)"/>
+  <!-- Antenna stick -->
+  <line x1="22" y1="9" x2="22" y2="14" stroke="#E4A724" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Antenna ball -->
+  <circle cx="22" cy="7.5" r="3" fill="#E4A724"/>
+  <!-- Antenna ball inner highlight -->
+  <circle cx="21" cy="6.5" r="1" fill="rgba(255,255,200,.5)"/>
+</svg></div>
+    <div class="chat-header-text">
+      <div class="chat-header-title">KPI Master</div>
+      <div class="chat-header-sub">KPI Policy Assistant</div>
+    </div>
+    <button class="chat-close" onclick="closeChat()">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+  <div class="chat-body-wrap">
+  <div class="chat-messages" id="chat-messages"></div>
+  <div class="chat-suggestions" id="chat-suggestions">
+    <div class="chat-chip" onclick="sendSuggestion(this)">CASA points?</div>
+    <div class="chat-chip" onclick="sendSuggestion(this)">FDR commission?</div>
+    <div class="chat-chip" onclick="sendSuggestion(this)">Non-funded cap?</div>
+    <div class="chat-chip" onclick="sendSuggestion(this)">Borenno policy?</div>
+  </div>
+  <div class="chat-footer">
+    <textarea class="chat-input" id="chat-input"
+      placeholder="Message..."
+      rows="1"
+      onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}"
+      oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,120)+'px'"></textarea>
+    <button class="chat-send" id="chat-send-btn" onclick="sendChat()" aria-label="Send">
+      <!-- Telegram paper plane -->
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M17.5 2.5L9 11" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17.5 2.5L12 17.5L9 11L2.5 8L17.5 2.5Z" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
 </body>
 </html>
