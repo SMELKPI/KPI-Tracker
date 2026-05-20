@@ -2166,190 +2166,199 @@ function sendMessage(text) {
 }
 
 function getKPIAnswer(q) {
-  // Get saved name for personalisation
   var userName = '';
   try { var sp = JSON.parse(localStorage.getItem('kpi_profile')||'{}'); userName = sp.name ? sp.name.split(' ')[0] : ''; } catch(e) {}
-  var nameStr = userName ? ' ' + userName : '';
+  var n = userName ? ' ' + userName : '';
+  q = q.toLowerCase().trim();
+
+  // ── keyword scoring engine ──
+  function has(words) { return words.some(function(w){ return q.indexOf(w) > -1; }); }
 
   // ── GREETINGS ──
-  if (q.match(/^(hi|hello|hey|salaam|assalamu|hii|helo|howdy|good morning|good afternoon|good evening|shubho)/)) {
-    return "👋 Hi" + nameStr + "! I'm KPI Master.\nHow can I help you today?";
+  if (has(['hi','hello','hey','salaam','assalamu','howdy','good morning','good afternoon','good evening'])) {
+    return "👋 Hi"+n+"! I'm KPI Master.\nHow can I help you today?";
   }
-  if (q.match(/how are you|how r u|how do you do|kemon acho|how are u/)) {
-    return "😊 I'm great, thanks for asking" + (userName ? ', ' + userName : '') + "!\nI'm always ready to help with your KPI questions. What would you like to know?";
+  if (has(['how are you','how r u','how do you do','kemon acho'])) {
+    return "😊 I'm great, thanks for asking"+(userName?', '+userName:'')+"!\nReady to help with your KPI questions. What would you like to know?";
   }
-  if (q.match(/what.*(your name|u called|are you)/)||q.match(/who are you|introduce/)) {
-    return "🤖 I'm KPI Master — your BRAC Bank SMEL KPI Policy Assistant!\n\nI know everything about:\n• Points calculation\n• Commission rates\n• ESAU ratings\n• Policy rules\n\nJust ask me anything!";
+  if (has(['who are you','your name','introduce yourself','what are you'])) {
+    return "🤖 I'm KPI Master — your BRAC Bank SMEL KPI Policy Assistant!\n\nI can answer questions about:\n• Points & calculations\n• Commission rates\n• ESAU ratings & targets\n• Policy rules\n\nJust ask me anything!";
   }
-  if (q.match(/thank|thanks|dhonnobad|shukriya|jazakallah/)) {
-    return "😊 You're welcome" + nameStr + "!\nFeel free to ask anything else about your KPI policy anytime!";
+  if (has(['thank','thanks','dhonnobad','shukriya','jazak'])) {
+    return "😊 You're welcome"+n+"! Ask me anytime!";
   }
-  if (q.match(/good|great|nice|awesome|excellent|perfect|ok|okay|got it|understand|clear/)) {
-    return "👍 Glad that helped" + nameStr + "! Anything else you'd like to know?";
+  if (has(['bye','goodbye','see you','take care','khuda hafez','allah hafez'])) {
+    return "👋 Goodbye"+n+"! Best of luck this month! 💪";
   }
-  if (q.match(/bye|goodbye|see you|take care|khuda hafez|allah hafez/)) {
-    return "👋 Goodbye" + nameStr + "! Best of luck with your KPI this month! 💪";
+  if (q.match(/^(ok|okay|got it|understood|clear|noted|sure|great|good|nice|perfect|awesome|alright)[\s!.]*$/)) {
+    return "👍 Glad that helped"+n+"! Anything else?";
   }
-
-  // ── CASA ──
-  if (q.match(/^casa$|casa.*(point|pts|calc|how|earn|what)/)||q.match(/point.*(casa)/)||q==='casa points?') {
-    return "📊 CASA Points:\n• SME (Non-individual): Growth ÷ 1 lac × 5 pts\n• Retail (Individual): Growth ÷ 1 lac × 3 pts\n• Corporate (Non-individual): Growth ÷ 1 lac × 3 pts\n\nOnly counted if overall net CASA growth > 0.\n\n+10 Bonus pts if CASA:TD ratio ≥ 60% and portfolio ≥ BDT 10M.";
+  if (has(['what can you','what do you know','help me','topics','what can i ask'])) {
+    return "🤖 I can help you with:\n\n📊 Products:\nCASA, DPS, FDR, Bancassurance\nBizpay, Borenno, Astha\nSME CASA Opening, TARA CASA\n\n📈 Rules:\nESAU ratings & targets\nNon-funded cap\nNet growth deduction\nPortfolio maintenance\nCommission rates\n\nJust ask naturally!";
   }
 
   // ── CASA MAINTENANCE / PORTFOLIO ──
-  if (q.match(/casa maint|portfolio maint|td ratio|casa.*td|td.*casa|60.*percent.*casa|portfolio bonus/)) {
-    return "✅ CASA Portfolio Maintenance:\n+10 pts if:\n• CASA:TD ratio ≥ 60% vs ≤40%\n• Minimum portfolio ≥ BDT 10M (1 Crore)\n\nThis 10 pts is a bonus — separate from regular CASA growth points.";
+  if (has(['portfolio maint','casa maint','td ratio','casa td','casa:td','portfolio bonus','60 percent','10 million','10m portfolio'])) {
+    return "✅ CASA Portfolio Maintenance:\n+10 pts if:\n• CASA:TD ratio ≥ 60%\n• Minimum portfolio ≥ BDT 10M\n\nThis is a bonus on top of regular CASA points.\n\nCommission: E=BDT 200, S=BDT 180, A=BDT 150";
   }
 
-  // ── SME CASA OPENING ──
-  if (q.match(/sme casa open|sme tara|tara casa|casa open|casa opening|eop/)) {
-    return "🏦 SME CASA Opening (Non-Funded):\n\nSME CASA:\n• EOP 20K+: 2 pts each\n• EOP 50K+: 3 pts each\n• EOP 500K+: 5 pts each\n\nSME TARA CASA:\n• EOP 20K+: 3 pts each\n• EOP 50K+: 4 pts each\n• EOP 500K+: 6 pts each\n\nPoints based on month-end balance per account.";
-  }
-
-  // ── FDR COMMISSION ──
-  if (q.match(/fdr.*(comm|rate|earn|bdt|money)/)||q.match(/commission.*(fdr|fd|fixed)/)||q==='fdr commission?') {
-    return "💰 FDR Commission (BDT per point):\n\n3–5 Months: E=73, S=58, A=48\n6–11 Months: E=163, S=130, A=105\n12 Months+: E=215, S=170, A=140\n\nMax FDR incentive: BDT 50,000";
-  }
-
-  // ── FDR POINTS ──
-  if (q.match(/fdr.*(point|pts|calc)/)||q.match(/fixed.*(deposit|point)/)||q.match(/^fdr$/)) {
-    return "📅 Fixed Deposit (FDR) Points:\n• 0.25 pts per lac\n• Fresh funds only — no cannibalization\n• Minimum 3-month tenure required\n\nFormula: Amount (lacs) × 0.25";
-  }
-
-  // ── DPS ──
-  if (q.match(/^dps$|dps.*(point|pts|calc|how|what)/)||q.match(/point.*(dps)/)) {
-    return "💰 DPS Points:\n• DPS 3K to <5K: 0.5 pts each\n• DPS 5K and above: 1 pt each\n\nPer CIF: only the highest value DPS is counted.";
-  }
-
-  // ── NON-FUNDED CAP ──
-  if (q.match(/non.?fund|nf.?cap|cap.*(non|fund)|limit.*(non|fund)/)||q==='non-funded cap?') {
-    return "⚠️ Non-Funded Cap:\n• RO: max = 25% of A-rating target (rounded up)\n• RE: max = 50% of A-rating target\n• No cap for RE in first 6 months of joining\n\nNon-funded categories: Bizpay/Corpnet, Borenno, Astha, SME CASA Opening";
-  }
-
-  // ── BORENNO ──
-  if (q.match(/borenno/)||q==="borenno policy?") {
-    return "🏢 Borenno Points:\n• 5 pts per newly onboarded account\n• Points awarded 1 month AFTER onboarding\n• Account must maintain 25 Lac average balance next month\n\nCommission: E=BDT 120, S=BDT 100, A=BDT 70";
-  }
-
-  // ── ASTHA ──
-  if (q.match(/astha/)) {
-    return "📱 Astha Points:\n• 2 pts per onboarded account\n• Min transaction: BDT 1,000\n• No TopUp or Mobile Recharge eligible\n\nCommission: E=BDT 65, S=BDT 50, A=BDT 20";
-  }
-
-  // ── BIZPAY / CORPNET ──
-  if (q.match(/bizpay|corpnet/)) {
-    return "💳 Bizpay / Corpnet Points:\n• 3 pts per onboarded account\n• Min transaction: BDT 1,000\n• No TopUp or Mobile Recharge eligible\n\nCommission: E=BDT 65, S=BDT 50, A=BDT 20";
-  }
-
-  // ── BANCASSURANCE ──
-  if (q.match(/banca|insurance/)) {
-    return "🛡️ Bancassurance Points:\n• 3 pts per new policy\n• Maximum: 15 pts (regardless of policy count)\n\nNo limit on number of policies — but points capped at 15.";
-  }
-
-  // ── ESAU RATING ──
-  if (q.match(/esau|rating|e rating|s rating|a rating|u rating|excel|satis|accept|unaccep/)) {
-    return "⭐ ESAU Rating Model:\n• E (Excellent): ≥ 130% of target\n• S (Satisfactory): ≥ 100% of target\n• A (Acceptable): ≥ 60% of target\n• U (Unacceptable): < 60% of target";
-  }
-
-  // ── MONTHLY TARGETS ──
-  if (q.match(/target|monthly target|point target|how many point/)) {
-    return "🎯 Monthly Targets (S = 100%):\n\nRO:\n• Urban = 100 pts\n• Semi-Urban = 80 pts\n• Rural = 75 pts\n\nRE:\n• Urban = 80 pts\n• Semi-Urban = 70 pts\n• Rural = 60 pts\n\nE = 130% of S | A = 60% of S";
+  // ── SME CASA OPENING / TARA ──
+  if (has(['sme casa open','tara casa','casa opening','sme tara','eop 20','eop 50','eop 500','account opening','new account'])) {
+    return "🏦 SME CASA Opening (Non-Funded):\n\nSME CASA:\n• EOP 20K+ = 2 pts\n• EOP 50K+ = 3 pts\n• EOP 500K+ = 5 pts\n\nSME TARA CASA:\n• EOP 20K+ = 3 pts\n• EOP 50K+ = 4 pts\n• EOP 500K+ = 6 pts\n\nBased on month-end EOP balance.";
   }
 
   // ── CASA COMMISSION ──
-  if (q.match(/casa.*(comm|bdt|money|earn|incentive)/)||q.match(/comm.*(casa)/)) {
-    return "💵 CASA Commission (BDT per point):\n• E Rating: BDT 200\n• S Rating: BDT 180\n• A Rating: BDT 150\n\nMax CASA incentive: BDT 1,20,000";
+  if ((has(['casa']) && has(['commission','bdt','incentive','earn','money','how much'])) || has(['casa commission'])) {
+    return "💵 CASA Commission (BDT/point):\n• E: BDT 200\n• S: BDT 180\n• A: BDT 150\n\nMax CASA incentive: BDT 1,20,000";
+  }
+
+  // ── CASA POINTS ──
+  if (has(['casa point','casa pts','how casa','what is casa','casa calc']) || (has(['casa']) && has(['point','pts','how','calculate','earn']))) {
+    return "📊 CASA Points:\n• SME (Non-individual): Growth ÷ 1 lac × 5 pts\n• Retail (Individual): Growth ÷ 1 lac × 3 pts\n• Corporate (Non-individual): Growth ÷ 1 lac × 3 pts\n\nOnly counted if overall net CASA growth > 0.\n\n+10 Bonus pts for Portfolio Maintenance (CASA:TD ≥ 60%, portfolio ≥ BDT 10M)";
+  }
+
+  // ── FDR COMMISSION ──
+  if ((has(['fdr','fixed deposit','fd']) && has(['commission','bdt','earn','rate','money','incentive'])) || has(['fdr commission'])) {
+    return "💰 FDR Commission (BDT/point):\n\n3–5 Months: E=73, S=58, A=48\n6–11 Months: E=163, S=130, A=105\n12 Months+: E=215, S=170, A=140\n\nMax FDR incentive: BDT 50,000\n\nPreferential Rate:\n• Up to 0.25%: 25% deducted\n• 0.26–0.50%: 50% deducted\n• Above 0.50%: lower of BDT 10K or 50% deducted";
+  }
+
+  // ── FDR POINTS ──
+  if (has(['fdr point','fdr pts','fixed deposit point','fd point']) || (has(['fdr','fixed deposit']) && has(['point','pts','how','calculate']))) {
+    return "📅 Fixed Deposit (FDR) Points:\n• 0.25 pts per lac\n• Fresh funds only — no cannibalization\n• Minimum 3-month tenure\n\nFormula: Amount (lacs) × 0.25\n\nE.g. BDT 10 lac = 2.5 pts";
   }
 
   // ── DPS COMMISSION ──
-  if (q.match(/dps.*(comm|bdt|money)/)||q.match(/comm.*(dps)/)) {
-    return "💵 DPS Commission (BDT per point):\n• E Rating: BDT 180\n• S Rating: BDT 150\n• A Rating: BDT 120";
+  if ((has(['dps']) && has(['commission','bdt','earn','money','incentive'])) || has(['dps commission'])) {
+    return "💵 DPS Commission (BDT/point):\n• E: BDT 180\n• S: BDT 150\n• A: BDT 120";
+  }
+
+  // ── DPS POINTS ──
+  if (has(['dps point','dps pts']) || (has(['dps']) && has(['point','pts','how','calculate','earn'])) || has(['deposit scheme'])) {
+    return "💰 DPS Points:\n• DPS 3K to <5K: 0.5 pts each\n• DPS 5K and above: 1 pt each\n\nPer CIF: only the highest-value DPS counts.";
+  }
+
+  // ── NON-FUNDED CAP ──
+  if (has(['non funded','non-funded','nf cap','nf limit','limit non','cap non','non fund limit'])) {
+    return "⚠️ Non-Funded Points Cap:\n• RO: max = 25% of A-rating target\n• RE: max = 50% of A-rating target\n• No cap for RE in first 6 months\n\nNon-funded: Bizpay/Corpnet, Borenno, Astha, SME CASA Opening";
+  }
+
+  // ── BORENNO ──
+  if (has(['borenno'])) {
+    return "🏢 Borenno Points:\n• 5 pts per newly onboarded account\n• Points awarded 1 month AFTER onboarding\n• Account must maintain 25 Lac avg balance next month\n\nCommission: E=120, S=100, A=70 BDT";
+  }
+
+  // ── ASTHA ──
+  if (has(['astha'])) {
+    return "📱 Astha Points:\n• 2 pts per onboarded account\n• Min transaction: BDT 1,000\n• No TopUp or Mobile Recharge\n\nCommission: E=65, S=50, A=20 BDT";
+  }
+
+  // ── BIZPAY / CORPNET ──
+  if (has(['bizpay','corpnet','biz pay','corp net'])) {
+    return "💳 Bizpay / Corpnet Points:\n• 3 pts per onboarded account\n• Min transaction: BDT 1,000\n• No TopUp or Mobile Recharge\n\nCommission: E=65, S=50, A=20 BDT";
+  }
+
+  // ── BANCASSURANCE ──
+  if (has(['banca','bancassurance','insurance policy','new policy'])) {
+    return "🛡️ Bancassurance Points:\n• 3 pts per new policy\n• Maximum: 15 pts total\n\nNo limit on policy count — but points capped at 15.";
+  }
+
+  // ── ESAU / RATINGS ──
+  if (has(['esau','rating','what is e rating','what is s rating','e grade','s grade','a grade'])) {
+    return "⭐ ESAU Rating Model:\n• E (Excellent): ≥ 130% of target\n• S (Satisfactory): ≥ 100% of target\n• A (Acceptable): ≥ 60% of target\n• U (Unacceptable): < 60% of target\n\nRatings are based on monthly point achievement vs target.";
+  }
+
+  // ── MONTHLY TARGETS ──
+  if (has(['target','monthly target','point target','how many point','how much point','what is target'])) {
+    return "🎯 Monthly Targets (100% = S rating):\n\nRO:\n• Urban = 100 pts\n• Semi-Urban = 80 pts\n• Rural = 75 pts\n\nRE:\n• Urban = 80 pts\n• Semi-Urban = 70 pts\n• Rural = 60 pts\n\nE = 130% of target | A = 60% of target";
   }
 
   // ── NET GROWTH DEDUCTION ──
-  if (q.match(/deduct|net growth|growth target|growth deduct/)) {
-    return "📉 Net Growth Deduction Policy:\n• 100% of target: 0% will be deducted\n• 75% of target: 25% will be deducted\n• 50% of target: 50% will be deducted\n• Below 50%: 75% will be deducted";
+  if (has(['deduct','net growth','growth target','growth deduct','growth miss'])) {
+    return "📉 Net Growth Deduction:\n• 100% of target: 0% deducted\n• 75% of target: 25% deducted\n• 50% of target: 50% deducted\n• Below 50%: 75% deducted";
   }
 
   // ── MOBILE CONVEYANCE ──
-  if (q.match(/mobile|conveyance|bill|phone bill/)) {
-    return "📱 Mobile & Conveyance Bill:\n\nRO / RE:\n• E Rating: BDT 2,500\n• S Rating: BDT 1,500\n\nBDM:\n• E Rating: BDT 5,000\n• S Rating: BDT 3,000\n• A Rating: BDT 2,000";
+  if (has(['mobile bill','conveyance','phone bill','mobile allowance'])) {
+    return "📱 Mobile & Conveyance Bill:\n\nRO/RE:\n• E: BDT 2,500\n• S: BDT 1,500\n\nBDM:\n• E: BDT 5,000\n• S: BDT 3,000\n• A: BDT 2,000";
   }
 
-  // ── MAX INCENTIVE ──
-  if (q.match(/max incentive|maximum|total incentive|200000|2 lakh|highest incentive/)) {
-    return "💰 Maximum Incentive (RO/RE):\n• CASA: BDT 1,20,000\n• FDR: BDT 50,000\n• Total: BDT 2,00,000\n\n⭐ Female staff get +25% bonus on earned incentive every month!";
+  // ── MAX / TOTAL INCENTIVE ──
+  if (has(['max incentive','maximum incentive','highest incentive','total incentive','2 lakh','200000','200,000'])) {
+    return "💰 Maximum Incentive (RO/RE):\n• CASA: BDT 1,20,000\n• FDR: BDT 50,000\n• Total: BDT 2,00,000\n\n⭐ Female staff: +25% bonus on earned incentive!";
   }
 
-  // ── FEMALE ──
-  if (q.match(/female|women|lady|mahila/)) {
-    return "⭐ Female Staff Bonus:\nAll incentive-eligible female staff get an additional +25% bonus on their earned incentive every month!";
+  // ── FEMALE STAFF ──
+  if (has(['female','women','lady','mahila','woman staff'])) {
+    return "⭐ Female Staff Bonus:\n+25% bonus on total earned incentive every month!\n\nThis applies to all incentive-eligible female staff.";
   }
 
   // ── BDM ──
-  if (q.match(/bdm|supervisor|manager/)) {
-    return "👔 BDM (Supervisor) KPI:\n• E: 10% of team incentive\n• S: 5% of team incentive\n• A: 3% of team incentive\n• Max BDM incentive: BDT 1,00,000\n\nMobile/Conveyance: E=5,000 | S=3,000 | A=2,000\nHeadcount: BDM/SBDM=15, Acting BDM=12";
+  if (has(['bdm','supervisor','branch manager','area manager'])) {
+    return "👔 BDM KPI:\n• E: 10% of team incentive\n• S: 5% of team incentive\n• A: 3% of team incentive\n• Max: BDT 1,00,000\n\nMobile/Conveyance: E=5,000 | S=3,000 | A=2,000\nHeadcount required: BDM=15, Acting BDM=12";
   }
 
   // ── SME CASA MAINTENANCE UPGRADATION ──
-  if (q.match(/upgradation|upgrade.*rating|rating.*upgrade|casa maint.*rating|sme.*maint/)) {
-    return "📈 SME CASA Maintenance Rating Upgradation:\n\nRO:\n• 5–7 Crore: N/A → A\n• 7–10 Crore: BDT 10/lac → A\n• 10 Crore+: BDT 15/lac → S\n\nRE:\n• 3–5 Crore: N/A → A\n• 5–7 Crore: BDT 10/lac → A\n• 7 Crore+: BDT 15/lac → S\n\n*5% deviation considered.";
+  if (has(['upgradation','upgrade rating','rating upgrade','casa maintenance rating','sme maintenance','crore','7 crore','10 crore','5 crore'])) {
+    return "📈 SME CASA Maintenance — Rating Upgradation:\n\nRO:\n• 5–7 Crore: N/A → Rating A\n• 7–10 Crore: BDT 10/lac → Rating A\n• 10 Crore+: BDT 15/lac → Rating S\n\nRE:\n• 3–5 Crore: N/A → Rating A\n• 5–7 Crore: BDT 10/lac → Rating A\n• 7 Crore+: BDT 15/lac → Rating S\n\n*5% deviation considered.";
   }
 
-  // ── OTHER TERMS ──
-  if (q.match(/leave|annual leave|maternity|aof|account open.*form|td.*encash|loan.*disburse|transfer.*portfolio/)) {
-    return "📋 Other Key Rules:\n• Annual leave: target = 50%\n• Maternity leave: target fully waived\n• AOF held at branch = no points (get points if received next month)\n• TD encashed within 6 months: points & incentive reversed\n• Fund transfer/loan disbursement doesn't count for FDR";
+  // ── LEAVE / AOF / SPECIAL RULES ──
+  if (has(['leave','annual leave','maternity','aof','account open form','td encash','loan disburs','portfolio transfer','resign portfolio'])) {
+    return "📋 Special Rules:\n• Annual leave: target = 50%\n• Maternity leave: target fully waived\n• AOF held at branch = no points (if received next month, points given)\n• TD encashed within 6 months: points & incentive reversed\n• FDR: no fund transfer/loan amount counts\n• Resigned portfolio: previous month avg added to base";
   }
 
-  // ── WHAT CAN YOU DO ──
-  if (q.match(/what can you|help me|what do you know|topics|what.*ask|tell me about/)) {
-    return "🤖 I can help you with:\n\n📊 Products:\nCASA, DPS, FDR, Bancassurance\nBizpay, Borenno, Astha\nSME CASA Opening, TARA CASA\n\n📈 Rules:\nESAU ratings & targets\nNon-funded cap\nNet growth deduction\nPortfolio maintenance\n\n💰 Commission rates for all products\n\nJust ask naturally — e.g. 'CASA points?' or 'Borenno policy?'";
+  // ── COMMISSION (general) ──
+  if (has(['commission','all commission','commission table','commission rate','all rate'])) {
+    return "💵 Commission Rates Summary:\n\nCASA: E=200, S=180, A=150 BDT/pt\nDPS: E=180, S=150, A=120 BDT/pt\nBizpay/Astha: E=65, S=50, A=20 BDT/pt\nBorenno: E=120, S=100, A=70 BDT/pt\nFDR 12m+: E=215, S=170, A=140 BDT/pt\n\nAsk about any specific product for details!";
   }
 
   // ── FALLBACK ──
-  return "🤔 I didn\'t quite get that" + nameStr + ". Try asking about:\n• CASA, DPS, FDR, Bancassurance\n• Bizpay, Borenno, Astha\n• SME CASA Opening or TARA CASA\n• ESAU ratings & targets\n• Commission rates\n• Non-funded cap\n• Portfolio maintenance";
+  return "🤔 I didn't quite catch that"+n+". Try asking:\n\n• 'CASA points'\n• 'FDR commission'\n• 'Borenno policy'\n• 'Monthly target'\n• 'Non-funded cap'\n• 'ESAU rating'\n• 'SME CASA opening'\n\nOr type 'help' to see all topics!";
 }
+
 
 
 </script>
 
 <!-- ASK ME POLICY CHATBOT -->
-<button class="chat-fab" onclick="openChat()" aria-label="KPI Master"><svg width="72" height="72" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Blue speech bubble, no border -->
-  <path d="M35 4 C20 4 7 15 7 28 C7 36.5 11.5 44 18.5 48.5 L16 59 L27.5 54.5 C29.6 55 32 55.5 35 55.5 C50 55.5 63 43.5 63 28 C63 12.5 50 4 35 4 Z" fill="#2B5CE6"/>
-  <!-- White robot ear nubs -->
-  <circle cx="18" cy="30" r="5" fill="white"/>
-  <circle cx="52" cy="30" r="5" fill="white"/>
-  <!-- White oval robot head -->
-  <ellipse cx="35" cy="30" rx="18" ry="14" fill="white"/>
+<button class="chat-fab" onclick="openChat()" aria-label="KPI Master"><svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Messenger-style round bubble -->
+  <path d="M36 6 C19 6 5 18.5 5 34 C5 42.5 9 50 15.5 55 L13 66 L25 60.5 C28.5 61.5 32.2 62 36 62 C53 62 67 49.5 67 34 C67 18.5 53 6 36 6 Z" fill="#2B5CE6"/>
+  <!-- White robot — left ear -->
+  <circle cx="18" cy="34" r="5.5" fill="white"/>
+  <!-- White robot — right ear -->
+  <circle cx="54" cy="34" r="5.5" fill="white"/>
+  <!-- White oval head -->
+  <ellipse cx="36" cy="34" rx="20" ry="15" fill="white"/>
   <!-- Blue face screen -->
-  <rect x="22" y="22" width="26" height="17" rx="6.5" fill="#2B5CE6"/>
-  <!-- Two white rounded-square eyes -->
-  <rect x="25" y="26.5" width="7.5" height="7.5" rx="3.5" fill="white"/>
-  <rect x="37.5" y="26.5" width="7.5" height="7.5" rx="3.5" fill="white"/>
+  <rect x="22" y="25" width="28" height="18" rx="7" fill="#2B5CE6"/>
+  <!-- Two white eyes -->
+  <rect x="25.5" y="29.5" width="8" height="8" rx="4" fill="white"/>
+  <rect x="38.5" y="29.5" width="8" height="8" rx="4" fill="white"/>
   <!-- Antenna inside bubble -->
-  <line x1="35" y1="13" x2="35" y2="17" stroke="white" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="35" cy="11" r="4" fill="white"/>
+  <line x1="36" y1="14" x2="36" y2="19" stroke="white" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="36" cy="12" r="4.2" fill="white"/>
 </svg></button>
 
 <div class="chat-modal" id="chat-modal">
   <div class="chat-header">
-<div style="width:42px;height:42px;flex-shrink:0"><svg width="42" height="42" viewBox="0 0 70 70" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Blue speech bubble, no border -->
-  <path d="M35 4 C20 4 7 15 7 28 C7 36.5 11.5 44 18.5 48.5 L16 59 L27.5 54.5 C29.6 55 32 55.5 35 55.5 C50 55.5 63 43.5 63 28 C63 12.5 50 4 35 4 Z" fill="#2B5CE6"/>
-  <!-- White robot ear nubs -->
-  <circle cx="18" cy="30" r="5" fill="white"/>
-  <circle cx="52" cy="30" r="5" fill="white"/>
-  <!-- White oval robot head -->
-  <ellipse cx="35" cy="30" rx="18" ry="14" fill="white"/>
+<div style="width:42px;height:42px;flex-shrink:0"><svg width="42" height="42" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Messenger-style round bubble -->
+  <path d="M36 6 C19 6 5 18.5 5 34 C5 42.5 9 50 15.5 55 L13 66 L25 60.5 C28.5 61.5 32.2 62 36 62 C53 62 67 49.5 67 34 C67 18.5 53 6 36 6 Z" fill="#2B5CE6"/>
+  <!-- White robot — left ear -->
+  <circle cx="18" cy="34" r="5.5" fill="white"/>
+  <!-- White robot — right ear -->
+  <circle cx="54" cy="34" r="5.5" fill="white"/>
+  <!-- White oval head -->
+  <ellipse cx="36" cy="34" rx="20" ry="15" fill="white"/>
   <!-- Blue face screen -->
-  <rect x="22" y="22" width="26" height="17" rx="6.5" fill="#2B5CE6"/>
-  <!-- Two white rounded-square eyes -->
-  <rect x="25" y="26.5" width="7.5" height="7.5" rx="3.5" fill="white"/>
-  <rect x="37.5" y="26.5" width="7.5" height="7.5" rx="3.5" fill="white"/>
+  <rect x="22" y="25" width="28" height="18" rx="7" fill="#2B5CE6"/>
+  <!-- Two white eyes -->
+  <rect x="25.5" y="29.5" width="8" height="8" rx="4" fill="white"/>
+  <rect x="38.5" y="29.5" width="8" height="8" rx="4" fill="white"/>
   <!-- Antenna inside bubble -->
-  <line x1="35" y1="13" x2="35" y2="17" stroke="white" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="35" cy="11" r="4" fill="white"/>
+  <line x1="36" y1="14" x2="36" y2="19" stroke="white" stroke-width="3.2" stroke-linecap="round"/>
+  <circle cx="36" cy="12" r="4.2" fill="white"/>
 </svg></div>
     <div class="chat-header-text">
       <div class="chat-header-title">KPI Master</div>
