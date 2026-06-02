@@ -585,6 +585,96 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
   }
   .chat-chip:active { background:var(--bb-blue); color:#fff; }
 
+
+  /* ── BOT WELCOME ANIMATION ── */
+  .bot-intro-overlay {
+    position:absolute; top:68px; left:0; right:0; bottom:0;
+    display:flex; flex-direction:column; align-items:center;
+    justify-content:center; z-index:15; pointer-events:none;
+    opacity:0; transition:opacity .3s;
+  }
+  .bot-intro-overlay.show { opacity:1; pointer-events:all; }
+
+  .bot-wave-container {
+    display:flex; flex-direction:column; align-items:center; gap:16px;
+  }
+
+  /* Animated bot SVG */
+  .bot-anim-svg { filter:drop-shadow(0 8px 24px rgba(43,92,230,.35)); }
+
+  /* Wave arm animation */
+  @keyframes waveArm {
+    0%   { transform: rotate(0deg); }
+    15%  { transform: rotate(-30deg); }
+    30%  { transform: rotate(10deg); }
+    45%  { transform: rotate(-25deg); }
+    60%  { transform: rotate(5deg); }
+    75%  { transform: rotate(-15deg); }
+    100% { transform: rotate(0deg); }
+  }
+  .wave-arm { animation: waveArm 1.4s ease-in-out 0.3s both; transform-origin: 68px 38px; }
+
+  /* Body bounce */
+  @keyframes botBounce {
+    0%   { transform: translateY(20px) scale(.85); opacity:0; }
+    60%  { transform: translateY(-6px) scale(1.03); opacity:1; }
+    80%  { transform: translateY(2px) scale(.98); }
+    100% { transform: translateY(0) scale(1); opacity:1; }
+  }
+  .bot-body-anim { animation: botBounce .7s cubic-bezier(.34,1.56,.64,1) both; }
+
+  /* Eyes blink */
+  @keyframes eyeBlink {
+    0%,90%,100% { transform:scaleY(1); }
+    95% { transform:scaleY(0.1); }
+  }
+  .bot-eye { animation: eyeBlink 2.5s ease-in-out 1s infinite; transform-origin:center; }
+
+  /* Hi bubble pop */
+  @keyframes bubblePop {
+    0%   { transform:scale(0) translateY(10px); opacity:0; }
+    60%  { transform:scale(1.1) translateY(-2px); opacity:1; }
+    100% { transform:scale(1) translateY(0); opacity:1; }
+  }
+  .hi-bubble {
+    background:var(--bb-blue); color:#fff;
+    padding:12px 24px; border-radius:20px 20px 20px 4px;
+    font-size:1.1rem; font-weight:700; letter-spacing:.5px;
+    box-shadow:0 4px 16px rgba(43,92,230,.35);
+    animation: bubblePop .5s cubic-bezier(.34,1.56,.64,1) .8s both;
+  }
+  .hi-sub {
+    font-size:.75rem; color:rgba(255,255,255,.8);
+    margin-top:3px; font-weight:400;
+  }
+
+  /* Fade out overlay */
+  @keyframes fadeOutOverlay {
+    to { opacity:0; pointer-events:none; }
+  }
+  .bot-intro-overlay.hiding {
+    animation: fadeOutOverlay .4s ease .3s forwards;
+  }
+
+
+  /* ── LANGUAGE TOGGLE ── */
+  .lang-toggle {
+    display:flex; background:rgba(255,255,255,.15); border-radius:99px;
+    padding:3px; gap:0; margin-left:auto; flex-shrink:0;
+    border:1px solid rgba(255,255,255,.25);
+  }
+  .lang-btn {
+    padding:5px 12px; border-radius:99px; border:none;
+    font-family:'Inter',sans-serif; font-size:.68rem; font-weight:700;
+    cursor:pointer; transition:all .2s; background:transparent;
+    color:rgba(255,255,255,.65); letter-spacing:.3px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .lang-btn.active {
+    background:#fff; color:var(--bb-blue);
+    box-shadow:0 1px 4px rgba(0,0,0,.15);
+  }
+
 </style>
 </head>
 <body>
@@ -2069,11 +2159,30 @@ function openChat() {
     window.visualViewport.addEventListener('scroll', pinModal);
     modal._pinModal = pinModal;
   }
+  initLang();
+  var savedName = '';
+  try { var sp2 = JSON.parse(localStorage.getItem('kpi_profile')||'{}'); savedName = sp2.name ? sp2.name.split(' ')[0] : ''; } catch(e) {}
+
   if (chatHistory.length === 0 && document.getElementById('chat-messages').children.length === 0) {
-    var savedName = '';
-    try { var sp = JSON.parse(localStorage.getItem('kpi_profile')||'{}'); savedName = sp.name ? sp.name.split(' ')[0] : ''; } catch(e) {}
-    var greeting = savedName ? "👋 Hi " + savedName + "! I'm KPI Master — your KPI policy assistant. Ask anything about points, commissions, ratings or policy rules!" : "👋 Hi! I'm KPI Master — your KPI policy assistant. Ask anything about points, commissions, ratings or policy rules!";
-    addBotMsg(greeting);
+    // Show bot animation first
+    var intro = document.getElementById('bot-intro');
+    var introName = document.getElementById('intro-name');
+    if (introName) introName.textContent = savedName ? ' ' + savedName : '';
+    if (intro) intro.classList.add('show');
+    // After 2.5s hide animation and show chat
+    setTimeout(function() {
+      if (intro) intro.classList.add('hiding');
+      setTimeout(function() {
+        if (intro) { intro.classList.remove('show'); intro.classList.remove('hiding'); }
+        var greeting;
+    if (chatLang === 'bn') {
+      greeting = savedName ? "👋 হ্যালো " + savedName + "! আমি KPI Master — আপনার KPI পলিসি সহকারী। পয়েন্ট, কমিশন, রেটিং বা নীতি সম্পর্কে যেকোনো প্রশ্ন করুন!" : "👋 হ্যালো! আমি KPI Master — আপনার KPI পলিসি সহকারী। যেকোনো প্রশ্ন করুন!";
+    } else {
+      greeting = savedName ? "👋 Hi " + savedName + "! I'm KPI Master — your KPI policy assistant. Ask anything about points, commissions, ratings or policy rules!" : "👋 Hi! I'm KPI Master — your KPI policy assistant. Ask anything about points, commissions, ratings or policy rules!";
+    }
+        addBotMsg(greeting);
+      }, 700);
+    }, 2500);
   }
   setTimeout(function(){
     var el=document.getElementById('chat-input');
@@ -2166,6 +2275,7 @@ function sendMessage(text) {
 }
 
 function getKPIAnswer(q) {
+  if (chatLang === 'bn') return getBanglaAnswer(q);
   var userName = '';
   try { var sp = JSON.parse(localStorage.getItem('kpi_profile')||'{}'); userName = sp.name ? sp.name.split(' ')[0] : ''; } catch(e) {}
   var n = userName ? ' ' + userName : '';
@@ -2214,7 +2324,7 @@ function getKPIAnswer(q) {
 
   // ── CASA POINTS ──
   if (has(['casa point','casa pts','how casa','what is casa','casa calc']) || (has(['casa']) && has(['point','pts','how','calculate','earn']))) {
-    return "📊 CASA Points:\n• SME (Non-individual): Growth ÷ 1 lac × 5 pts\n• Retail (Individual): Growth ÷ 1 lac × 3 pts\n• Corporate (Non-individual): Growth ÷ 1 lac × 3 pts\n\nOnly counted if overall net CASA growth > 0.\n\n+10 Bonus pts for Portfolio Maintenance (CASA:TD ≥ 60%, portfolio ≥ BDT 10M)";
+    return "📊 CASA PERFORMANCE CALCULATION\n\n🏦 Formula:\nCASA Performance = Retail CASA + SME CASA + Corporate CASA\n(Sum of month-end average balance growth vs previous month)\n\n📐 Points & Weightage:\n• Retail CASA: Growth (lac) × 3 pts\n• SME CASA: Growth (lac) × 5 pts\n• Corporate CASA: Growth (lac) × 3 pts\n\n⚠️ If overall CASA growth (Retail+SME+Corporate) is NEGATIVE → Total Points = 0\n\n✅ Scenario 1 (Positive Overall):\nSME=10L, Retail=5L, Corporate=2L\nOverall = 17L ✓\nPoints = (10×5)+(5×3)+(2×3) = 50+15+6 = 71 pts\n\n❌ Scenario 2 (Negative Overall):\nSME=10L, Retail=-15L, Corporate=2L\nOverall = -3L ✗ → Points = 0\n(Even if SME individually positive!)\n\n🎯 +10 Bonus pts if CASA:TD ≥ 60% & portfolio ≥ BDT 10M";
   }
 
   // ── FDR COMMISSION ──
@@ -2318,6 +2428,117 @@ function getKPIAnswer(q) {
 
 
 
+
+// ── LANGUAGE TOGGLE ──
+var chatLang = localStorage.getItem('kpi_chat_lang') || 'en';
+
+function setLang(lang) {
+  haptic('light');
+  chatLang = lang;
+  localStorage.setItem('kpi_chat_lang', lang);
+  var enBtn = document.getElementById('lang-en');
+  var bnBtn = document.getElementById('lang-bn');
+  if (enBtn) enBtn.classList.toggle('active', lang === 'en');
+  if (bnBtn) bnBtn.classList.toggle('active', lang === 'bn');
+}
+
+function initLang() {
+  chatLang = localStorage.getItem('kpi_chat_lang') || 'en';
+  var enBtn = document.getElementById('lang-en');
+  var bnBtn = document.getElementById('lang-bn');
+  if (enBtn) enBtn.classList.toggle('active', chatLang === 'en');
+  if (bnBtn) bnBtn.classList.toggle('active', chatLang === 'bn');
+}
+
+
+function getBanglaAnswer(q) {
+  var userName = '';
+  try { var sp = JSON.parse(localStorage.getItem('kpi_profile')||'{}'); userName = sp.name ? sp.name.split(' ')[0] : ''; } catch(e) {}
+  var n = userName ? ' ' + userName : '';
+  q = q.toLowerCase().trim();
+  function has(words) { return words.some(function(w){ return q.indexOf(w) > -1; }); }
+
+  if (has(['hi','hello','hey','salaam','assalam','হ্যালো','হাই','সালাম'])) {
+    return '👋 হ্যালো'+n+'! আমি KPI Master।\nআপনাকে কীভাবে সাহায্য করতে পারি?';
+  }
+  if (has(['how are you','কেমন আছ','কেমন আছেন'])) {
+    return '😊 আমি ভালো আছি'+(userName?', '+userName:'')+'!\nআপনার KPI প্রশ্নের জন্য সদা প্রস্তুত।';
+  }
+  if (has(['thank','ধন্যবাদ','শুকরিয়া'])) {
+    return '😊 আপনাকে স্বাগতম'+n+'! যেকোনো সময় জিজ্ঞেস করুন!';
+  }
+  if (has(['bye','বিদায়','আল্লাহ হাফেজ'])) {
+    return '👋 বিদায়'+n+'! এই মাসে শুভকামনা! 💪';
+  }
+  if (has(['help','সাহায্য','what can','কী জানো','কী বলতে'])) {
+    return '🤖 আমি যা নিয়ে সাহায্য করতে পারি:\n\n📊 CASA, DPS, FDR, Bancassurance\nBizpay, Borenno, Astha\nSME CASA Opening, TARA CASA\n\n📈 ESAU রেটিং ও টার্গেট\nNon-funded ক্যাপ, কমিশন রেট\nনেট গ্রোথ ডিডাকশন\n\nযেকোনো প্রশ্ন করুন!';
+  }
+  if (has(['portfolio maint','casa maint','td ratio','casa:td'])) {
+    return '✅ CASA পোর্টফোলিও মেইনটেন্যান্স:\n+১০ পয়েন্ট যদি:\n• CASA:TD ≥ ৬০%\n• পোর্টফোলিও ≥ BDT ১ কোটি\n\nকমিশন: E=২০০, S=১৮০, A=১৫০ BDT/পয়েন্ট';
+  }
+  if (has(['sme casa open','tara casa','casa opening','eop','ইওপি'])) {
+    return '🏦 SME CASA Opening:\n\nSME CASA:\n• EOP ২০K+ = ২ পয়েন্ট\n• EOP ৫০K+ = ৩ পয়েন্ট\n• EOP ৫০০K+ = ৫ পয়েন্ট\n\nSME TARA CASA:\n• EOP ২০K+ = ৩ পয়েন্ট\n• EOP ৫০K+ = ৪ পয়েন্ট\n• EOP ৫০০K+ = ৬ পয়েন্ট';
+  }
+  if ((has(['casa']) && has(['commission','কমিশন','ইনসেন্টিভ','কত টাকা'])) || has(['casa commission'])) {
+    return '💵 CASA কমিশন (প্রতি পয়েন্ট):\n• E: BDT ২০০\n• S: BDT ১৮০\n• A: BDT ১৫০\n\nসর্বোচ্চ: BDT ১,২০,০০০';
+  }
+  if (has(['casa','কাসা'])) {
+    return '📊 CASA পয়েন্ট:\n• Retail: গ্রোথ (লাখ) × ৩\n• SME: গ্রোথ (লাখ) × ৫\n• Corporate: গ্রোথ (লাখ) × ৩\n\n⚠️ সামগ্রিক গ্রোথ নেগেটিভ হলে → পয়েন্ট = ০\n\n+১০ বোনাস পয়েন্ট (CASA:TD ≥ ৬০%, পোর্টফোলিও ≥ ১ কোটি)';
+  }
+  if ((has(['fdr','fixed deposit']) && has(['commission','কমিশন','কত টাকা']))) {
+    return '💰 FDR কমিশন (প্রতি পয়েন্ট):\n৩–৫ মাস: E=৭৩, S=৫৮, A=৪৮\n৬–১১ মাস: E=১৬৩, S=১৩০, A=১০৫\n১২+ মাস: E=২১৫, S=১৭০, A=১৪০\n\nসর্বোচ্চ: BDT ৫০,০০০';
+  }
+  if (has(['fdr','fixed deposit','এফডিআর'])) {
+    return '📅 FDR পয়েন্ট:\n• ০.২৫ পয়েন্ট প্রতি লাখ\n• নতুন ফান্ড, ন্যূনতম ৩ মাস';
+  }
+  if (has(['dps']) && has(['commission','কমিশন'])) {
+    return '💵 DPS কমিশন:\n• E: BDT ১৮০\n• S: BDT ১৫০\n• A: BDT ১২০';
+  }
+  if (has(['dps'])) {
+    return '💰 DPS পয়েন্ট:\n• ৩K–৫K: ০.৫ পয়েন্ট\n• ৫K+: ১ পয়েন্ট\nপ্রতি CIF সর্বোচ্চ মূল্যের DPS গণনা হবে।';
+  }
+  if (has(['non funded','non-funded','নন ফান্ডেড','nf cap'])) {
+    return '⚠️ Non-Funded ক্যাপ:\n• RO: A রেটিং টার্গেটের ২৫%\n• RE: A রেটিং টার্গেটের ৫০%\nপ্রথম ৬ মাসে RE-র কোনো ক্যাপ নেই।';
+  }
+  if (has(['borenno','বোরেনো'])) {
+    return '🏢 Borenno: ৫ পয়েন্ট/অ্যাকাউন্ট\n(১ মাস পরে, ২৫ লাখ ব্যালেন্স রাখতে হবে)\nকমিশন: E=১২০, S=১০০, A=৭০ BDT';
+  }
+  if (has(['astha','আস্থা'])) {
+    return '📱 Astha: ২ পয়েন্ট/অ্যাকাউন্ট\nন্যূনতম BDT ১,০০০ লেনদেন\nকমিশন: E=৬৫, S=৫০, A=২০ BDT';
+  }
+  if (has(['bizpay','corpnet','বিজপে'])) {
+    return '💳 Bizpay/Corpnet: ৩ পয়েন্ট/অ্যাকাউন্ট\nন্যূনতম BDT ১,০০০ লেনদেন\nকমিশন: E=৬৫, S=৫০, A=২০ BDT';
+  }
+  if (has(['banca','bancassurance','insurance','বীমা'])) {
+    return '🛡️ Bancassurance: ৩ পয়েন্ট/পলিসি\nসর্বোচ্চ ১৫ পয়েন্ট';
+  }
+  if (has(['esau','রেটিং','rating'])) {
+    return '⭐ ESAU রেটিং:\n• E: ≥ ১৩০%\n• S: ≥ ১০০%\n• A: ≥ ৬০%\n• U: < ৬০%';
+  }
+  if (has(['target','টার্গেট','কত পয়েন্ট','monthly target'])) {
+    return '🎯 মাসিক টার্গেট (S রেটিং = ১০০%):\n\nRO: Urban=১০০, Semi-Urban=৮০, Rural=৭৫\nRE: Urban=৮০, Semi-Urban=৭০, Rural=৬০\n\nE = ১৩০% | A = ৬০%';
+  }
+  if (has(['deduct','কর্তন','net growth','নেট গ্রোথ'])) {
+    return '📉 নেট গ্রোথ ডিডাকশন:\n• ১০০%: ০% কাটা যাবে\n• ৭৫%: ২৫% কাটা যাবে\n• ৫০%: ৫০% কাটা যাবে\n• ৫০%-এর নিচে: ৭৫% কাটা যাবে';
+  }
+  if (has(['mobile','মোবাইল','conveyance','কনভেয়েন্স'])) {
+    return '📱 মোবাইল ও কনভেয়েন্স:\nRO/RE: E=২,৫০০ | S=১,৫০০\nBDM: E=৫,০০০ | S=৩,০০০ | A=২,০০০ BDT';
+  }
+  if (has(['max incentive','সর্বোচ্চ','highest','২ লাখ','total incentive'])) {
+    return '💰 সর্বোচ্চ ইনসেন্টিভ:\n• CASA: BDT ১,২০,০০০\n• FDR: BDT ৫০,০০০\n• মোট: BDT ২,০০,০০০\n\n⭐ মহিলা কর্মী: +২৫% বোনাস!';
+  }
+  if (has(['female','মহিলা','নারী'])) {
+    return '⭐ মহিলা কর্মী বোনাস:\nঅর্জিত ইনসেন্টিভের উপর +২৫% বোনাস প্রতি মাসে!';
+  }
+  if (has(['bdm','supervisor','সুপারভাইজার'])) {
+    return '👔 BDM KPI:\nE=১০%, S=৫%, A=৩% (টিম ইনসেন্টিভের)\nসর্বোচ্চ: BDT ১,০০,০০০\nমোবাইল: E=৫,০০০|S=৩,০০০|A=২,০০০';
+  }
+  if (has(['commission','কমিশন','all rate','সব রেট'])) {
+    return '💵 কমিশন সারসংক্ষেপ (BDT/পয়েন্ট):\nCASA: E=২০০, S=১৮০, A=১৫০\nDPS: E=১৮০, S=১৫০, A=১২০\nBizpay/Astha: E=৬৫, S=৫০, A=২০\nBorenno: E=১২০, S=১০০, A=৭০\nFDR ১২m+: E=২১৫, S=১৭০, A=১৪০';
+  }
+  return '🤔 ক্ষমা করবেন'+n+', প্রশ্নটি বুঝতে পারিনি।\nচেষ্টা করুন: CASA পয়েন্ট, FDR কমিশন, Borenno নীতি, মাসিক টার্গেট, ESAU রেটিং';
+}
+
 </script>
 
 <!-- ASK ME POLICY CHATBOT -->
@@ -2366,11 +2587,49 @@ function getKPIAnswer(q) {
       <div class="chat-header-title">KPI Master</div>
       <div class="chat-header-sub">KPI Policy Assistant</div>
     </div>
+    <div class="lang-toggle">
+      <button class="lang-btn active" id="lang-en" onclick="setLang('en')">English</button>
+      <button class="lang-btn" id="lang-bn" onclick="setLang('bn')">বাংলা</button>
+    </div>
     <button class="chat-close" onclick="closeChat()">
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 1l10 10M11 1L1 11" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
     </button>
   </div>
   <div class="chat-body-wrap">
+  <!-- Bot welcome animation overlay -->
+  <div class="bot-intro-overlay" id="bot-intro">
+    <div class="bot-wave-container">
+      <div class="bot-body-anim">
+        <svg class="bot-anim-svg" width="120" height="110" viewBox="0 0 120 110" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Bubble body -->
+          <path d="M60 8 C35 8 12 26 12 48 C12 63 20 76 33 83 L30 100 L47 93 C51 94.5 55.5 95 60 95 C85 95 108 77 108 55 C108 33 85 8 60 8 Z" fill="#2B5CE6"/>
+          <!-- Robot ears -->
+          <circle cx="25" cy="55" r="9" fill="white"/>
+          <circle cx="95" cy="55" r="9" fill="white"/>
+          <!-- Robot head -->
+          <ellipse cx="60" cy="55" rx="33" ry="25" fill="white"/>
+          <!-- Face screen -->
+          <rect x="37" y="42" width="46" height="27" rx="10" fill="#2B5CE6"/>
+          <!-- Eyes left -->
+          <g class="bot-eye"><rect x="42" y="48.5" width="13" height="13" rx="6.5" fill="white"/></g>
+          <!-- Eyes right -->
+          <g class="bot-eye"><rect x="65" y="48.5" width="13" height="13" rx="6.5" fill="white"/></g>
+          <!-- Antenna -->
+          <line x1="60" y1="18" x2="60" y2="26" stroke="white" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="60" cy="15" r="6" fill="white"/>
+          <!-- Waving arm -->
+          <g class="wave-arm">
+            <path d="M93 62 Q105 45 112 35" stroke="white" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <circle cx="113" cy="33" r="6" fill="white"/>
+          </g>
+        </svg>
+      </div>
+      <div class="hi-bubble" id="hi-bubble">
+        👋 Hi<span id="intro-name"></span>!
+        <div class="hi-sub">How can I help you today?</div>
+      </div>
+    </div>
+  </div>
   <div class="chat-messages" id="chat-messages"></div>
   <div class="chat-suggestions" id="chat-suggestions">
     <div class="chat-chip" onclick="sendSuggestion(this)">CASA points?</div>
