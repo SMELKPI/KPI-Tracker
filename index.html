@@ -675,6 +675,34 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
     box-shadow:0 1px 4px rgba(0,0,0,.15);
   }
 
+
+  /* ── MIC BUTTON ── */
+  .chat-mic {
+    width:44px; height:44px; min-width:44px; border-radius:50%; border:none;
+    background:var(--surface); color:var(--t2); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0; transition:all .18s;
+    box-shadow:0 1px 4px rgba(0,0,0,.12);
+    -webkit-tap-highlight-color:transparent;
+  }
+  .chat-mic:active { transform:scale(.9); }
+  .chat-mic.listening {
+    background:var(--red); color:#fff;
+    box-shadow:0 0 0 4px rgba(214,58,47,.25);
+    animation:micPulse 1s ease-in-out infinite;
+  }
+  @keyframes micPulse {
+    0%,100% { box-shadow:0 0 0 4px rgba(214,58,47,.25); }
+    50%      { box-shadow:0 0 0 8px rgba(214,58,47,.12); }
+  }
+  .chat-mic.listening svg { animation:none; }
+  .voice-hint {
+    font-size:.7rem; color:var(--red); text-align:center;
+    padding:4px 12px 0; font-style:italic;
+    display:none;
+  }
+  .voice-hint.show { display:block; }
+
 </style>
 </head>
 <body>
@@ -2539,6 +2567,108 @@ function getBanglaAnswer(q) {
   return '🤔 ক্ষমা করবেন'+n+', প্রশ্নটি বুঝতে পারিনি।\nচেষ্টা করুন: CASA পয়েন্ট, FDR কমিশন, Borenno নীতি, মাসিক টার্গেট, ESAU রেটিং';
 }
 
+
+// ── VOICE INPUT ──
+var recognition = null;
+var isListening = false;
+
+function initVoice() {
+  var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SpeechRecognition) return null;
+  var r = new SpeechRecognition();
+  r.continuous = false;
+  r.interimResults = true;
+  r.maxAlternatives = 1;
+
+  r.onstart = function() {
+    isListening = true;
+    haptic('medium');
+    var btn = document.getElementById('chat-mic-btn');
+    var hint = document.getElementById('voice-hint');
+    if (btn) btn.classList.add('listening');
+    if (hint) {
+      hint.textContent = chatLang === 'bn' ? '🎤 শুনছি... বলুন' : '🎤 Listening... speak now';
+      hint.classList.add('show');
+    }
+  };
+
+  r.onresult = function(e) {
+    var transcript = '';
+    for (var i = e.resultIndex; i < e.results.length; i++) {
+      transcript += e.results[i][0].transcript;
+    }
+    var input = document.getElementById('chat-input');
+    if (input) {
+      input.value = transcript;
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+    }
+    // Auto-send if final result
+    if (e.results[e.results.length - 1].isFinal) {
+      stopVoice();
+      setTimeout(sendChat, 400);
+    }
+  };
+
+  r.onerror = function(e) {
+    stopVoice();
+    var hint = document.getElementById('voice-hint');
+    if (hint) {
+      hint.textContent = e.error === 'not-allowed'
+        ? '⚠️ Voice needs HTTPS — upload to GitHub Pages'
+        : '⚠️ Voice not supported on this browser';
+      hint.classList.add('show');
+      setTimeout(function(){ hint.classList.remove('show'); }, 3000);
+    }
+  };
+
+  r.onend = function() { stopVoice(); };
+  return r;
+}
+
+function toggleVoice() {
+  if (isListening) {
+    stopVoice();
+  } else {
+    startVoice();
+  }
+}
+
+function startVoice() {
+  if (!recognition) recognition = initVoice();
+  if (!recognition) {
+    var hint = document.getElementById('voice-hint');
+    if (hint) {
+      hint.textContent = '⚠️ Voice not supported on this browser';
+      hint.classList.add('show');
+      setTimeout(function(){ hint.classList.remove('show'); }, 3000);
+    }
+    return;
+  }
+  // Set language based on toggle
+  recognition.lang = chatLang === 'bn' ? 'bn-BD' : 'en-US';
+  // Check if running on https (required for mic)
+  if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
+    var hint = document.getElementById('voice-hint');
+    if (hint) {
+      hint.textContent = '⚠️ Voice needs HTTPS — host on GitHub Pages to use mic';
+      hint.style.display = 'block';
+      setTimeout(function(){ hint.style.display = 'none'; }, 4000);
+    }
+    return;
+  }
+  try { recognition.start(); } catch(e) {}
+}
+
+function stopVoice() {
+  isListening = false;
+  if (recognition) try { recognition.stop(); } catch(e) {}
+  var btn = document.getElementById('chat-mic-btn');
+  var hint = document.getElementById('voice-hint');
+  if (btn) btn.classList.remove('listening');
+  if (hint) hint.classList.remove('show');
+}
+
 </script>
 
 <!-- ASK ME POLICY CHATBOT -->
@@ -2650,7 +2780,16 @@ function getBanglaAnswer(q) {
         <path d="M17.5 2.5L12 17.5L9 11L2.5 8L17.5 2.5Z" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="rgba(255,255,255,0.2)"/>
       </svg>
     </button>
+    <button class="chat-mic" id="chat-mic-btn" onclick="toggleVoice()" aria-label="Voice input">
+      <svg id="mic-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <rect x="6" y="1" width="6" height="10" rx="3" fill="currentColor"/>
+        <path d="M3 9a6 6 0 0 0 12 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <line x1="9" y1="15" x2="9" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        <line x1="6" y1="17" x2="12" y2="17" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
   </div>
+  <div class="voice-hint" id="voice-hint"></div>
 </div>
 
 </body>
