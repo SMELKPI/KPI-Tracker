@@ -679,29 +679,30 @@ nav{position:fixed;bottom:0;left:0;right:0;background:var(--white);border-top:2p
   /* ── MIC BUTTON ── */
   .chat-mic {
     width:44px; height:44px; min-width:44px; border-radius:50%; border:none;
-    background:var(--surface); color:var(--t2); cursor:pointer;
+    background:var(--bb-blue-lt); color:var(--bb-blue); cursor:pointer;
     display:flex; align-items:center; justify-content:center;
     flex-shrink:0; transition:all .18s;
-    box-shadow:0 1px 4px rgba(0,0,0,.12);
+    box-shadow:0 1px 3px rgba(0,108,182,.15);
     -webkit-tap-highlight-color:transparent;
   }
   .chat-mic:active { transform:scale(.9); }
   .chat-mic.listening {
-    background:var(--red); color:#fff;
-    box-shadow:0 0 0 4px rgba(214,58,47,.25);
+    background:var(--bb-blue); color:#fff;
+    box-shadow:0 0 0 4px rgba(0,108,182,.2);
     animation:micPulse 1s ease-in-out infinite;
   }
   @keyframes micPulse {
-    0%,100% { box-shadow:0 0 0 4px rgba(214,58,47,.25); }
-    50%      { box-shadow:0 0 0 8px rgba(214,58,47,.12); }
+    0%,100% { box-shadow:0 0 0 4px rgba(0,108,182,.2); }
+    50%      { box-shadow:0 0 0 8px rgba(0,108,182,.1); }
   }
-  .chat-mic.listening svg { animation:none; }
   .voice-hint {
-    font-size:.7rem; color:var(--red); text-align:center;
-    padding:4px 12px 0; font-style:italic;
-    display:none;
+    font-size:.72rem; font-weight:500; color:var(--bb-blue);
+    text-align:center; padding:5px 14px;
+    background:var(--bb-blue-lt); border-top:1px solid var(--border);
+    letter-spacing:.2px; display:none;
+    align-items:center; justify-content:center; gap:5px;
   }
-  .voice-hint.show { display:block; }
+  .voice-hint.show { display:flex; }
 
 </style>
 </head>
@@ -2587,7 +2588,7 @@ function initVoice() {
     var hint = document.getElementById('voice-hint');
     if (btn) btn.classList.add('listening');
     if (hint) {
-      hint.textContent = chatLang === 'bn' ? '🎤 শুনছি... বলুন' : '🎤 Listening... speak now';
+      hint.innerHTML = chatLang === 'bn' ? '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="4.5" y="1" width="5" height="8" rx="2.5" fill="var(--bb-blue)"/><path d="M2 7a5 5 0 0 0 10 0" stroke="var(--bb-blue)" stroke-width="1.4" stroke-linecap="round" fill="none"/><line x1="7" y1="12" x2="7" y2="13" stroke="var(--bb-blue)" stroke-width="1.4" stroke-linecap="round"/></svg> শুনছি... বলুন' : '<svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="4.5" y="1" width="5" height="8" rx="2.5" fill="var(--bb-blue)"/><path d="M2 7a5 5 0 0 0 10 0" stroke="var(--bb-blue)" stroke-width="1.4" stroke-linecap="round" fill="none"/><line x1="7" y1="12" x2="7" y2="13" stroke="var(--bb-blue)" stroke-width="1.4" stroke-linecap="round"/></svg> Listening... speak now';
       hint.classList.add('show');
     }
   };
@@ -2614,8 +2615,8 @@ function initVoice() {
     stopVoice();
     var hint = document.getElementById('voice-hint');
     if (hint) {
-      hint.textContent = e.error === 'not-allowed'
-        ? '⚠️ Voice needs HTTPS — upload to GitHub Pages'
+      hint.innerHTML = e.error === 'not-allowed'
+        ? '⚠️ Voice needs HTTPS — host on GitHub Pages'
         : '⚠️ Voice not supported on this browser';
       hint.classList.add('show');
       setTimeout(function(){ hint.classList.remove('show'); }, 3000);
@@ -2651,7 +2652,7 @@ function startVoice() {
   if (window.location.protocol !== 'https:' && window.location.hostname !== 'localhost') {
     var hint = document.getElementById('voice-hint');
     if (hint) {
-      hint.textContent = '⚠️ Voice needs HTTPS — host on GitHub Pages to use mic';
+      hint.innerHTML = '⚠️ Voice requires HTTPS — use GitHub Pages link';
       hint.style.display = 'block';
       setTimeout(function(){ hint.style.display = 'none'; }, 4000);
     }
