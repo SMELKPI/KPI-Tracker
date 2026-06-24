@@ -2715,24 +2715,42 @@ if (window.speechSynthesis) {
 
 function pickBestVoice(lang) {
   if (!ttsVoices || ttsVoices.length === 0) loadVoices();
-  var candidates = ttsVoices.filter(function(v) {
+
+  // All available voices for debugging
+  var all = ttsVoices.filter(function(v) {
     return v.lang && v.lang.toLowerCase().indexOf(lang) === 0;
   });
-  if (candidates.length === 0) return null;
-
-  // Prefer male voices (heuristic: name patterns; Google/Microsoft often label gender)
-  var malePatterns = /male|^(?!.*female).*\b(david|mark|guy|ravi|daniel|james|alex|tom|aaron|matthew|brian)\b/i;
-  var femalePatterns = /female|zira|susan|samantha|aria|jenny|salli|joanna|amy/i;
-
-  var male = candidates.filter(function(v){ return malePatterns.test(v.name) && !femalePatterns.test(v.name); });
-  if (male.length) {
-    // Prefer Google/Natural/Online (higher quality) voices first
-    var bestMale = male.find(function(v){ return /google|natural|online|neural/i.test(v.name); });
-    return bestMale || male[0];
+  if (all.length === 0) {
+    // Fallback: try broader match (e.g. 'en' matches 'en-US', 'en-GB' etc)
+    all = ttsVoices.filter(function(v) {
+      return v.lang && v.lang.toLowerCase().startsWith(lang.substring(0,2));
+    });
   }
-  // Fallback: prefer Google voices even if gender unknown (usually clearer)
-  var google = candidates.find(function(v){ return /google/i.test(v.name); });
-  return google || candidates[0];
+  if (all.length === 0) return null;
+
+  // Aggressive female name blacklist
+  var FEMALE = /female|\b(zira|susan|samantha|aria|jenny|joanna|salli|ivy|kendra|kimberly|emma|olivia|nicole|victoria|moira|veena|nicky|ting|mei|hui|kyoko|sin-ji|yuna|tessa|fiona|katya|ioana|amelie|carmen|luca|alva|sara|ellen|anna|alice|laura|julie|marie|paulina|maged|tarik|reem|leila|anya|milena|damayanti|lekha|heera|priya|female|woman|girl)\b/i;
+
+  // Male name whitelist
+  var MALE = /male|\b(david|mark|guy|ravi|daniel|james|alex|tom|aaron|matthew|brian|richard|fred|lee|jorge|diego|carlos|luca|felix|mattias|henrik|nikos|stefan|george|arthur|thomas|nicolas|miguel|ivan|oliver|reed|sandy|albert|eddy|grant|junior|ralph|wayne|gordon|senior)\b/i;
+
+  // 1. Explicit male name match
+  var male = all.filter(function(v){ return MALE.test(v.name) && !FEMALE.test(v.name); });
+  if (male.length) {
+    var best = male.find(function(v){ return /google|natural|online|neural|enhanced/i.test(v.name); });
+    return best || male[0];
+  }
+
+  // 2. Not explicitly female — prefer Google quality
+  var notFemale = all.filter(function(v){ return !FEMALE.test(v.name); });
+  if (notFemale.length) {
+    var best2 = notFemale.find(function(v){ return /google|natural|online|neural|enhanced/i.test(v.name); });
+    return best2 || notFemale[0];
+  }
+
+  // 3. Last resort — anything
+  var best3 = all.find(function(v){ return /google|natural|online|neural/i.test(v.name); });
+  return best3 || all[0];
 }
 
 function speakText(text, btn) {
@@ -2759,7 +2777,8 @@ function speakText(text, btn) {
   utter.lang = lang === 'bn' ? 'bn-BD' : 'en-US';
   if (voice) utter.voice = voice;
   utter.rate = 0.95;
-  utter.pitch = lang === 'bn' ? 0.92 : 0.95; // slightly lower pitch sounds more natural/male
+  utter.pitch = 0.75; // lower pitch for male-sounding voice
+  utter.rate = 0.9;
 
   utter.onstart = function() { btn.classList.add('speaking'); };
   utter.onend = function() { btn.classList.remove('speaking'); currentUtterance = null; };
